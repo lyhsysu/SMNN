@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>*技术与排版规范 &#8212; 神经网络的统计力学（中文笔记）</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="自旋玻璃与空腔方法" href="cavity-method.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">神经网络的统计力学（中文笔记）</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  课程笔记
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="preface.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cavity-method.html">
+   自旋玻璃与空腔方法
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   *技术与排版规范
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/format.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   一、网站更新流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   二、排版规范
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.1 通用语法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.2 数学公式
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.3 图片
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       带题注和编号的图片
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       不带题注和编号的图片
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     2.4 参考文献
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id35">
+     2.5 告示框
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>*技术与排版规范</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   一、网站更新流程
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   二、排版规范
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.1 通用语法
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.2 数学公式
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.3 图片
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       带题注和编号的图片
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       不带题注和编号的图片
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     2.4 参考文献
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id35">
+     2.5 告示框
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>*技术与排版规范<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<br/>
+<p>本网站使用 <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a> 构建，基于 <a class="reference external" href="https://github.com/lyhsysu/lyhsysu">GitHub</a> 发布。</p>
+<p>本页面第一部分记录了网页更新流程，便于作者进行更新；第二部分是作者基于 Jupyter Book、<a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/index.html">MyST Markdown</a> 以及 <a class="reference external" href="http://docs.mathjax.org/">MathJax</a> 的文档制作的一份适用于本网站的文章排版规范，以便全站文章风格统一，同时可供他人参考。</p>
+<br/>
+<section id="id2">
+<h2>一、网站更新流程<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>在图书根目录进行编辑</p>
+<p>在图书根目录使用 Anaconda Prompt 命令行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="n">SMNN</span>
+</pre></div>
+</div>
+<p>将 build 完毕后的图书根目录所有文件复制到 GitHub 本地仓库目录</p>
+<p>在 GitHub 本地仓库目录使用 Git 命令行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>网页地址：<a class="reference external" href="https://lyhsysu.github.io/SMNN/intro.html">https://lyhsysu.github.io/SMNN/intro.html</a></p>
+<br/>
+</section>
+<section id="id3">
+<h2>二、排版规范<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<section id="id4">
+<h3>2.1 通用语法<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="id5">
+<h3>2.2 数学公式<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>Jupyter Book 使用 <a class="reference external" href="http://docs.mathjax.org/">MathJax</a> 排版数学公式，在 <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> 配置文件中，用如下命令将MathJax升级到版本3（默认为版本2）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="p">:</span>
+  <span class="n">config</span><span class="p">:</span>
+    <span class="n">mathjax_path</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cdn</span><span class="o">.</span><span class="n">jsdelivr</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">npm</span><span class="o">/</span><span class="n">mathjax</span><span class="o">@</span><span class="mi">3</span><span class="o">/</span><span class="n">es5</span><span class="o">/</span><span class="n">tex</span><span class="o">-</span><span class="n">mml</span><span class="o">-</span><span class="n">chtml</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p><strong>内联公式</strong>：使用 markdown 的 <code class="docutils literal notranslate"><span class="pre">$···$</span></code> 符号</p>
+<p><strong>公式块</strong>：使用如下代码对公式块进行编号</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{math}
+:label: the_label_name
+1+1=2
+```
+</pre></div>
+</div>
+<p>使用如下代码对公式编号进行引用</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>式 {eq}`the_label_name` 
+</pre></div>
+</div>
+<div class="admonition note" id="html-admonition">
+<p class="admonition-title">示例</p>
+<p>这是一个内联公式 <span class="math notranslate nohighlight">\(1+1=2\)</span></p>
+<p>下面是一个公式块</p>
+<div class="math notranslate nohighlight" id="equation-my-label">
+<span class="eqno">(47)<a class="headerlink" href="#equation-my-label" title="Permalink to this equation">#</a></span>\[1+1=2\]</div>
+<p>这是对公式的引用：对于式 <a class="reference internal" href="#equation-my-label">(47)</a> 来说</p>
+</div>
+<br/>
+</section>
+<section id="id6">
+<h3>2.3 图片<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>在 <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> 配置文件中添加 <code class="docutils literal notranslate"><span class="pre">html_image</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>parse:
+  myst_enable_extensions:
+	······
+	······
+    - html_image
+</pre></div>
+</div>
+<p>在图书根目录新建 <code class="docutils literal notranslate"><span class="pre">images</span></code> 文件夹，用于存放图片。</p>
+<section id="id7">
+<h4>带题注和编号的图片<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<p>使用如下代码插入图片</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">figure</span><span class="o">-</span><span class="n">md</span><span class="p">}</span> <span class="n">figure_label_name</span>
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;figure_address&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;figure_description&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;bg-primary mb-1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;200px&quot;</span><span class="o">&gt;</span>
+
+<span class="n">这是图片的题注</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p>使用如下代码引用图片</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{numref}`figure_label_name`
+</pre></div>
+</div>
+<p><strong>效果为：</strong></p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://i.328888.xyz/2023/01/09/05AJE.md.png"><img alt="斯特恩-盖拉赫实验装置图" class="bg-primary mb-1" src="https://i.328888.xyz/2023/01/09/05AJE.md.png" style="width: 8cm;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">这是图片的题注</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>这是对图片的引用：对于 <a class="reference internal" href="#markdown-fig"><span class="std std-numref">Fig. 5</span></a> 来说</p>
+</section>
+<section id="id8">
+<h4>不带题注和编号的图片<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<p>直接使用原生 markdown 语法插入图片</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![图片描述](图片地址)
+</pre></div>
+</div>
+<p>如</p>
+<p><img alt="" src="https://i.328888.xyz/2023/01/09/05AJE.md.png" /></p>
+<br/>
+</section>
+</section>
+<section id="id9">
+<h3>2.4 参考文献<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<p>在图书根目录的 <code class="docutils literal notranslate"><span class="pre">references.bib</span></code> 文件中添加参考文献的 BibTex 引用样式</p>
+<p>在文中使用 <code class="docutils literal notranslate"><span class="pre">{cite}`ref_name`</span> </code> 引用参考文献</p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">{cite}`ref_name_1,ref_name_2,ref_name_3`</span> </code>一次引用多个参考文献</p>
+<p>在文章中使用如下代码添加参考文献目录</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{bibliography}
+:style: unsrt
+:filter: docname in docnames
+```
+</pre></div>
+</div>
+<div class="admonition note" id="id10">
+<p class="admonition-title">示例</p>
+<p>引用一篇文献，比如<span id="id11">[<a class="reference internal" href="#id14" title="Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In International Conference on Cognitive Neuroscience. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.">1</a>]</span></p>
+<p>引用多篇文献，比如<span id="id12">[<a class="reference internal" href="#id15" title="Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, Jochem W. Rieger, Nathan Crone, Jack J. Lin, Robert T. Knight, and Frédéric E. Theunissen. Rapid tuning shifts in human auditory cortex enhance speech intelligibility. Nature Communications, 7(May):13654, 2016. URL: http://www.nature.com/doifinder/10.1038/ncomms13654, doi:10.1038/ncomms13654.">2</a>, <a class="reference internal" href="#id16" title="Christopher Ramsay Holdgraf, A. Culich, A. Rokem, F. Deniz, M. Alegro, and D. Ushizima. Portable learning environments for hands-on computational instruction using container-and cloud-based technology to teach data science. In ACM International Conference Proceeding Series, volume Part F1287. 2017. doi:10.1145/3093338.3093370.">3</a>, <a class="reference internal" href="#id17" title="Christopher Ramsay Holdgraf, J.W. Rieger, C. Micheli, S. Martin, R.T. Knight, and F.E. Theunissen. Encoding and decoding models in cognitive electrophysiology. Frontiers in Systems Neuroscience, 2017. doi:10.3389/fnsys.2017.00061.">4</a>]</span></p>
+<p>生成参考文献目录</p>
+<div class="docutils container" id="id13">
+<dl class="citation">
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id11">1</a></span></dt>
+<dd><p>Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, and Robert T. Knight. Evidence for Predictive Coding in Human Auditory Cortex. In <em>International Conference on Cognitive Neuroscience</em>. Brisbane, Australia, Australia, 2014. Frontiers in Neuroscience.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id12">2</a></span></dt>
+<dd><p>Christopher Ramsay Holdgraf, Wendy de Heer, Brian N. Pasley, Jochem W. Rieger, Nathan Crone, Jack J. Lin, Robert T. Knight, and Frédéric E. Theunissen. Rapid tuning shifts in human auditory cortex enhance speech intelligibility. <em>Nature Communications</em>, 7(May):13654, 2016. URL: <a class="reference external" href="http://www.nature.com/doifinder/10.1038/ncomms13654">http://www.nature.com/doifinder/10.1038/ncomms13654</a>, <a class="reference external" href="https://doi.org/10.1038/ncomms13654">doi:10.1038/ncomms13654</a>.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id12">3</a></span></dt>
+<dd><p>Christopher Ramsay Holdgraf, A. Culich, A. Rokem, F. Deniz, M. Alegro, and D. Ushizima. Portable learning environments for hands-on computational instruction using container-and cloud-based technology to teach data science. In <em>ACM International Conference Proceeding Series</em>, volume Part F1287. 2017. <a class="reference external" href="https://doi.org/10.1145/3093338.3093370">doi:10.1145/3093338.3093370</a>.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id12">4</a></span></dt>
+<dd><p>Christopher Ramsay Holdgraf, J.W. Rieger, C. Micheli, S. Martin, R.T. Knight, and F.E. Theunissen. Encoding and decoding models in cognitive electrophysiology. <em>Frontiers in Systems Neuroscience</em>, 2017. <a class="reference external" href="https://doi.org/10.3389/fnsys.2017.00061">doi:10.3389/fnsys.2017.00061</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+<br/>
+</section>
+<section id="id35">
+<h3>2.5 告示框<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h3>
+<p>在 <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> 配置文件中添加 <code class="docutils literal notranslate"><span class="pre">html_admonition</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>parse:
+  myst_enable_extensions:
+	······
+	······
+    - html_admonition
+</pre></div>
+</div>
+<br/>
+<ul class="simple">
+<li><p>使用如下代码添加一个注释</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{note}
+这是一个注释
+```
+</pre></div>
+</div>
+<p>效果为</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这是一个注释</p>
+</div>
+<br/>
+<ul class="simple">
+<li><p>使用如下代码在大标题下添加摘要</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{admonition} Abstract
+这是一个摘要
+```
+</pre></div>
+</div>
+<p>效果为</p>
+<div class="admonition-abstract admonition">
+<p class="admonition-title">Abstract</p>
+<p>这是一个摘要</p>
+</div>
+<br/>
+<ul class="simple">
+<li><p>使用如下代码添加一个想法/提示</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```{admonition} ideal/tips
+:class: tip
+这是一个想法/提示
+```
+</pre></div>
+</div>
+<p>效果为</p>
+<div class="tip admonition">
+<p class="admonition-title">ideal/tips</p>
+<p>这是一个想法/提示</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cavity-method.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">自旋玻璃与空腔方法</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 李宇豪<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

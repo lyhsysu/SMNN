@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction &#8212; 神经网络的统计力学（中文笔记）</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="自旋玻璃与空腔方法" href="cavity-method.html" />
+    <link rel="prev" title="Preface" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">神经网络的统计力学（中文笔记）</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  课程笔记
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cavity-method.html">
+   自旋玻璃与空腔方法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="VMFandBP.html">
+   变分平均场理论与信念传播算法
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="format.html">
+   *技术与排版规范
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/preface.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<br>
+<p>  二级相变又称为连续相变，是一种十分常见的现象，也是近代凝聚态物理和统计物理研究的重要内容。常见的相变有气—液相变、铁磁—顺磁相变、BCS 超导相变等。在这些相变过程中，外界条件（如温度）是连续变化的，但是物质的状态却可以发生突然的改变，导致某些物理量发生不连续的变化或者发散。1933年，朗道（Landau）提出<strong>序参量</strong>（order parameter）的概念，建立了朗道相变理论<span id="id1">[<a class="reference internal" href="#id19" title="Lev Davidovich Landau. On the theory of phase transitions. i. Zh. Eksp. Teor. Fiz., 11:19, 1937.">1</a>, <a class="reference internal" href="#id20" title="Lev Davidovich Landau. On the theory of phase transitions. ii. Zh. Eksp. Teor. Fiz., 11:627, 1937.">2</a>]</span>。根据朗道的理论，二级相变的微观本质是系统的对称性自发破缺，系统的对称性破缺产生了某种”序“，序参量（即描述”序“的参量）就是一个描述系统对称性的变量。序参量为零对应着系统的无序状态，非零对应有序状态，在发生二级相变的临界点，序参量连续地从零变为非零。</p>
+<p>  玻璃化是另一种常见的相变，比如高温下熔融的二氧化硅液体经过淬火形成石英玻璃，这是一种宏观上有序、微观上分子排列高度无序的物质结构。对于一般的铁磁体材料，当温度升高时，原子自身的热运动逐渐超过原子之间的相互作用，物质宏观上变为顺磁性；当温度重新降低至一定水平（称为<strong>居里点</strong>）后，原子之间的铁磁相互作用使得所有的磁矩都按同一个方向排列（即<strong>长程有序状态</strong>），物质快速恢复铁磁性。但是实验发现，在 AuFe、CuMn 等一些稀磁合金中，温度下降时，材料的磁化率先缓慢增高，经过一个峰值后再缓慢下降<span id="id2">[<a class="reference internal" href="#id22" title="Ju Wei Shih. Magnetic properties of gold-iron alloys. Physical Review, 38(11):2051, 1931. doi:10.1103/PhysRev.38.2051.">3</a>, <a class="reference internal" href="#id23" title="Jun Kondo. Resistance minimum in dilute magnetic alloys. Progress of theoretical physics, 32(1):37–49, 1964. doi:10.1143/PTP.32.37.">4</a>, <a class="reference internal" href="#id21" title="Vincent Cannella and John A Mydosh. Magnetic ordering in gold-iron alloys. Physical Review B, 6(11):4220, 1972. doi:10.1103/PhysRevB.6.4220.">5</a>]</span>。这是因为这类材料中自旋之间的相互作用是完全随机的，温度下降时，复杂的相互作用产生了阻挫效应（frustration effect），无法形成长程有序状态，各个磁矩被随机地冻结在某个方向，最后呈现无规则的长程无序状态。1970年，P. Anderson 在 B. R. Coles 的建议下提出”自旋玻璃“的概念<span id="id3">[<a class="reference internal" href="#id24" title="Philip Warren Anderson. Localisation theory and the cumn problem: spin glasses. Materials Research Bulletin, 5(8):549–554, 1970. doi:10.1016/0025-5408(70)90096-6.">6</a>]</span>，”玻璃“一词是将这种铁磁材料中自旋排列的无序与化学玻璃中分子位置的无序进行类比。</p>
+<p>  1975年，S. Edwards 与 P. Anderson 提出第一个短程相互作用的自旋玻璃模型（E-A 模型），并提出了复本方法（replica method）和复本对称假设（the assumption of replica symmetry）来求解该模型<span id="id4">[<a class="reference internal" href="#id25" title="Samuel Frederick Edwards and Phil W Anderson. Theory of spin glasses. Journal of Physics F: Metal Physics, 5(5):965, 1975. doi:10.1088/0305-4608/5/5/017.">7</a>]</span>。这是第一个定性描述自旋玻璃的模型，能够在低温下观察到玻璃相<span id="id5">[<a class="reference internal" href="#id26" title="Hidetoshi Nishimori. Statistical physics of spin glasses and information processing: an introduction. Number 111. Clarendon Press, 2001.">8</a>]</span>的存在。同年，D. Sherrington 与 S. Kirkpatrick 提出了自旋玻璃的平均场模型（S-K 模型）<span id="id6">[<a class="reference internal" href="#id27" title="David Sherrington and Scott Kirkpatrick. Solvable model of a spin-glass. Physical review letters, 35(26):1792, 1975. doi:10.1103/PhysRevLett.35.1792.">9</a>]</span>，将短程相互作用推广到全连接的情形。根据复本对称理论的计算结果，S-K 模型中存在一个临界温度，在临界温度以上序参量为零，临界温度以下序参量大于零，这再一次验证了 Landau 的理论。但是，使用复本对称理论求解出 S-K 模型的零温熵为负值，这是不符合物理直观的，因为 S-K 模型中自旋取向只有两个方向，系统的构型数是可数的，熵不可能为负。1978年，de Almeida 和 Thouless 发现 S-K 模型的复本对称解仅在高温下稳定，在自旋玻璃相中并不稳定，他们找到了复本对称解稳定区间的边界（dAT 线），在 dAT 线之下复本对称性破缺<span id="id7">[<a class="reference internal" href="#id28" title="Jairo RL de Almeida and David J Thouless. Stability of the sherrington-kirkpatrick solution of a spin glass model. Journal of Physics A: Mathematical and General, 11(5):983, 1978. doi:10.1088/0305-4470/11/5/028.">10</a>]</span>。为了尝试打破复本对称性来描述自旋玻璃的低温相，Thouless、Anderson 与 Palmer 提出一种平均场方法（TAP 方法），在自由能中考虑自旋对自身的反弹效应（Onsager 反应项<span id="id8">[<a class="reference internal" href="#id29" title="Lars Onsager. Electric moments of molecules in liquids. Journal of the American Chemical Society, 58(8):1486–1493, 1936. doi:10.1021/ja01299a050.">11</a>, <a class="reference internal" href="#id30" title="John A Barker and Robert O Watts. Monte carlo studies of the dielectric properties of water-like models. Molecular Physics, 26(3):789–792, 1973. doi:10.1080/00268977300102101.">12</a>]</span>），并且仅作无序平均<span id="id9">[<a class="reference internal" href="#id31" title="David J Thouless, Philip W Anderson, and Robert G Palmer. Solution of'solvable model of a spin glass'. Philosophical Magazine, 35(3):593–601, 1977. doi:10.1080/14786437708235992.">13</a>]</span>。但是 TAP 方法也被证明仅在高温下有效<span id="id10">[<a class="reference internal" href="#id32" title="Marc Mézard, Giorgio Parisi, and Miguel Angel Virasoro. Spin glass theory and beyond: An Introduction to the Replica Method and Its Applications. Volume 9. World Scientific Publishing Company, 1987.">14</a>]</span>。</p>
+<p>  1979年，G. Parisi 提出了复本对称破缺（replica symmetry breaking, RSB）的概念，发展了一套有效的数学方法，并给出了 S-K 模型的一个精确的理论解。随后，M. Mezard、G. Parisi、M.A. Virasoro 等人对 Parisi 解的解释工作揭示了玻璃态低温相的复杂性质，其特征是遍历性破坏（ergodicity breaking）、超度量性（ultrametricity）和非自均性（non-selfaverageness）。</p>
+<p>··· ···</p>
+<p>1987年，Marc Mézard、Giorgio Parisi 和 Miguel Angel Virasoro 提出了一种新的数学方法用于处理 S-K 模型，被称为空腔方法（cavity method），后来发现，空腔方法对于统计物理中的一些平均场模型，特别是无序系统，具有广泛的适用性，并且相比复本方法更为简单。</p>
+<p>··· ···</p>
+<br>
+<p><strong>References</strong></p>
+<div class="docutils container" id="id11">
+<dl class="citation">
+<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Lev Davidovich Landau. On the theory of phase transitions. i. <em>Zh. Eksp. Teor. Fiz.</em>, 11:19, 1937.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
+<dd><p>Lev Davidovich Landau. On the theory of phase transitions. ii. <em>Zh. Eksp. Teor. Fiz.</em>, 11:627, 1937.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
+<dd><p>Ju Wei Shih. Magnetic properties of gold-iron alloys. <em>Physical Review</em>, 38(11):2051, 1931. <a class="reference external" href="https://doi.org/10.1103/PhysRev.38.2051">doi:10.1103/PhysRev.38.2051</a>.</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id2">4</a></span></dt>
+<dd><p>Jun Kondo. Resistance minimum in dilute magnetic alloys. <em>Progress of theoretical physics</em>, 32(1):37–49, 1964. <a class="reference external" href="https://doi.org/10.1143/PTP.32.37">doi:10.1143/PTP.32.37</a>.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id2">5</a></span></dt>
+<dd><p>Vincent Cannella and John A Mydosh. Magnetic ordering in gold-iron alloys. <em>Physical Review B</em>, 6(11):4220, 1972. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.6.4220">doi:10.1103/PhysRevB.6.4220</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id3">6</a></span></dt>
+<dd><p>Philip Warren Anderson. Localisation theory and the cumn problem: spin glasses. <em>Materials Research Bulletin</em>, 5(8):549–554, 1970. <a class="reference external" href="https://doi.org/10.1016/0025-5408(70)90096-6">doi:10.1016/0025-5408(70)90096-6</a>.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id4">7</a></span></dt>
+<dd><p>Samuel Frederick Edwards and Phil W Anderson. Theory of spin glasses. <em>Journal of Physics F: Metal Physics</em>, 5(5):965, 1975. <a class="reference external" href="https://doi.org/10.1088/0305-4608/5/5/017">doi:10.1088/0305-4608/5/5/017</a>.</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id5">8</a></span></dt>
+<dd><p>Hidetoshi Nishimori. <em>Statistical physics of spin glasses and information processing: an introduction</em>. Number 111. Clarendon Press, 2001.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id6">9</a></span></dt>
+<dd><p>David Sherrington and Scott Kirkpatrick. Solvable model of a spin-glass. <em>Physical review letters</em>, 35(26):1792, 1975. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.35.1792">doi:10.1103/PhysRevLett.35.1792</a>.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets"><a class="fn-backref" href="#id7">10</a></span></dt>
+<dd><p>Jairo RL de Almeida and David J Thouless. Stability of the sherrington-kirkpatrick solution of a spin glass model. <em>Journal of Physics A: Mathematical and General</em>, 11(5):983, 1978. <a class="reference external" href="https://doi.org/10.1088/0305-4470/11/5/028">doi:10.1088/0305-4470/11/5/028</a>.</p>
+</dd>
+<dt class="label" id="id29"><span class="brackets"><a class="fn-backref" href="#id8">11</a></span></dt>
+<dd><p>Lars Onsager. Electric moments of molecules in liquids. <em>Journal of the American Chemical Society</em>, 58(8):1486–1493, 1936. <a class="reference external" href="https://doi.org/10.1021/ja01299a050">doi:10.1021/ja01299a050</a>.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets"><a class="fn-backref" href="#id8">12</a></span></dt>
+<dd><p>John A Barker and Robert O Watts. Monte carlo studies of the dielectric properties of water-like models. <em>Molecular Physics</em>, 26(3):789–792, 1973. <a class="reference external" href="https://doi.org/10.1080/00268977300102101">doi:10.1080/00268977300102101</a>.</p>
+</dd>
+<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id9">13</a></span></dt>
+<dd><p>David J Thouless, Philip W Anderson, and Robert G Palmer. Solution of'solvable model of a spin glass'. <em>Philosophical Magazine</em>, 35(3):593–601, 1977. <a class="reference external" href="https://doi.org/10.1080/14786437708235992">doi:10.1080/14786437708235992</a>.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets"><a class="fn-backref" href="#id10">14</a></span></dt>
+<dd><p>Marc Mézard, Giorgio Parisi, and Miguel Angel Virasoro. <em>Spin glass theory and beyond: An Introduction to the Replica Method and Its Applications</em>. Volume 9. World Scientific Publishing Company, 1987.</p>
+</dd>
+</dl>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Preface</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cavity-method.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">自旋玻璃与空腔方法</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 李宇豪<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

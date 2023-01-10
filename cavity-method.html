@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="变分平均场理论与信念传播算法" href="VMFandBP.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="next" title="*技术与排版规范" href="format.html" />
+    <link rel="prev" title="Introduction" href="preface.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,24 +111,36 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Introduction
+                    Preface
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  学习笔记
+  课程笔记
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="preface.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    自旋玻璃与空腔方法
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="VMFandBP.html">
-   变分平均场理论与信念传播算法
+  <a class="reference internal" href="format.html">
+   *技术与排版规范
   </a>
  </li>
 </ul>
@@ -195,51 +207,6 @@ title="Fullscreen mode"
   </span>
 
 </button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcavity-method.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
 
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
@@ -314,17 +281,17 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id5">
    二、空腔方法求解配分函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id6">
    三、消息传递算法
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id7">
    四、拓展阅读与应用举例
   </a>
   <ul class="nav section-nav flex-column">
@@ -341,7 +308,7 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id8">
    五、作业
   </a>
   <ul class="nav section-nav flex-column">
@@ -356,6 +323,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   参考文献
+  </a>
  </li>
 </ul>
 
@@ -382,17 +354,17 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id5">
    二、空腔方法求解配分函数
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id6">
    三、消息传递算法
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id7">
    四、拓展阅读与应用举例
   </a>
   <ul class="nav section-nav flex-column">
@@ -409,7 +381,7 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id8">
    五、作业
   </a>
   <ul class="nav section-nav flex-column">
@@ -425,6 +397,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   参考文献
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -437,118 +414,117 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>自旋玻璃与空腔方法<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<blockquote>
-<div><p>摘要： 自旋玻璃是描述相变的一类统计物理模型，近年来在信息科学和神经网络等领域也有广泛应用。本文以Sourlas编码为例，介绍了自旋玻璃模型在信息编码领域的应用，重点介绍了如何利用空腔方法求解配分函数，进而得到消息传递方程，从编码信息中恢复出原始信息。文末给出了空腔方法在其他领域的介绍和参考文献，并且有两道作业题：用空腔方法求解SK模型以及用编程实现Sourlas编码解码的过程。</p>
-</div></blockquote>
+<style>
+h1 { font: SimSun !important; }
+h2 { font-weight:bolder; font: 24px NSimSun !important; }
+h3 { font-weight:bolder; font: 20px NSimSun !important; }
+p { font: 16px NSimSun !important; }
+</style>
+<div class="admonition-abstract admonition">
+<p class="admonition-title">Abstract</p>
+<p>自旋玻璃是描述相变的一类统计物理模型，近年来在信息科学和神经网络等领域也有广泛应用。本文以Sourlas编码为例，介绍了自旋玻璃模型在信息编码领域的应用，重点介绍了如何利用空腔方法求解配分函数，进而得到消息传递方程，从编码信息中恢复出原始信息。文末给出了空腔方法在其他领域的介绍和参考文献，并且有两道作业题：用空腔方法求解SK模型以及用编程实现Sourlas编码解码的过程。</p>
+</div>
 <section id="id2">
 <h2>一、引言<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>自旋玻璃模型是在研究相变问题时引入的一类统计物理模型，它的哈密顿量只包含晶格中不同格点上的自旋变量之间的相互作用。人们发现，铁磁相变、反铁磁相变等许多与磁性有关的二级相变都可以利用某种自旋玻璃模型进行刻画，超导相变、超流相变等其他二级相变的临界性质也可以与某个自旋玻璃模型的临界性质建立起对应关系，这表明自旋玻璃模型具有很好的普适性。<a class="footnote-reference brackets" href="#id10" id="id3">1</a></p>
-<p>在信息传输过程中，由于信道中存在噪声，信息可能会受到干扰而出现错误。从受干扰的消息中恢复原始信息是一项非常重要的任务。一种解决方案是在发送时对原始消息进行编码，引入冗余。然后接收方根据冗余来纠正一些传输错误。1948年，Claude Shannon证明了当码率低于信道容量时，无错传输是可能的，这为设计工程实用的编码方案建立了一个基本界限<a class="footnote-reference brackets" href="#id11" id="id4">2</a>。已经有很多人投入了大量的努力来设计接近香农界限(信道容量)的编码方案。其中，1989年Nicolas Sourlas提出一种编码方案<a class="footnote-reference brackets" href="#id12" id="id5">3</a>，它将纠错码与自旋玻璃模型联系起来，并且具有很高的性价比。</p>
-<p>对于 <span class="math notranslate nohighlight">\(N\)</span> 个二值信号构成的信源 <span class="math notranslate nohighlight">\(\boldsymbol{\xi} \in \{\pm 1\}^N\)</span>，Sourlas 编码的规则是随机选择一定数量的信号相乘，作为要传输的一个信号，即</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<p>在信息传输过程中，由于信道中存在噪声，信息可能会受到干扰而出现错误。从受干扰的消息中恢复原始信息是一项非常重要的任务。一种常用的解决方案是在发送时对原始消息进行编码，引入冗余，然后接收方根据冗余来纠正一些传输过程中出现的错误。1948年Claude Shannon证明了当码率低于信道容量时无错传输是可能的，这为设计工程实用的编码方案建立了一个基本界限<span id="id3">[<a class="reference internal" href="#id16" title="C. E. Shannon. A mathematical theory of communication. The Bell System Technical Journal, 27(3):379-423, 1948. doi:10.1002/j.1538-7305.1948.tb01338.x.">1</a>]</span>。已经有很多人投入了大量的努力来设计接近香农界限的编码方案。其中，1989年Nicolas Sourlas提出一种编码方案<span id="id4">[<a class="reference internal" href="#id17" title="Nicolas Sourlas. Spin-glass models as error-correcting codes. Nature, 339(6227):693–695, 1989. doi:10.1038/339693a0.">2</a>]</span>，它将纠错码与自旋玻璃模型联系起来，并且具有很高的性价比。</p>
+<p>对 <span class="math notranslate nohighlight">\(N\)</span>个二值信号构成的信源<span class="math notranslate nohighlight">\(\boldsymbol{\xi} \in \{\pm 1\}^N\)</span>，Sourlas编码的规则是随机选择一定数量的信号相乘，作为要传输的一个信号，即</p>
+<div class="math notranslate nohighlight" id="equation-gongshi1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-gongshi1" title="Permalink to this equation">#</a></span>\[
 J^0_a=\prod_{i\in \partial a}\xi_i
-\end{equation}
 \]</div>
-<p>编码后的信息为 <span class="math notranslate nohighlight">\(\boldsymbol{J^0} = \{J^0_1, J^0_2, J^0_3, \cdots, J^0_M\}\)</span>；在传输过程中信号有 <span class="math notranslate nohighlight">\(p\)</span> 的概率发生翻转，即<span class="math notranslate nohighlight">\(P(J_a|J_a^0)=p\delta(J_a+J_a^0)+(1-p)\delta(J_a-J_a^0)\)</span>，到达接收器的信息为 <span class="math notranslate nohighlight">\(\boldsymbol{J}=\{J_1, J_2, J_3, \cdots, J_M\}\)</span>。为了对信息 <span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span> 进行解码（将其恢复到 <span class="math notranslate nohighlight">\(\boldsymbol{\xi}\)</span> ），我们首先将Sourlas码与自旋玻璃模型结合起来。</p>
+<p>编码后的信息为<span class="math notranslate nohighlight">\(\boldsymbol{J^0} = \{J^0_1, J^0_2, J^0_3, \cdots, J^0_M\}\)</span>；在传输过程中信号有<span class="math notranslate nohighlight">\(p\)</span>的概率发生翻转，即<span class="math notranslate nohighlight">\(P(J_a|J_a^0)=p\delta(J_a+J_a^0)+(1-p)\delta(J_a-J_a^0)\)</span>，到达接收器的信息为<span class="math notranslate nohighlight">\(\boldsymbol{J}=\{J_1, J_2, J_3, \cdots, J_M\}\)</span>。为了对信息<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>进行解码（将其恢复到<span class="math notranslate nohighlight">\(\boldsymbol{\xi}\)</span>），我们首先将Sourlas码与自旋玻璃模型结合起来。</p>
 <p>自旋玻璃模型的哈密顿量写为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-gongshi2" title="Permalink to this equation">#</a></span>\[
 H(\boldsymbol{\sigma})=-\sum_{a=1}^MJ_a\prod_{i\in\partial a}\sigma_i
-\end{equation}
 \]</div>
 <p>此时这里的 <span class="math notranslate nohighlight">\(\sigma_i\)</span> 是物理上的自旋，在信息传输问题中可以理解为原始信号 <span class="math notranslate nohighlight">\(\xi_i\)</span>。可以看到，这里自旋之间的局部相互作用与Sourlas码的编码规则相同，因此只有当 <span class="math notranslate nohighlight">\(\sigma_i\)</span> 的取值与 <span class="math notranslate nohighlight">\(\xi_i\)</span> 一一对应时，上式取最小值。哈密顿量取最小值正是我们在物理上希望的系统的稳态，此时各个格点变量的取值的期望用磁化强度 <span class="math notranslate nohighlight">\(m\)</span> 表示。</p>
-<p>这个系统的配分函数写为
-$<span class="math notranslate nohighlight">\(
-\begin{equation}
+<p>这个系统的配分函数写为</p>
+<div class="math notranslate nohighlight" id="equation-gongshi3">
+<span class="eqno">(3)<a class="headerlink" href="#equation-gongshi3" title="Permalink to this equation">#</a></span>\[
 Z=\mathrm{Tr~} \exp(-\beta H(\boldsymbol{\sigma}))
-\end{equation}
-\)</span><span class="math notranslate nohighlight">\(
-在下一小节中，我们利用空腔方法求解式(3)，并且由于配分函数 \)</span>Z<span class="math notranslate nohighlight">\( 不是一个广延量，我们更关注的是作为广延量的自由能 \)</span>F=-\frac{1}{\beta}\ln Z$。因为空腔方法的核心就是利用cavity求出每个功能节点和变量节点的物理量，然后再将其相加得到总的待求物理量，这里就要求我们关注的必须是一个广延量。</p>
+\]</div>
+<p>在下一小节中，我们利用空腔方法求解式(3)，并且由于配分函数 <span class="math notranslate nohighlight">\(Z\)</span> 不是一个广延量，我们更关注的是作为广延量的自由能 <span class="math notranslate nohighlight">\(F=-\frac{1}{\beta}\ln Z\)</span>。因为空腔方法的核心就是利用cavity求出每个功能节点和变量节点的物理量，然后再将其相加得到总的待求物理量，这里就要求我们关注的必须是一个广延量。</p>
 </section>
-<section id="id6">
-<h2>二、空腔方法求解配分函数<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h2>二、空腔方法求解配分函数<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <p>首先介绍一下因子图，因子图是一类无向概率图模型, 包括变量节点和因子节点（或称为功能节点）。变量节点和功能节点之间用无向边连接。定义在因子图上的联合概率分布可以表示为各个因子的联乘积。</p>
 <p>比如，对于一个服从下式的贝叶斯网络</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi4">
+<span class="eqno">(4)<a class="headerlink" href="#equation-gongshi4" title="Permalink to this equation">#</a></span>\[
 p(I, D, G, S, L)=P(I) P(D) P(G \mid I, D) P(L \mid G) P(S \mid I)
-\end{equation}
 \]</div>
 <p>实际上就是将一个联合概率分布 <span class="math notranslate nohighlight">\(p(I, D, G, S, L)\)</span> 表达为多个局部的概率分布 <span class="math notranslate nohighlight">\(P(I)\)</span>、 <span class="math notranslate nohighlight">\(P(D)\)</span>、 <span class="math notranslate nohighlight">\(P(G \mid I, D)\)</span>、 <span class="math notranslate nohighlight">\(P(L \mid G)\)</span>、 <span class="math notranslate nohighlight">\(P(S \mid I)\)</span> 的联乘。将各个概率分布抽象为一个函数，<span class="math notranslate nohighlight">\(f_I(I)\)</span>、 <span class="math notranslate nohighlight">\(f_D(D)\)</span>、 <span class="math notranslate nohighlight">\(f_G(G, I, D)\)</span>、 <span class="math notranslate nohighlight">\(f_S(L, G)\)</span>、 <span class="math notranslate nohighlight">\(f_L(S, I)\)</span>，在因子图中可以表示为</p>
-<p><img alt="image" src="https://img2023.cnblogs.com/blog/3064881/202301/3064881-20230108002743652-1547057150.png" /></p>
+<figure class="align-default" id="beiyesiyinzitu">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img2023.cnblogs.com/blog/3064881/202301/3064881-20230108002743652-1547057150.png"><img alt="beiyesi" class="bg-primary mb-1" src="https://img2023.cnblogs.com/blog/3064881/202301/3064881-20230108002743652-1547057150.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">贝叶斯网络的因子图表示</span><a class="headerlink" href="#beiyesiyinzitu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>对于自旋玻璃模型的哈密顿量，可以用因子图表示为</p>
-<p><img alt="自旋玻璃模型的哈密顿的因子图表示" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075234_Sourlas%E7%9A%84%E5%9B%A0%E5%AD%90%E5%9B%BE.png" /></p>
+<figure class="align-default" id="spinglassyinzitu">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075234_Sourlas%E7%9A%84%E5%9B%A0%E5%AD%90%E5%9B%BE.png"><img alt="spin glass" class="bg-primary mb-1" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075234_Sourlas%E7%9A%84%E5%9B%A0%E5%AD%90%E5%9B%BE.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">自旋玻璃模型的哈密顿量的因子图表示</span><a class="headerlink" href="#spinglassyinzitu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>其中变量节点 <span class="math notranslate nohighlight">\(i,j,k,\cdots\)</span>表示哈密顿量中的dynamical binary spin variable，也即Sourlas码中的信号源 <span class="math notranslate nohighlight">\(\boldsymbol{\xi}\in \{\pm 1\}^N\)</span>，功能节点则表示一个连乘操作 <span class="math notranslate nohighlight">\(\prod_{i\in\partial a}\)</span>，每个功能节点与几个变量节点相连，正是Sourlas码的编码规则。</p>
 <p>由于这是一个稀疏连接的网络，可以展开成树状图：</p>
-<p><img alt="因子图展开为树状图" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075344_%E5%9B%A0%E5%AD%90%E5%9B%BE%E5%B1%95%E5%BC%80%E4%B8%BA%E6%A0%91%E7%8A%B6%E5%9B%BE.png" /></p>
-<p>如上图所示，我们首先考虑将一个功能节点 <span class="math notranslate nohighlight">\(a\)</span> 拿走，剩下的网络构成 <span class="math notranslate nohighlight">\(\text{old}\)</span> 网络，然后再将 <span class="math notranslate nohighlight">\(a\)</span> 加回去，作为 <span class="math notranslate nohighlight">\(\text{new}\)</span> 网络。新旧网络的自由能差值即这个功能节点的自由能。新网络的哈密顿量可以写为
-$<span class="math notranslate nohighlight">\(
-\begin{equation}
+<figure class="align-default" id="shuzhuangtu">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075344_%E5%9B%A0%E5%AD%90%E5%9B%BE%E5%B1%95%E5%BC%80%E4%B8%BA%E6%A0%91%E7%8A%B6%E5%9B%BE.png"><img alt="shuzhuangtu" class="bg-primary mb-1" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075344_%E5%9B%A0%E5%AD%90%E5%9B%BE%E5%B1%95%E5%BC%80%E4%B8%BA%E6%A0%91%E7%8A%B6%E5%9B%BE.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">因子图展开为树状图</span><a class="headerlink" href="#shuzhuangtu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>如<a class="reference internal" href="#shuzhuangtu"><span class="std std-numref">Fig. 3</span></a>所示，我们首先考虑将一个功能节点 <span class="math notranslate nohighlight">\(a\)</span> 拿走，剩下的网络构成 <span class="math notranslate nohighlight">\(\text{old}\)</span> 网络，然后再将 <span class="math notranslate nohighlight">\(a\)</span> 加回去，作为 <span class="math notranslate nohighlight">\(\text{new}\)</span> 网络。新旧网络的自由能差值即这个功能节点的自由能。新网络的哈密顿量可以写为</p>
+<div class="math notranslate nohighlight" id="equation-gongshi5">
+<span class="eqno">(5)<a class="headerlink" href="#equation-gongshi5" title="Permalink to this equation">#</a></span>\[
 H^{\text{new} } = H^{\text{old} } - J_a\prod_{i\in \partial a} \sigma_i
-\end{equation}
-\)</span>$</p>
-<p>因此配分函数可以写成：
-$<span class="math notranslate nohighlight">\(
-\begin{equation}
+\]</div>
+<p>因此配分函数可以写成：</p>
+<div class="math notranslate nohighlight" id="equation-gongshi6">
+<span class="eqno">(6)<a class="headerlink" href="#equation-gongshi6" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
  &amp;Z^{\text{new} } = \sum_{\{\sigma_i\} }\exp \left(-\beta H^{\text{old} }+\beta J_a \prod_{i \in \partial a} \sigma_i \right)\\
  &amp;=Z^{\text{old} } \sum_{\{\sigma_i\} }\left[\frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } \exp(\beta J_a \prod_{i \in \partial a} \sigma_i ) \right] \\
  &amp;=Z^{\text{old} } \sum_{\{\sigma_i | i \in \partial a \} }\sum_{\{\sigma_i | i \notin \partial a \} }\left[\frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } \exp(\beta J_a \prod_{i \in \partial a} \sigma_i ) \right] \\
  &amp;=Z^{\text{old} } \sum_{\{\sigma_i | i \in \partial a \} }\left[  \exp(\beta J_a \prod_{i \in \partial a} \sigma_i ) \sum_{\{\sigma_i | i \notin \partial a \} } \frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } \right]
 \end{aligned}
-\end{equation}
-\)</span>$</p>
+\end{split}\]</div>
 <p>考虑后面一项 <span class="math notranslate nohighlight">\(\sum_{\{\sigma_i | i \notin \partial a \} } \frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } \)</span> 的物理意义。如果求和号中 <span class="math notranslate nohighlight">\(\sigma_i\)</span> 的指标 <span class="math notranslate nohighlight">\(i\)</span> 是对旧网络中的所有节点，即 <span class="math notranslate nohighlight">\(\{\sigma_i|i\notin a\}\)</span>，那么这一项的意义是整个旧网络所有节点的联合概率分布。现在求和指标中去掉了边界上的点 <span class="math notranslate nohighlight">\(\{\sigma_i|i\in \partial a\}\)</span>，其表示的是边界点的边缘概率分布。</p>
 <p>接着做一个“空腔假设”，把空腔的边缘概率分布认为是空腔的概率分布</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi7">
+<span class="eqno">(7)<a class="headerlink" href="#equation-gongshi7" title="Permalink to this equation">#</a></span>\[
 P_{\text{Cavity} }(\{\sigma_i|i\in\partial a \}) = \sum_{\{\sigma_i | i \notin \partial a \} } \frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } 
-\end{equation}
 \]</div>
 <p>并且认为边界上各个节点是相互独立的。因此近似有</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
-P_{\text{Cavity} }(\{\sigma_i|i\in\partial a \}) \approx \prod_{i\in\partial a} q_{i\to a}(\sigma_i)
-\end{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi8">
+<span class="eqno">(8)<a class="headerlink" href="#equation-gongshi8" title="Permalink to this equation">#</a></span>\[
+P_{\text{Cavity} }(\{\sigma_i|i\in\partial a \}) = \sum_{\{\sigma_i | i \notin \partial a \} } \frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } 
 \]</div>
 <p>写出节点 <span class="math notranslate nohighlight">\(i\)</span> 上自旋变量取值的期望，即物理上的磁化强度 <span class="math notranslate nohighlight">\(m\)</span> 为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi9">
+<span class="eqno">(9)<a class="headerlink" href="#equation-gongshi9" title="Permalink to this equation">#</a></span>\[
 m_{i\to a}=(+1)q_{i\to a}(\sigma_i = +1) + (-1)q_{i\to a}(\sigma_i = -1)
-\end{equation}
 \]</div>
 <p>进而反写出节点概率的表达式</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi10">
+<span class="eqno">(10)<a class="headerlink" href="#equation-gongshi10" title="Permalink to this equation">#</a></span>\[
 q_{i\to a}(\sigma) = \frac{1+\sigma_i m_{i\to a} }{2}
-\end{equation}
 \]</div>
 <p>至此，由空腔概率和空腔假设得到</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi11">
+<span class="eqno">(11)<a class="headerlink" href="#equation-gongshi11" title="Permalink to this equation">#</a></span>\[
 \sum_{\{\sigma_i | i \notin \partial a \} } \frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } \approx \prod_{i\in\partial a}\frac{1+\sigma_i m_{i\to a} }{2}
-\end{equation}
 \]</div>
 <p>代入配分函数的展开式，得</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi12">
+<span class="eqno">(12)<a class="headerlink" href="#equation-gongshi12" title="Permalink to this equation">#</a></span>\[
 Z^{\text{new} } =Z^{\text{old} } \sum_{\{\sigma_i | i \in \partial a \} }\left[  \exp(\beta J_a \prod_{i \in \partial a} \sigma_i ) \prod_{i\in\partial a}\frac{1+\sigma_i m_{i\to a} }{2}\right] 
-\end{equation}
 \]</div>
 <p>然后考虑将 <span class="math notranslate nohighlight">\(\prod_{i\in\partial a}\frac{1+\sigma_i m_{i\to a} }{2}\)</span> 展开处理：</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi13">
+<span class="eqno">(13)<a class="headerlink" href="#equation-gongshi13" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 	\prod_{i\in\partial a}\frac{1+\sigma_i m_{i\to a} }{2} &amp;=\frac{1}{2^N}(1+\sigma_1 m_{1\to a})(1+\sigma_2 m_{2\to a})\cdots (1+\sigma_N m_{N\to a})\\
 	&amp;=\frac{1}{2^N}( 1 + \sigma_1 m_{1\to a} + \sigma_2 m_{2\to a} + \cdots \\
@@ -556,19 +532,15 @@ Z^{\text{new} } =Z^{\text{old} } \sum_{\{\sigma_i | i \in \partial a \} }\left[ 
 	&amp;\;\,\,\qquad\quad + \cdots \\
 	&amp;\;\,\,\qquad\quad + \prod_{i\in\partial a} \sigma_i \prod_{i\in\partial a} m_{i\to a}) 
 \end{aligned}
-\end{equation}
 \end{split}\]</div>
 <p>在外面要对 <span class="math notranslate nohighlight">\(\{\sigma_i\}\)</span> 做求和，可以确定 <span class="math notranslate nohighlight">\(\prod_{i\in\partial a}\sigma_i = \pm 1\)</span>。但是对于 <span class="math notranslate nohighlight">\(\sigma_1\sigma_2\)</span>，<span class="math notranslate nohighlight">\(\sigma_2\sigma_4\sigma_5\)</span> 等中间项，可以写作 <span class="math notranslate nohighlight">\(\prod_{i\in D}\sigma_i= \prod_{i\in \partial a}\sigma_i / \prod_{i\in \partial a,i \notin D}\sigma_i \)</span>，这里 <span class="math notranslate nohighlight">\(\prod_{i\in \partial a,i \notin D}\sigma_i\)</span> 的取号是不确定的（有可能是 <span class="math notranslate nohighlight">\(1\)</span> 也有可能是 <span class="math notranslate nohighlight">\(-1\)</span> ），因此对这个展开式做求和时只有第一项和最后一项会确定下来，其他项都会因为有 <span class="math notranslate nohighlight">\(+1\)</span> 和 <span class="math notranslate nohighlight">\(-1\)</span> 两种可能值而抵消掉。因此有</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi14">
+<span class="eqno">(14)<a class="headerlink" href="#equation-gongshi14" title="Permalink to this equation">#</a></span>\[
 \prod_{i\in\partial a}\frac{1+\sigma_i m_{i\to a} }{2} =\frac{1}{2}(1+ \prod_{i\in\partial a} \sigma_i \prod_{i\in\partial a} m_{i\to a})=\frac{1}{2}(1+ \prod_{i\in\partial a} \sigma_i m_{i\to a})
-\end{equation}
 \]</div>
 <p>进而得到</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi15">
+<span class="eqno">(15)<a class="headerlink" href="#equation-gongshi15" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 	Z^{\text{new} } &amp;= Z^{\text{old} } \sum_{\{ {\prod_{i\in\partial a}\sigma_i} = \pm 1 \} }\left[  \exp(\beta J_a \prod_{i \in \partial a} \sigma_i )\frac{1}{2} (1+ \prod_{i\in\partial a} \sigma_i m_{i\to a})\right]\\
 	&amp;=Z^{\text{old} }\left[ \exp(\beta J_a)\frac{1}{2} (1+ \prod_{i\in\partial a}m_{i\to a})+\exp(-\beta J_a)\frac{1}{2} (1- \prod_{i\in\partial a}m_{i\to a})\right]\\
@@ -576,175 +548,143 @@ Z^{\text{new} } =Z^{\text{old} } \sum_{\{\sigma_i | i \in \partial a \} }\left[ 
 	&amp;=Z^{\text{old} }\left[ \cosh(\beta J_a)+\sinh(\beta J_a)\prod_{i\in\partial a}m_{i\to a} \right]  \\
 	&amp;=Z^{\text{old} }\cosh(\beta J_a)\left(1+\tanh(\beta J_a)\prod_{i\in\partial a}m_{i\to a} \right)
 \end{aligned}
-\end{equation}
 \end{split}\]</div>
 <p>即配分函数经过空腔近似后最终化为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi16">
+<span class="eqno">(16)<a class="headerlink" href="#equation-gongshi16" title="Permalink to this equation">#</a></span>\[
 Z^{\text{new} }=Z^{\text{old} }\cosh(\beta J_a)\left(1+\tanh(\beta J_a)\prod_{i\in\partial a}m_{i\to a} \right)
-\end{equation}
 \]</div>
 <p>考虑自由能的定义为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi17">
+<span class="eqno">(17)<a class="headerlink" href="#equation-gongshi17" title="Permalink to this equation">#</a></span>\[
 F\equiv -\frac{1}{\beta}\ln Z
-\end{equation}
 \]</div>
 <p>因此加上一个功能节点后自由能的增量为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi18">
+<span class="eqno">(18)<a class="headerlink" href="#equation-gongshi18" title="Permalink to this equation">#</a></span>\[
 \Delta F_a=-\frac{1}{\beta}\ln \frac{Z^{\text{new} } }{Z^{\text{old} } }=\ln \left[\cosh(\beta J_a)\left(1+\tanh(\beta J_a)\prod_{i\in\partial a}m_{i\to a} \right)\right]
-\end{equation}
 \]</div>
 <p>对于变量节点，采取同样的方法，但是在添加变量节点<span class="math notranslate nohighlight">\(i\)</span>的同时要将与其邻近的功能节点 <span class="math notranslate nohighlight">\(\{b|b\in \partial i\}\)</span> 一起添加进网络中。配分函数的变化写为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi19">
+<span class="eqno">(19)<a class="headerlink" href="#equation-gongshi19" title="Permalink to this equation">#</a></span>\[
 Z^{\text{new} } = \sum_{\sigma_i^{\text{old} } }\sum_{\sigma_i}\exp \left(-\beta H^{\text{old} }+\beta \sum_{b\in \partial i} J_b \prod_{j \in \partial b} \sigma_j \right) 
-\end{equation}
 \]</div>
 <p>这里的 cavity 就包括了变量节点 <span class="math notranslate nohighlight">\(i\)</span> 和与其邻近的功能节点 <span class="math notranslate nohighlight">\(\{b|b\in \partial i\}\)</span>。下面我们将上式中的 cavity 分离出来，然后将旧网络分离出来。</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi20">
+<span class="eqno">(20)<a class="headerlink" href="#equation-gongshi20" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 	Z^{\text{new} } &amp;= \sum_{\sigma_i^{\text{old} } }\sum_{\sigma_i}\exp \left(-\beta H^{\text{old} }+\beta \sum_{b\in \partial i} J_b \prod_{j \in \partial b} \sigma_j \right) \\
 	&amp; = \sum_{\sigma_i^{\text{old} } }\sum_{\sigma_i}\exp \left[-\beta H^{\text{old} }+\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]\\
 	&amp;=Z^{\text{old} }\sum_{\sigma_i^{\text{old} } }\sum_{\sigma_i}\frac{\exp (-\beta H^{\text{old} })}{Z^{\text{old} } } \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right] 
 \end{aligned}
-\end{equation}
 \end{split}\]</div>
 <p>将第一个求和号 <span class="math notranslate nohighlight">\(\sum_{\sigma_i^{\text{old} } }\)</span> 中的指标分成属于 cavity 边缘的节点和其他的节点两部分，即 <span class="math notranslate nohighlight">\(\sum_{\sigma_i^{\text{old} } } = \sum_{\{\sigma_j | j \in \partial b\backslash i;b \in \partial i \} } + \sum_{\{\sigma_j | j \notin \partial b\backslash i;b \in \partial i \} }\)</span>。为了书写方便，以下写到 <span class="math notranslate nohighlight">\(j \in \partial b\backslash i\)</span> 时默认 <span class="math notranslate nohighlight">\(b \in \partial i\)</span>。显然 <span class="math notranslate nohighlight">\(\sum_{\{\sigma_j | j \notin \partial b\backslash i\} }\)</span> 这个求和在上式中只对 <span class="math notranslate nohighlight">\(\frac{\exp (-\beta H^{\text{old} })}{Z^{\text{old} } }\)</span> 起作用，仿照之前的处理将其写为空腔概率：</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi21">
+<span class="eqno">(21)<a class="headerlink" href="#equation-gongshi21" title="Permalink to this equation">#</a></span>\[
 P_{\text{cavity} }(\{\sigma_j | j \in \partial b\backslash i \}) = \sum_{\{\sigma_j | j \notin \partial b\backslash i \} } \frac{\exp(-\beta H^{\text{old} })}{Z^{\text{old} } } \approx \prod_{b \in \partial i}\prod_{j \in \partial b\backslash i} q_{j\to b}(\sigma_j)
-\end{equation}
 \]</div>
-<p>类比之前的做法，有
-$<span class="math notranslate nohighlight">\(
-\begin{equation}
+<p>类比之前的做法，有</p>
+<div class="math notranslate nohighlight" id="equation-gongshi22">
+<span class="eqno">(22)<a class="headerlink" href="#equation-gongshi22" title="Permalink to this equation">#</a></span>\[
 q_{j\to b}(\sigma_j) = \frac{1+\sigma_jm_{j \to b} }{2}
-\end{equation}
-\)</span>$</p>
+\]</div>
 <p>因此配分函数写为</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi23">
+<span class="eqno">(23)<a class="headerlink" href="#equation-gongshi23" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 Z^{\text{new} } &amp;= Z^{\text{old} }\sum_{\sigma_i^{\text{old} } }\sum_{\sigma_i}\frac{\exp (-\beta H^{\text{old} })}{Z^{\text{old} } } \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right] \\
 &amp;= Z^{\text{old} } \sum_{\{\sigma_j | j \in \partial b\backslash i\} } \sum_{\sigma_i} P_{\text{cavity} }(\{\sigma_j | j \in \partial b\backslash i \}) \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]\\
 &amp;\approx Z^{\text{old} } \sum_{\{\sigma_j | j \in \partial b\backslash i\} } \sum_{\sigma_i} \prod_{b \in \partial i}\prod_{j \in \partial b\backslash i} q_{j\to b}(\sigma_j) \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
 \end{aligned}
-\end{equation}
 \end{split}\]</div>
 <p>交换一下求和号 <span class="math notranslate nohighlight">\(\sum_{\{\sigma_j | j \in \partial b\backslash i\} }\)</span> 和累乘号 <span class="math notranslate nohighlight">\(\prod_{b \in \partial i}\)</span> 的顺序，写为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi24">
+<span class="eqno">(24)<a class="headerlink" href="#equation-gongshi24" title="Permalink to this equation">#</a></span>\[
 Z^{\text{new} } \approx Z^{\text{old} } \sum_{\sigma_i} \prod_{b \in \partial i} \sum_{\{\sigma_j | j \in \partial b\backslash i \} } \prod_{j \in \partial b\backslash i} \frac{1+\sigma_jm_{j \to b} }{2} \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
-\end{equation}
 \]</div>
 <p>对于 <span class="math notranslate nohighlight">\(\sum_{\{\sigma_j | j \in \partial b\backslash i \} } \prod_{j \in \partial b\backslash i} \frac{1+\sigma_jm_{j \to b} }{2} \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]\)</span> 采用与之前相同的一个trick（具体怎么操作待补充补充），可以化简得</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi25">
+<span class="eqno">(25)<a class="headerlink" href="#equation-gongshi25" title="Permalink to this equation">#</a></span>\[
 Z^{\text{new} } \approx Z^{\text{old} } \left( \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i}  \right)
-\end{equation}
 \]</div>
 <p>其中，</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
-\Lambda^\pm_{b\to i} =\cosh(\beta J_b)\left( 1\pm \tanh(\beta J_b) \prod_{j \in \partial b\backslash i} m_{j\to b} \right) \label{eq:Lambda^pm的定义}
-\end{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi26">
+<span class="eqno">(26)<a class="headerlink" href="#equation-gongshi26" title="Permalink to this equation">#</a></span>\[
+\Lambda^\pm_{b\to i} =\cosh(\beta J_b)\left( 1\pm \tanh(\beta J_b) \prod_{j \in \partial b\backslash i} m_{j\to b} \right) 
 \]</div>
 <p>写出自由能的变化量为</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi27">
+<span class="eqno">(27)<a class="headerlink" href="#equation-gongshi27" title="Permalink to this equation">#</a></span>\[
 \Delta F_i = -\frac{1}{\beta}\ln \frac{Z^{\text{new} } }{Z^{\text{old} } }=\ln \left[ \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i} \right]
-\end{equation}
 \]</div>
 <p>至此，已经得到了加上一个功能节点和一个变量节点时自由能的变化量，即</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi28">
+<span class="eqno">(28)<a class="headerlink" href="#equation-gongshi28" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 	&amp;\Delta F_a=-\frac{1}{\beta}\ln \frac{Z^{\text{new} } }{Z^{\text{old} } }=\ln \left[\cosh(\beta J_a)\left(1+\tanh(\beta J_a)\prod_{i\in\partial a}m_{i\to a} \right)\right]\\
 	&amp;\Delta F_i = -\frac{1}{\beta}\ln \frac{Z^{\text{new} } }{Z^{\text{old} } }=\ln \left[ \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i} \right]
 \end{aligned}
-\end{equation}
 \end{split}\]</div>
 <p>求系统的总自由能即相当于求加上各个节点时自由能的变化量之和，但是注意在计算变量节点的自由能时将与其临近的功能节点也算入了，因此要减掉重复了<span class="math notranslate nohighlight">\(|\partial a|\)</span>次的对每个功能节点的求和，即</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi29">
+<span class="eqno">(29)<a class="headerlink" href="#equation-gongshi29" title="Permalink to this equation">#</a></span>\[
 F = \sum_{i} \Delta F_i + \sum_{a} \Delta F_a - \sum_{a} |\partial a| \Delta F_a
-\end{equation}
 \]</div>
 <p>注意到，这里的<span class="math notranslate nohighlight">\(\Lambda^{\pm}_{b\to i}\)</span>在定义时用到了<span class="math notranslate nohighlight">\(m_{j\to b}\)</span>，下一小节我们介绍如何迭代求解。</p>
 </section>
-<section id="id7">
-<h2>三、消息传递算法<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
-<p><strong>空腔磁化强度</strong>   在空腔方法中，首先定义cavity magnetization <span class="math notranslate nohighlight">\(m_{i\to a}\)</span>，即变量节点 <span class="math notranslate nohighlight">\(i\)</span> 和功能节点<span class="math notranslate nohighlight">\(a\)</span>之间的连接不存在时，节点 <span class="math notranslate nohighlight">\(i\)</span> 的磁化强度
-$<span class="math notranslate nohighlight">\(
-\begin{equation}
+<section id="id6">
+<h2>三、消息传递算法<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<p><strong>空腔磁化强度</strong>   在空腔方法中，首先定义cavity magnetization <span class="math notranslate nohighlight">\(m_{i\to a}\)</span>，即变量节点 <span class="math notranslate nohighlight">\(i\)</span> 和功能节点<span class="math notranslate nohighlight">\(a\)</span>之间的连接不存在时，节点 <span class="math notranslate nohighlight">\(i\)</span> 的磁化强度</p>
+<div class="math notranslate nohighlight" id="equation-gongshi30">
+<span class="eqno">(30)<a class="headerlink" href="#equation-gongshi30" title="Permalink to this equation">#</a></span>\[
 m_{i\to a}=\frac{\sum_{\sigma}\sigma_i\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }{\sum_{\sigma}\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} } \label{eq:空腔磁化强度的定义}
-\end{equation}
-\)</span>$</p>
-<p><img alt="空腔磁化强度示意图" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075351_%E7%A9%BA%E8%85%94%E7%A3%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE.png" /></p>
+\]</div>
+<figure class="align-default" id="kongqiangcihuaqiangdutu">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075351_%E7%A9%BA%E8%85%94%E7%A3%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE.png"><img alt="figure_description" class="bg-primary mb-1" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075351_%E7%A9%BA%E8%85%94%E7%A3%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">空腔磁化强度示意图</span><a class="headerlink" href="#kongqiangcihuaqiangdutu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>其中，<span class="math notranslate nohighlight">\(H_{i \rightarrow a}\)</span> 是指把节点 <span class="math notranslate nohighlight">\(a\)</span> 拿掉后节点 <span class="math notranslate nohighlight">\(i\)</span> 的哈密顿量，</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi31">
+<span class="eqno">(31)<a class="headerlink" href="#equation-gongshi31" title="Permalink to this equation">#</a></span>\[
 H_{i \rightarrow a}=H_{\text {cavity } }-\sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j
-\end{equation}
 \]</div>
 <p><span class="math notranslate nohighlight">\(H_{\text {cavity } }\)</span>是指 cavity 内所有节点作为一个系统的哈密顿量，它包含了上图中 <span class="math notranslate nohighlight">\(b\)</span>、<span class="math notranslate nohighlight">\(c\)</span> 等节点与 cavity 外界的连接，即用红线围起来的边界部分 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>。求 <span class="math notranslate nohighlight">\(H_{i \rightarrow a}\)</span> 时要从 <span class="math notranslate nohighlight">\(H_{\text {cavity } }\)</span> 中减去 cavity 与 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> 连接的部分。我们将空腔磁化强度的定义做一个trick，</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi32">
+<span class="eqno">(32)<a class="headerlink" href="#equation-gongshi32" title="Permalink to this equation">#</a></span>\[
 m_{i\to a}=\frac{\sum_{\sigma}\sigma_i\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }{\sum_{\sigma}\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }=\frac{\frac{\sum_\sigma \sigma_i \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } }{\frac{\sum_\sigma \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } }
-\end{equation}
 \]</div>
 <p>然后做一个与上一小节类似的空腔假设，</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi33">
+<span class="eqno">(33)<a class="headerlink" href="#equation-gongshi33" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 	\frac{\sum_\sigma \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } &amp;= \frac{\sum_\sigma \exp \left[-\beta \left( H_{\text {cavity } }-\sum_{b \in \partial i \\ a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right) \right]}{Z_{\text {cavity } } }\\
 	&amp;=\frac{\sum_\sigma \exp(-\beta H_{\text {cavity } })  \exp \left(\beta \sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right)}{Z_{\text {cavity } } }
 \end{aligned}
-\end{equation}
 \end{split}\]</div>
 <p>注意到 <span class="math notranslate nohighlight">\(\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } }\)</span> 正是 cavity 的联合概率分布，根据空腔假设，其等于 cavity 的边缘概率分布，</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{equation}
+<div class="math notranslate nohighlight" id="equation-gongshi34">
+<span class="eqno">(34)<a class="headerlink" href="#equation-gongshi34" title="Permalink to this equation">#</a></span>\[
 \frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } } = P_{\text {cavity } }(\mathcal{B}) \approx \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} q_{j \rightarrow b}\left(\sigma_j\right)
-\end{equation}
 \]</div>
 <p>因此可得</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi35">
+<span class="eqno">(35)<a class="headerlink" href="#equation-gongshi35" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 m_{i\to a}=\frac{\sum_{\sigma_i} \sum_{\mathcal{B} } \sigma_i P_{\text {cavity } }(\mathcal{B}) \exp \left(\beta \sum_{b \in \partial i \backslash a}  J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j\right)}{\sum_{\sigma_i} \sum_{\mathcal{B} } P_{\text {cavity } }(\mathcal{B}) \exp \left(\beta \sum_{b \in \partial i \backslash a}  J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j\right)}
 \end{equation}
 \]</div>
 <p>这里将对自旋变量的求和分为节点 <span class="math notranslate nohighlight">\(i\)</span> 和边界 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> 两部分，然后再使用与之前类似的操作，注意到</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi36">
+<span class="eqno">(36)<a class="headerlink" href="#equation-gongshi36" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 P_{\text {cavity } }(\mathcal{B}) \approx \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} q_{j \rightarrow b}\left(\sigma_j\right)=\prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} \frac{1+\sigma_j m_{j\to b} }{2}
 \end{equation}
 \]</div>
 <p>因此 <span class="math notranslate nohighlight">\(\sum_{\sigma_i} \sum_{\mathcal{B} } P_{\text {cavity } }(\mathcal{B}) \exp \left(\beta\sum_{b \in \partial i \backslash a}  J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j\right)\)</span> 可以整理成</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-gongshi37">
+<span class="eqno">(37)<a class="headerlink" href="#equation-gongshi37" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 	&amp;\quad\sum_{\sigma_i} \sum_{\mathcal{B} } \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} \frac{1+\sigma_j m_{j\to b} }{2} \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
@@ -753,35 +693,36 @@ P_{\text {cavity } }(\mathcal{B}) \approx \prod_{b \in \partial i \backslash a} 
 \end{equation}
 \end{split}\]</div>
 <p>这与上一小节不能说是十分相似，只能说是一模一样。经过相同的trick后得到</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi38">
+<span class="eqno">(38)<a class="headerlink" href="#equation-gongshi38" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}-\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} }{\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} }
 \end{equation}
 \]</div>
 <p>其中，</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi39">
+<span class="eqno">(39)<a class="headerlink" href="#equation-gongshi39" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 \Lambda^\pm_{b\to i} =\cosh(\beta J_b)\left( 1\pm \tanh(\beta J_b) \prod_{j \in \partial b\backslash i} m_{j\to b} \right)
 \end{equation}
 \]</div>
-<p><strong>共轭空腔磁化强度</strong>  定义空腔磁化强度 <span class="math notranslate nohighlight">\(m_{j\to b}\)</span> 的 conjugate cavity magnetization为
-$<span class="math notranslate nohighlight">\(
+<p><strong>共轭空腔磁化强度</strong>  定义空腔磁化强度 <span class="math notranslate nohighlight">\(m_{j\to b}\)</span> 的 conjugate cavity magnetization为</p>
+<div class="math notranslate nohighlight" id="equation-gongshi40">
+<span class="eqno">(40)<a class="headerlink" href="#equation-gongshi40" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 \hat{m}_{b \rightarrow j} \equiv \tanh \left(\beta J_b\right) \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}
 \end{equation}
-\)</span>$</p>
+\]</div>
 <p>因此空腔磁化强度表达式可以写为</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi41">
+<span class="eqno">(41)<a class="headerlink" href="#equation-gongshi41" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{b \rightarrow i}\right)-\prod_{b \in \partial i \backslash a}\left(1-\hat{m}_{b \rightarrow i}\right)}{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{b \rightarrow i}\right)+\prod_{b \in \partial i \backslash a}\left(1-\hat{m}_{b \rightarrow i}\right)} 
 \end{equation}
 \]</div>
 <p>接下来采用了一种我现在还不能理解的参数化，即</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-gongshi42">
+<span class="eqno">(42)<a class="headerlink" href="#equation-gongshi42" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 	q_{i \rightarrow a}\left(\sigma_i\right) &amp; \equiv \frac{\exp \left(\beta h_{i \rightarrow a} \sigma_i\right)}{2 \cosh \beta h_{i \rightarrow a} } =\frac{1+\sigma_i m_{i \rightarrow a} }{2}\\
@@ -790,8 +731,8 @@ m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{
 \end{equation}
 \end{split}\]</div>
 <p>得到</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-gongshi43">
+<span class="eqno">(43)<a class="headerlink" href="#equation-gongshi43" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 m_{i \rightarrow a} &amp;=\tanh \beta h_{i \rightarrow a} \\
@@ -800,8 +741,8 @@ m_{i \rightarrow a} &amp;=\tanh \beta h_{i \rightarrow a} \\
 \end{equation}
 \end{split}\]</div>
 <p>代入上面两式，得</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-gongshi44">
+<span class="eqno">(44)<a class="headerlink" href="#equation-gongshi44" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{equation}
 \begin{aligned}
 &amp;h_{i \rightarrow a}=\frac{1}{\beta}\left(\sum_{b \in \partial i \backslash a} \beta u_{b \rightarrow i}\right) \\
@@ -810,22 +751,22 @@ m_{i \rightarrow a} &amp;=\tanh \beta h_{i \rightarrow a} \\
 \end{equation}
 \end{split}\]</div>
 <p>这是一个迭代式，通过迭代求解 <span class="math notranslate nohighlight">\(u_{b \rightarrow i}\)</span> 后，再通过下式即可求解 <span class="math notranslate nohighlight">\(m_i\)</span></p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi45">
+<span class="eqno">(45)<a class="headerlink" href="#equation-gongshi45" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 m_i=\tanh \left(\sum_{b \in \partial i} \beta u_{b \rightarrow i}\right)
 \end{equation}
 \]</div>
 <p>注意到 <span class="math notranslate nohighlight">\(m_i\)</span> 实际上就是 <span class="math notranslate nohighlight">\(\sigma_i\)</span> 的期望，因此通过 <span class="math notranslate nohighlight">\(m_i\)</span> 进行解码的规则很简单：若 <span class="math notranslate nohighlight">\(m_i&gt;0\)</span> 则认为 <span class="math notranslate nohighlight">\(\sigma_i=1\)</span>；若 <span class="math notranslate nohighlight">\(m&lt;0\)</span> 则认为 <span class="math notranslate nohighlight">\(\sigma_i=-1\)</span>。这被称为最大后验边缘概率（maximizer of the posterior marginal, MPM），即</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-gongshi46">
+<span class="eqno">(46)<a class="headerlink" href="#equation-gongshi46" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 \sigma_i=\arg \max _{\sigma_i} P_i\left(\sigma_i\right)
 \end{equation}
 \]</div>
 </section>
-<section id="id8">
-<h2>四、拓展阅读与应用举例<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<section id="id7">
+<h2>四、拓展阅读与应用举例<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <section id="further-reading">
 <h3>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h3>
 <p><strong>More details and results:</strong></p>
@@ -848,8 +789,8 @@ m_i=\tanh \left(\sum_{b \in \partial i} \beta u_{b \rightarrow i}\right)
 <p>（待补充）</p>
 </section>
 </section>
-<section id="id9">
-<h2>五、作业<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<section id="id8">
+<h2>五、作业<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
 <section id="assignment-1">
 <h3>Assignment 1<a class="headerlink" href="#assignment-1" title="Permalink to this headline">#</a></h3>
 <p>Use cavity method to calculate the free energy and magnetization of the Sherrington-Kirkpatrick (SK) model, and compare the result with numerical enumeration.</p>
@@ -858,20 +799,20 @@ m_i=\tanh \left(\sum_{b \in \partial i} \beta u_{b \rightarrow i}\right)
 <h3>Assignment 2<a class="headerlink" href="#assignment-2" title="Permalink to this headline">#</a></h3>
 <p>a: Write a program to implement the encoding and decoding scheme in Sourlas code system <span class="math notranslate nohighlight">\(\left(K \equiv|\partial a|=3, \mathrm{R} \equiv \frac{N}{M}=0.5\right)\)</span>.</p>
 <p>b: Then show how the decoding performance changes with the flipping rate <span class="math notranslate nohighlight">\(p\)</span> at a special temperature <span class="math notranslate nohighlight">\(\beta_p=\frac{1}{2} \ln \frac{1-p}{p}\)</span>.</p>
-<p><strong>参考文献</strong></p>
-<hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
-<dd><p>刘川. 热力学与统计物理[M]. 北京：北京大学出版社，2022：172-173.</p>
+</section>
+</section>
+<section id="id9">
+<h2>参考文献<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id10">
+<dl class="citation">
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p>C. E. Shannon. A mathematical theory of communication. <em>The Bell System Technical Journal</em>, 27(3):379–423, 1948. <a class="reference external" href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">doi:10.1002/j.1538-7305.1948.tb01338.x</a>.</p>
 </dd>
-<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
-<dd><p>Shannon,  C. E. <a class="reference external" href="https://ieeexplore.ieee.org/document/6773024">A Mathematical Theory of Communication</a>[J]. Bell Systems Technical Journal, 1948, 27(4):623-656.</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
-<dd><p>Sourlas, Nicolas. <a class="reference external" href="https://www.nature.com/articles/339693a0">Spin-glass models as error-correcting codes</a>[J]. Nature, 1989, 339(6227):693-695.</p>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p>Nicolas Sourlas. Spin-glass models as error-correcting codes. <em>Nature</em>, 339(6227):693–695, 1989. <a class="reference external" href="https://doi.org/10.1038/339693a0">doi:10.1038/339693a0</a>.</p>
 </dd>
 </dl>
-</section>
+</div>
 </section>
 </section>
 
@@ -902,17 +843,17 @@ m_i=\tanh \left(\sum_{b \in \partial i} \beta u_{b \rightarrow i}\right)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="preface.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Introduction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="VMFandBP.html" title="next page">
+    <a class='right-next' id="next-link" href="format.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">变分平均场理论与信念传播算法</p>
+        <p class="prev-next-title">*技术与排版规范</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

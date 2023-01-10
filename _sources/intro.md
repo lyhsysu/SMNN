@@ -1,11 +1,13 @@
-# Introduction
+# Preface
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+![SMNN](https://i.328888.xyz/2023/01/09/0heeA.md.png)
 
-Check out the content pages bundled with this sample book to see more.
+这是”神经网络的统计力学“课程的学习笔记（中文版）
 
-```{tableofcontents}
-```
+这门课是[黄海平老师](https://spe.sysu.edu.cn/node/2338)开设的一门网课，详见[集智学园](https://campus.swarma.org/course/4543)
+
+课程参考书：[Statistical Mechanics of Neural Networks](https://link.springer.com/book/10.1007/978-981-16-7570-6#about-this-book)
+
+<br>
+
+by [李宇豪](https://lyhsysu.github.io/)
