@@ -415,24 +415,23 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>自旋玻璃与空腔方法<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <style>
-h1 { font: SimSun !important; }
-h2 { font-weight:bolder; font: 24px NSimSun !important; }
-h3 { font-weight:bolder; font: 20px NSimSun !important; }
-p { font: 16px NSimSun !important; }
+h2 { font: 24px !important; }
+h3 { font: 20px !important; }
+p { font: 16px !important; }
 </style>
 <div class="admonition-abstract admonition">
 <p class="admonition-title">Abstract</p>
-<p>自旋玻璃是描述相变的一类统计物理模型，近年来在信息科学和神经网络等领域也有广泛应用。本文以Sourlas编码为例，介绍了自旋玻璃模型在信息编码领域的应用，重点介绍了如何利用空腔方法求解配分函数，进而得到消息传递方程，从编码信息中恢复出原始信息。文末给出了空腔方法在其他领域的介绍和参考文献，并且有两道作业题：用空腔方法求解SK模型以及用编程实现Sourlas编码解码的过程。</p>
+<p>自旋玻璃是描述相变的一类统计物理模型，近年来在信息科学和神经网络等领域也有广泛应用。本文以 Sourlas 编码为例，介绍了自旋玻璃模型在信息编码领域的应用，重点介绍了如何利用空腔方法求解配分函数，进而得到消息传递方程，从编码信息中恢复出原始信息。文末给出了空腔方法在其他领域的介绍和参考文献，并且有两道作业题：用空腔方法求解SK模型以及用编程实现 Sourlas 编码解码的过程。</p>
 </div>
 <section id="id2">
 <h2>一、引言<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>在信息传输过程中，由于信道中存在噪声，信息可能会受到干扰而出现错误。从受干扰的消息中恢复原始信息是一项非常重要的任务。一种常用的解决方案是在发送时对原始消息进行编码，引入冗余，然后接收方根据冗余来纠正一些传输过程中出现的错误。1948年Claude Shannon证明了当码率低于信道容量时无错传输是可能的，这为设计工程实用的编码方案建立了一个基本界限<span id="id3">[<a class="reference internal" href="#id16" title="C. E. Shannon. A mathematical theory of communication. The Bell System Technical Journal, 27(3):379-423, 1948. doi:10.1002/j.1538-7305.1948.tb01338.x.">1</a>]</span>。已经有很多人投入了大量的努力来设计接近香农界限的编码方案。其中，1989年Nicolas Sourlas提出一种编码方案<span id="id4">[<a class="reference internal" href="#id17" title="Nicolas Sourlas. Spin-glass models as error-correcting codes. Nature, 339(6227):693–695, 1989. doi:10.1038/339693a0.">2</a>]</span>，它将纠错码与自旋玻璃模型联系起来，并且具有很高的性价比。</p>
-<p>对 <span class="math notranslate nohighlight">\(N\)</span>个二值信号构成的信源<span class="math notranslate nohighlight">\(\boldsymbol{\xi} \in \{\pm 1\}^N\)</span>，Sourlas编码的规则是随机选择一定数量的信号相乘，作为要传输的一个信号，即</p>
+<p>在信息传输过程中，由于信道中存在噪声，信息可能会受到干扰而出现错误。从受干扰的消息中恢复原始信息是一项非常重要的任务。一种常用的解决方案是在发送时对原始消息进行编码，引入冗余，然后接收方根据冗余来纠正一些传输过程中出现的错误。1948年 Claude Shannon 证明了当码率低于信道容量时无错传输是可能的，这为设计工程实用的编码方案建立了一个基本界限<span id="id3">[<a class="reference internal" href="#id16" title="C. E. Shannon. A mathematical theory of communication. The Bell System Technical Journal, 27(3):379-423, 1948. doi:10.1002/j.1538-7305.1948.tb01338.x.">1</a>]</span>。已经有很多人投入了大量的努力来设计接近香农界限的编码方案。其中，1989年 Nicolas Sourlas 提出一种编码方案<span id="id4">[<a class="reference internal" href="#id17" title="Nicolas Sourlas. Spin-glass models as error-correcting codes. Nature, 339(6227):693–695, 1989. doi:10.1038/339693a0.">2</a>]</span>，它将纠错码与自旋玻璃模型联系起来，并且具有很高的性价比。</p>
+<p>对 <span class="math notranslate nohighlight">\(N\)</span> 个二值信号构成的信源 <span class="math notranslate nohighlight">\(\boldsymbol{\xi} \in \{\pm 1\}^N\)</span>，Sourlas编码的规则是随机选择一定数量的信号相乘，作为要传输的一个信号，即</p>
 <div class="math notranslate nohighlight" id="equation-gongshi1">
 <span class="eqno">(1)<a class="headerlink" href="#equation-gongshi1" title="Permalink to this equation">#</a></span>\[
 J^0_a=\prod_{i\in \partial a}\xi_i
 \]</div>
-<p>编码后的信息为<span class="math notranslate nohighlight">\(\boldsymbol{J^0} = \{J^0_1, J^0_2, J^0_3, \cdots, J^0_M\}\)</span>；在传输过程中信号有<span class="math notranslate nohighlight">\(p\)</span>的概率发生翻转，即<span class="math notranslate nohighlight">\(P(J_a|J_a^0)=p\delta(J_a+J_a^0)+(1-p)\delta(J_a-J_a^0)\)</span>，到达接收器的信息为<span class="math notranslate nohighlight">\(\boldsymbol{J}=\{J_1, J_2, J_3, \cdots, J_M\}\)</span>。为了对信息<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>进行解码（将其恢复到<span class="math notranslate nohighlight">\(\boldsymbol{\xi}\)</span>），我们首先将Sourlas码与自旋玻璃模型结合起来。</p>
+<p>编码后的信息为 <span class="math notranslate nohighlight">\(\boldsymbol{J^0} = \{J^0_1, J^0_2, J^0_3, \cdots, J^0_M\}\)</span>；在传输过程中信号有 <span class="math notranslate nohighlight">\(p\)</span> 的概率发生翻转，即 <span class="math notranslate nohighlight">\(P(J_a|J_a^0)=p\delta(J_a+J_a^0)+(1-p)\delta(J_a-J_a^0)\)</span>，到达接收器的信息为 <span class="math notranslate nohighlight">\(\boldsymbol{J}=\{J_1, J_2, J_3, \cdots, J_M\}\)</span>。为了对信息 <span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span> 进行解码（将其恢复到 <span class="math notranslate nohighlight">\(\boldsymbol{\xi}\)</span>），我们首先将Sourlas 码与自旋玻璃模型结合起来。</p>
 <p>自旋玻璃模型的哈密顿量写为</p>
 <div class="math notranslate nohighlight" id="equation-gongshi2">
 <span class="eqno">(2)<a class="headerlink" href="#equation-gongshi2" title="Permalink to this equation">#</a></span>\[
@@ -444,7 +443,7 @@ H(\boldsymbol{\sigma})=-\sum_{a=1}^MJ_a\prod_{i\in\partial a}\sigma_i
 <span class="eqno">(3)<a class="headerlink" href="#equation-gongshi3" title="Permalink to this equation">#</a></span>\[
 Z=\mathrm{Tr~} \exp(-\beta H(\boldsymbol{\sigma}))
 \]</div>
-<p>在下一小节中，我们利用空腔方法求解式(3)，并且由于配分函数 <span class="math notranslate nohighlight">\(Z\)</span> 不是一个广延量，我们更关注的是作为广延量的自由能 <span class="math notranslate nohighlight">\(F=-\frac{1}{\beta}\ln Z\)</span>。因为空腔方法的核心就是利用cavity求出每个功能节点和变量节点的物理量，然后再将其相加得到总的待求物理量，这里就要求我们关注的必须是一个广延量。</p>
+<p>在下一小节中，我们利用空腔方法求解式 <a class="reference internal" href="#equation-gongshi3">(3)</a> ，并且由于配分函数 <span class="math notranslate nohighlight">\(Z\)</span> 不是一个广延量，我们更关注的是作为广延量的自由能 <span class="math notranslate nohighlight">\(F=-\frac{1}{\beta}\ln Z\)</span>。因为空腔方法的核心就是利用cavity求出每个功能节点和变量节点的物理量，然后再将其相加得到总的待求物理量，这里就要求我们关注的必须是一个广延量。</p>
 </section>
 <section id="id5">
 <h2>二、空腔方法求解配分函数<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
@@ -456,27 +455,17 @@ p(I, D, G, S, L)=P(I) P(D) P(G \mid I, D) P(L \mid G) P(S \mid I)
 \]</div>
 <p>实际上就是将一个联合概率分布 <span class="math notranslate nohighlight">\(p(I, D, G, S, L)\)</span> 表达为多个局部的概率分布 <span class="math notranslate nohighlight">\(P(I)\)</span>、 <span class="math notranslate nohighlight">\(P(D)\)</span>、 <span class="math notranslate nohighlight">\(P(G \mid I, D)\)</span>、 <span class="math notranslate nohighlight">\(P(L \mid G)\)</span>、 <span class="math notranslate nohighlight">\(P(S \mid I)\)</span> 的联乘。将各个概率分布抽象为一个函数，<span class="math notranslate nohighlight">\(f_I(I)\)</span>、 <span class="math notranslate nohighlight">\(f_D(D)\)</span>、 <span class="math notranslate nohighlight">\(f_G(G, I, D)\)</span>、 <span class="math notranslate nohighlight">\(f_S(L, G)\)</span>、 <span class="math notranslate nohighlight">\(f_L(S, I)\)</span>，在因子图中可以表示为</p>
 <figure class="align-default" id="beiyesiyinzitu">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img2023.cnblogs.com/blog/3064881/202301/3064881-20230108002743652-1547057150.png"><img alt="beiyesi" class="bg-primary mb-1" src="https://img2023.cnblogs.com/blog/3064881/202301/3064881-20230108002743652-1547057150.png" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://i.328888.xyz/2023/01/11/CpjWJ.png"><img alt="beiyesi" class="bg-primary mb-1" src="https://i.328888.xyz/2023/01/11/CpjWJ.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">贝叶斯网络的因子图表示</span><a class="headerlink" href="#beiyesiyinzitu" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>对于自旋玻璃模型的哈密顿量，可以用因子图表示为</p>
-<figure class="align-default" id="spinglassyinzitu">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075234_Sourlas%E7%9A%84%E5%9B%A0%E5%AD%90%E5%9B%BE.png"><img alt="spin glass" class="bg-primary mb-1" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075234_Sourlas%E7%9A%84%E5%9B%A0%E5%AD%90%E5%9B%BE.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">自旋玻璃模型的哈密顿量的因子图表示</span><a class="headerlink" href="#spinglassyinzitu" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p><img alt="CpI9A.png" src="https://i.328888.xyz/2023/01/11/CpI9A.png" /></p>
 <p>其中变量节点 <span class="math notranslate nohighlight">\(i,j,k,\cdots\)</span>表示哈密顿量中的dynamical binary spin variable，也即Sourlas码中的信号源 <span class="math notranslate nohighlight">\(\boldsymbol{\xi}\in \{\pm 1\}^N\)</span>，功能节点则表示一个连乘操作 <span class="math notranslate nohighlight">\(\prod_{i\in\partial a}\)</span>，每个功能节点与几个变量节点相连，正是Sourlas码的编码规则。</p>
 <p>由于这是一个稀疏连接的网络，可以展开成树状图：</p>
-<figure class="align-default" id="shuzhuangtu">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075344_%E5%9B%A0%E5%AD%90%E5%9B%BE%E5%B1%95%E5%BC%80%E4%B8%BA%E6%A0%91%E7%8A%B6%E5%9B%BE.png"><img alt="shuzhuangtu" class="bg-primary mb-1" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075344_%E5%9B%A0%E5%AD%90%E5%9B%BE%E5%B1%95%E5%BC%80%E4%B8%BA%E6%A0%91%E7%8A%B6%E5%9B%BE.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">因子图展开为树状图</span><a class="headerlink" href="#shuzhuangtu" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>如<a class="reference internal" href="#shuzhuangtu"><span class="std std-numref">Fig. 3</span></a>所示，我们首先考虑将一个功能节点 <span class="math notranslate nohighlight">\(a\)</span> 拿走，剩下的网络构成 <span class="math notranslate nohighlight">\(\text{old}\)</span> 网络，然后再将 <span class="math notranslate nohighlight">\(a\)</span> 加回去，作为 <span class="math notranslate nohighlight">\(\text{new}\)</span> 网络。新旧网络的自由能差值即这个功能节点的自由能。新网络的哈密顿量可以写为</p>
+<p><img alt="Cp3NN.png" src="https://i.328888.xyz/2023/01/11/Cp3NN.png" /></p>
+<p>如上图所示，我们首先考虑将一个功能节点 <span class="math notranslate nohighlight">\(a\)</span> 拿走，剩下的网络构成 <span class="math notranslate nohighlight">\(\text{old}\)</span> 网络，然后再将 <span class="math notranslate nohighlight">\(a\)</span> 加回去，作为 <span class="math notranslate nohighlight">\(\text{new}\)</span> 网络。新旧网络的自由能差值即这个功能节点的自由能。新网络的哈密顿量可以写为</p>
 <div class="math notranslate nohighlight" id="equation-gongshi5">
 <span class="eqno">(5)<a class="headerlink" href="#equation-gongshi5" title="Permalink to this equation">#</a></span>\[
 H^{\text{new} } = H^{\text{old} } - J_a\prod_{i\in \partial a} \sigma_i
@@ -639,12 +628,7 @@ F = \sum_{i} \Delta F_i + \sum_{a} \Delta F_a - \sum_{a} |\partial a| \Delta F_a
 <span class="eqno">(30)<a class="headerlink" href="#equation-gongshi30" title="Permalink to this equation">#</a></span>\[
 m_{i\to a}=\frac{\sum_{\sigma}\sigma_i\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }{\sum_{\sigma}\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} } \label{eq:空腔磁化强度的定义}
 \]</div>
-<figure class="align-default" id="kongqiangcihuaqiangdutu">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075351_%E7%A9%BA%E8%85%94%E7%A3%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE.png"><img alt="figure_description" class="bg-primary mb-1" src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075351_%E7%A9%BA%E8%85%94%E7%A3%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE.png" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">空腔磁化强度示意图</span><a class="headerlink" href="#kongqiangcihuaqiangdutu" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<p><img alt="Cpr4o.png" src="https://i.328888.xyz/2023/01/11/Cpr4o.png" /></p>
 <p>其中，<span class="math notranslate nohighlight">\(H_{i \rightarrow a}\)</span> 是指把节点 <span class="math notranslate nohighlight">\(a\)</span> 拿掉后节点 <span class="math notranslate nohighlight">\(i\)</span> 的哈密顿量，</p>
 <div class="math notranslate nohighlight" id="equation-gongshi31">
 <span class="eqno">(31)<a class="headerlink" href="#equation-gongshi31" title="Permalink to this equation">#</a></span>\[

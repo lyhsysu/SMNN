@@ -1,28 +1,27 @@
 # 自旋玻璃与空腔方法
 
 <style>
-h1 { font: SimSun !important; }
-h2 { font-weight:bolder; font: 24px NSimSun !important; }
-h3 { font-weight:bolder; font: 20px NSimSun !important; }
-p { font: 16px NSimSun !important; }
+h2 { font: 24px !important; }
+h3 { font: 20px !important; }
+p { font: 16px !important; }
 </style>
 
 ```{admonition} Abstract
-自旋玻璃是描述相变的一类统计物理模型，近年来在信息科学和神经网络等领域也有广泛应用。本文以Sourlas编码为例，介绍了自旋玻璃模型在信息编码领域的应用，重点介绍了如何利用空腔方法求解配分函数，进而得到消息传递方程，从编码信息中恢复出原始信息。文末给出了空腔方法在其他领域的介绍和参考文献，并且有两道作业题：用空腔方法求解SK模型以及用编程实现Sourlas编码解码的过程。
+自旋玻璃是描述相变的一类统计物理模型，近年来在信息科学和神经网络等领域也有广泛应用。本文以 Sourlas 编码为例，介绍了自旋玻璃模型在信息编码领域的应用，重点介绍了如何利用空腔方法求解配分函数，进而得到消息传递方程，从编码信息中恢复出原始信息。文末给出了空腔方法在其他领域的介绍和参考文献，并且有两道作业题：用空腔方法求解SK模型以及用编程实现 Sourlas 编码解码的过程。
 ```
 
 ## 一、引言
 
 
-在信息传输过程中，由于信道中存在噪声，信息可能会受到干扰而出现错误。从受干扰的消息中恢复原始信息是一项非常重要的任务。一种常用的解决方案是在发送时对原始消息进行编码，引入冗余，然后接收方根据冗余来纠正一些传输过程中出现的错误。1948年Claude Shannon证明了当码率低于信道容量时无错传输是可能的，这为设计工程实用的编码方案建立了一个基本界限{cite}`Shannon1948`。已经有很多人投入了大量的努力来设计接近香农界限的编码方案。其中，1989年Nicolas Sourlas提出一种编码方案{cite}`sourlas1989spin`，它将纠错码与自旋玻璃模型联系起来，并且具有很高的性价比。
+在信息传输过程中，由于信道中存在噪声，信息可能会受到干扰而出现错误。从受干扰的消息中恢复原始信息是一项非常重要的任务。一种常用的解决方案是在发送时对原始消息进行编码，引入冗余，然后接收方根据冗余来纠正一些传输过程中出现的错误。1948年 Claude Shannon 证明了当码率低于信道容量时无错传输是可能的，这为设计工程实用的编码方案建立了一个基本界限{cite}`Shannon1948`。已经有很多人投入了大量的努力来设计接近香农界限的编码方案。其中，1989年 Nicolas Sourlas 提出一种编码方案{cite}`sourlas1989spin`，它将纠错码与自旋玻璃模型联系起来，并且具有很高的性价比。
 
-对 $N$个二值信号构成的信源$\boldsymbol{\xi} \in \{\pm 1\}^N$，Sourlas编码的规则是随机选择一定数量的信号相乘，作为要传输的一个信号，即 
+对 $N$ 个二值信号构成的信源 $\boldsymbol{\xi} \in \{\pm 1\}^N$，Sourlas编码的规则是随机选择一定数量的信号相乘，作为要传输的一个信号，即 
 
 $$
 J^0_a=\prod_{i\in \partial a}\xi_i
 $$ (gongshi1)
 
-编码后的信息为$\boldsymbol{J^0} = \{J^0_1, J^0_2, J^0_3, \cdots, J^0_M\}$；在传输过程中信号有$p$的概率发生翻转，即$P(J_a|J_a^0)=p\delta(J_a+J_a^0)+(1-p)\delta(J_a-J_a^0)$，到达接收器的信息为$\boldsymbol{J}=\{J_1, J_2, J_3, \cdots, J_M\}$。为了对信息$\boldsymbol{J}$进行解码（将其恢复到$\boldsymbol{\xi}$），我们首先将Sourlas码与自旋玻璃模型结合起来。
+编码后的信息为 $\boldsymbol{J^0} = \{J^0_1, J^0_2, J^0_3, \cdots, J^0_M\}$；在传输过程中信号有 $p$ 的概率发生翻转，即 $P(J_a|J_a^0)=p\delta(J_a+J_a^0)+(1-p)\delta(J_a-J_a^0)$，到达接收器的信息为 $\boldsymbol{J}=\{J_1, J_2, J_3, \cdots, J_M\}$。为了对信息 $\boldsymbol{J}$ 进行解码（将其恢复到 $\boldsymbol{\xi}$），我们首先将Sourlas 码与自旋玻璃模型结合起来。
 
 自旋玻璃模型的哈密顿量写为
 
@@ -38,7 +37,7 @@ $$
 Z=\mathrm{Tr~} \exp(-\beta H(\boldsymbol{\sigma}))
 $$ (gongshi3)
 
-在下一小节中，我们利用空腔方法求解式(3)，并且由于配分函数 $Z$ 不是一个广延量，我们更关注的是作为广延量的自由能 $F=-\frac{1}{\beta}\ln Z$。因为空腔方法的核心就是利用cavity求出每个功能节点和变量节点的物理量，然后再将其相加得到总的待求物理量，这里就要求我们关注的必须是一个广延量。
+在下一小节中，我们利用空腔方法求解式 {eq}`gongshi3` ，并且由于配分函数 $Z$ 不是一个广延量，我们更关注的是作为广延量的自由能 $F=-\frac{1}{\beta}\ln Z$。因为空腔方法的核心就是利用cavity求出每个功能节点和变量节点的物理量，然后再将其相加得到总的待求物理量，这里就要求我们关注的必须是一个广延量。
 
 ## 二、空腔方法求解配分函数
 
@@ -53,7 +52,7 @@ $$ (gongshi4)
 实际上就是将一个联合概率分布 $p(I, D, G, S, L)$ 表达为多个局部的概率分布 $P(I)$、 $P(D)$、 $P(G \mid I, D)$、 $P(L \mid G)$、 $P(S \mid I)$ 的联乘。将各个概率分布抽象为一个函数，$f_I(I)$、 $f_D(D)$、 $f_G(G, I, D)$、 $f_S(L, G)$、 $f_L(S, I)$，在因子图中可以表示为
 
 :::{figure-md} beiyesiyinzitu
-<img src="https://img2023.cnblogs.com/blog/3064881/202301/3064881-20230108002743652-1547057150.png" alt="beiyesi" class="bg-primary mb-1" width="400px">
+<img src="https://i.328888.xyz/2023/01/11/CpjWJ.png" alt="beiyesi" class="bg-primary mb-1" width="400px">
 
 贝叶斯网络的因子图表示
 :::
@@ -61,23 +60,15 @@ $$ (gongshi4)
 
 对于自旋玻璃模型的哈密顿量，可以用因子图表示为
 
-:::{figure-md} spinglassyinzitu
-<img src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075234_Sourlas%E7%9A%84%E5%9B%A0%E5%AD%90%E5%9B%BE.png" alt="spin glass" class="bg-primary mb-1" width="400px">
-
-自旋玻璃模型的哈密顿量的因子图表示
-:::
+![CpI9A.png](https://i.328888.xyz/2023/01/11/CpI9A.png)
 
 其中变量节点 $i,j,k,\cdots$表示哈密顿量中的dynamical binary spin variable，也即Sourlas码中的信号源 $\boldsymbol{\xi}\in \{\pm 1\}^N$，功能节点则表示一个连乘操作 $\prod_{i\in\partial a}$，每个功能节点与几个变量节点相连，正是Sourlas码的编码规则。
 
 由于这是一个稀疏连接的网络，可以展开成树状图：
 
-:::{figure-md} shuzhuangtu
-<img src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075344_%E5%9B%A0%E5%AD%90%E5%9B%BE%E5%B1%95%E5%BC%80%E4%B8%BA%E6%A0%91%E7%8A%B6%E5%9B%BE.png" alt="shuzhuangtu" class="bg-primary mb-1" width="400px">
+![Cp3NN.png](https://i.328888.xyz/2023/01/11/Cp3NN.png)
 
-因子图展开为树状图
-:::
-
-如{numref}`shuzhuangtu`所示，我们首先考虑将一个功能节点 $a$ 拿走，剩下的网络构成 $\text{old}$ 网络，然后再将 $a$ 加回去，作为 $\text{new}$ 网络。新旧网络的自由能差值即这个功能节点的自由能。新网络的哈密顿量可以写为
+如上图所示，我们首先考虑将一个功能节点 $a$ 拿走，剩下的网络构成 $\text{old}$ 网络，然后再将 $a$ 加回去，作为 $\text{new}$ 网络。新旧网络的自由能差值即这个功能节点的自由能。新网络的哈密顿量可以写为
 
 $$
 H^{\text{new} } = H^{\text{old} } - J_a\prod_{i\in \partial a} \sigma_i
@@ -271,11 +262,7 @@ $$
 m_{i\to a}=\frac{\sum_{\sigma}\sigma_i\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }{\sum_{\sigma}\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} } \label{eq:空腔磁化强度的定义}
 $$ (gongshi30)
 
-:::{figure-md} kongqiangcihuaqiangdutu
-<img src="https://images.cnblogs.com/cnblogs_com/blogs/779311/galleries/2257667/o_221225075351_%E7%A9%BA%E8%85%94%E7%A3%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="figure_description" class="bg-primary mb-1" width="400px">
-
-空腔磁化强度示意图
-:::
+![Cpr4o.png](https://i.328888.xyz/2023/01/11/Cpr4o.png)
 
 其中，$H_{i \rightarrow a}$ 是指把节点 $a$ 拿掉后节点 $i$ 的哈密顿量，
 
