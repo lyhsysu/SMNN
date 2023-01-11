@@ -1,3 +1,9 @@
+<style>
+h2 { font: 24px !important; }
+h3 { font: 20px !important; }
+p { font: 16px !important; }
+</style>
+
 # Preface
 
 ![SMNN](https://i.328888.xyz/2023/01/09/0heeA.md.png)

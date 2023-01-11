@@ -4,4 +4,4 @@ h3 { font: 20px !important; }
 p { font: 16px !important; }
 </style>
 
-# 变分平均场理论与信念传播算法
+# Hopfield 网络的统计物理

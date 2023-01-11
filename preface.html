@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="自旋玻璃与空腔方法" href="cavity-method.html" />
+    <link rel="next" title="空腔方法与消息传递方程" href="CavityMethod.html" />
     <link rel="prev" title="Preface" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -125,13 +125,38 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="cavity-method.html">
-   自旋玻璃与空腔方法
+  <a class="reference internal" href="CavityMethod.html">
+   空腔方法与消息传递方程
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="VMFandBP.html">
    变分平均场理论与信念传播算法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MC.html">
+   统计物理中的蒙特卡洛方法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HTE.html">
+   高温展开
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="NishimoriLine.html">
+   Nishimor 线
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="REM.html">
+   随机能量模型
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Hopfield.html">
+   Hopfield 网络的统计物理
   </a>
  </li>
 </ul>
@@ -280,7 +305,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+  <style>
+h2 { font: 24px !important; }
+h3 { font: 20px !important; }
+p { font: 16px !important; }
+</style>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <br>
 <p>  二级相变又称为连续相变，是一种十分常见的现象，也是近代凝聚态物理和统计物理研究的重要内容。常见的相变有气—液相变、铁磁—顺磁相变、BCS 超导相变等。在这些相变过程中，外界条件（如温度）是连续变化的，但是物质的状态却可以发生突然的改变，导致某些物理量发生不连续的变化或者发散。1933年，朗道（Landau）提出<strong>序参量</strong>（order parameter）的概念，建立了朗道相变理论<span id="id1">[<a class="reference internal" href="#id19" title="Lev Davidovich Landau. On the theory of phase transitions. i. Zh. Eksp. Teor. Fiz., 11:19, 1937.">1</a>, <a class="reference internal" href="#id20" title="Lev Davidovich Landau. On the theory of phase transitions. ii. Zh. Eksp. Teor. Fiz., 11:627, 1937.">2</a>]</span>。根据朗道的理论，二级相变的微观本质是系统的对称性自发破缺，系统的对称性破缺产生了某种”序“，序参量（即描述”序“的参量）就是一个描述系统对称性的变量。序参量为零对应着系统的无序状态，非零对应有序状态，在发生二级相变的临界点，序参量连续地从零变为非零。</p>
@@ -374,10 +404,10 @@ title="Print to PDF"
             <p class="prev-next-title">Preface</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="cavity-method.html" title="next page">
+    <a class='right-next' id="next-link" href="CavityMethod.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">自旋玻璃与空腔方法</p>
+        <p class="prev-next-title">空腔方法与消息传递方程</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
