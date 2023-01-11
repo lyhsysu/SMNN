@@ -7,6 +7,8 @@
 ``````{margin} 
 ```{admonition} 注 <font color="blue">1</font>
 这是因为我们之后将用本章得到的结论对 Sourlas 码进行一个编程模拟。
+<br>
+此外，无限范围模型似乎又称作p-自旋模型。
 ```
 ``````
 
@@ -252,24 +254,41 @@ $$ (a6)
 可得
 
 $$
-Z^{\text{new} }\approx Z^{\text{old} } \sum_{\{\sigma_j | j \in \partial b\backslash i\} } \sum_{\sigma_i} \prod_{b \in \partial i}\prod_{j \in \partial b\backslash i} q_{j\to b}(\sigma_j) \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
+Z^{\text{new} }\approx Z^{\text{old} } \sum_{\{\sigma_j | j \in \partial b\backslash i\} } \sum_{\sigma_i} \prod_{b \in \partial i}\prod_{j \in \partial b\backslash i} \frac{1+\sigma_jm_{j \to b} }{2}(\sigma_j) \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
 $$ (Z6)
 
-再进行化简，得
+``````{margin} 
+```{admonition} 注 <font color="blue">5</font>
+至于为什么可以这么做……
+```
+``````
+
+我们将式 {eq}`Z6` 中的求和 $\sum_{\sigma_i}$ 与连乘 $\prod_{b \in \partial i}$ 交换一下位置<sup><font color="blue">5</font></sup>，后半部分成为
 
 $$
-Z^{\text{new} } \approx Z^{\text{old} } \left( \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i}  \right)
-$$ (Z7)
+\sum_{\sigma_i}\prod_{j \in \partial b\backslash i} \frac{1+\sigma_jm_{j \to b} }{2} \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
+$$
 
-其中，
+这与式 {eq}`Z2` 的后半部分相同，根据 **推导细节 c**，它等于
+
+$$
+\cosh(\beta J_b)\left(1+\tanh(\beta J_b)\prod_{i\in\partial b}m_{i\to b} \right)
+$$
+
+我们将其记为 $\Lambda_{b\to i}$。注意到在外面还有 $\sum_{\{\sigma_j | j \in \partial b\backslash i\} }\prod_{b \in \partial i}$，分别记
 
 $$
 \Lambda^\pm_{b\to i} \equiv\cosh(\beta J_b)\left( 1\pm \tanh(\beta J_b) \prod_{j \in \partial b\backslash i} m_{j\to b} \right)
 $$ (a7)
 
-```{admonition} 推导细节 e
-:class: dropdown
-待补充
+因此式 {eq}`Z6` 化简为
+
+$$
+Z^{\text{new} } \approx Z^{\text{old} } \left( \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i}  \right)
+$$ (Z7)
+
+```{warning}
+这里仍有一步尚不清楚，即 $\sum_{\{\sigma_j | j \in \partial b\backslash i\} }\prod_{b \in \partial i}$ 对  $\Lambda_{b\to i}$ 的求和是如何处理的。
 ```
 
 自由能的变化量为
@@ -288,4 +307,148 @@ $$
 F = \sum_{i} \Delta F_i + \sum_{a} \Delta F_a - \sum_{a} |\partial a| \Delta F_a
 $$ (a9)
 
-注意到，这里的 $\Lambda^{\pm}_{b\to i}$ 在定义时【式 {eq}`a7`】用到了 $m_{j\to b}$，下一节介绍如何迭代求解。
+注意到，这里的 $\Lambda^{\pm}_{b\to i}$ 在定义时【式 {eq}`a7`】用到了 $m_{j\to b}$，下一节介绍如何求解。
+
+## 二、消息传递算法
+
+<p style="text-align:center"><img src="https://user-images.githubusercontent.com/106574511/211763400-a7df0856-317b-4693-818a-320fb64c0c0f.png" alt="" class="bg-primary" width="400px"></p>
+
+我们首先定义一个**空腔磁化强度**（cavity magnetization）$m_{i\to a}$，即变量节点 $i$ 和功能节点 $a$ 之间的连接不存在时，节点 $i$ 的磁化强度
+
+$$
+m_{i\to a}=\sum_{x_i}x_iP_{i\to a}(x_i)=\sum_{x_i}x_i\frac{\exp\left[-\beta H_{i\to a}(x_i)\right]}{\sum_{x_i}\exp\left[-\beta H_{i\to a}(x_i)\right]}
+$$ (a10)
+
+其中，$H_{i \rightarrow a}$ 是指把节点 $a$ 拿掉后节点 $i$ 的哈密顿量，
+
+$$
+H_{i \rightarrow a}=H_{\text {cavity } }-\sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j
+$$ (a11)
+
+$H_{\text {cavity } }$是指空腔内所有节点作为一个系统的哈密顿量，它包含了上图中 $b$、$c$ 等节点与空腔外界的连接，即用红线围起来的边界部分 $\mathcal{B}$。求 $H_{i \rightarrow a}$ 时要从 $H_{\text {cavity } }$ 中减去空腔与 $\mathcal{B}$ 连接的部分。
+
+我们通过空腔近似对式 {eq}`a10` 做一个trick，化简得到
+
+$$
+m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}-\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} }{\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} }
+$$ (a12)
+
+其中，$\Lambda^{\pm}_{b\to i}$ 仍由式 {eq}`a7` 定义。
+
+```{admonition} 推导细节 f
+:class: dropdown
+首先将式 {eq}`a10` 改写为
+
+$$
+m_{i\to a}=\frac{\sum_{\sigma}\sigma_i\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }{\sum_{\sigma}\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }=\frac{\frac{\sum_\sigma \sigma_i \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } }{\frac{\sum_\sigma \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } }
+$$ 
+
+考虑分母部分
+
+$$
+\begin{aligned}
+	&\frac{\sum_\sigma \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } \\
+	&= \frac{\sum_\sigma \exp \left[-\beta \left( H_{\text {cavity } }-\sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right) \right]}{Z_{\text {cavity } } }\\
+	&=\frac{\sum_\sigma \exp(-\beta H_{\text {cavity } })  \exp \left(\beta \sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right)}{Z_{\text {cavity } } }\\
+	&=\sum_\sigma\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } }\exp \left(\beta \sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right)
+\end{aligned}
+$$
+
+注意到 $\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } }$ 正是空腔的联合概率分布，根据空腔假设，其等于空腔的边缘概率分布
+
+$$
+\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } } = P_{\text {cavity } }(\mathcal{B})
+$$
+
+因此分母部分改写为
+
+$$
+\sum_{\sigma}P_{\text {cavity } }(\mathcal{B}) \exp \left(\beta \sum_{b \in \partial i \backslash a}  J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j\right)
+$$
+
+将对自旋变量的求和 $\sum_{\sigma}$ 分为对节点 $i$ 和对边界 $\mathcal{B}$ 两部分，并将空腔近似
+
+$$
+P_{\text {cavity } }(\mathcal{B}) \approx \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} q_{j \rightarrow b}\left(\sigma_j\right)=\prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} \frac{1+\sigma_j m_{j\to b} }{2}
+$$
+
+代入，得
+
+$$
+\begin{aligned}
+	&\sum_{\sigma}P_{\text {cavity } }(\mathcal{B}) \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
+	&=\sum_{\sigma_i} \sum_{\mathcal{B} } P_{\text {cavity } }(\mathcal{B}) \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
+	&=\quad\sum_{\sigma_i} \sum_{\mathcal{B} } \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} \frac{1+\sigma_j m_{j\to b} }{2} \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
+	&=\sum_{\sigma_i}\prod_{b \in \partial i \backslash a}\sum_{\mathcal{B} }\prod_{j \in \partial b \backslash i}\frac{1+\sigma_j m_{j\to b} }{2} \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]
+\end{aligned}
+$$
+
+这与式 {eq}`Z6` 完全相同，经过同样的 trick 改写为
+
+$$
+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} 
+$$
+
+对分子做一个类似（但有一点不同的）trick，可以改写为
+
+$$
+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}-\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-}
+$$
+
+<font color="red">具体怎么操作待补充</font>
+
+由此，我们得到了式 {eq}`a12` 
+
+```
+
+```{warning}
+从这里往下的内容还没有完全理解，有待详细补充
+```
+
+定义空腔磁化强度 $m_{j\to b}$ 的**共轭空腔磁化强度**（conjugate cavity magnetization）为
+
+$$
+\hat{m}_{b \rightarrow j} \equiv \tanh \left(\beta J_b\right) \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}
+$$ (a13)
+
+则式 {eq}`a7` 可以改写为
+
+$$
+\Lambda^\pm_{b\to i} =\cosh(\beta J_b)\left( 1\pm \hat{m}_{b \rightarrow j} \right)
+$$ (a14)
+
+并且式 {eq}`a12` 可以改写为
+
+$$
+m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{b \rightarrow i}\right)-\prod_{b \in \partial i \backslash a}\left(1-\hat{m}_{b \rightarrow i}\right)}{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{b \rightarrow i}\right)+\prod_{b \in \partial i \backslash a}\left(1-\hat{m}_{b \rightarrow i}\right)}
+$$ (a15)
+
+与式 {eq}`a3` 相同，我们可以用共轭空腔磁化强度 $m_{a \rightarrow i}$ 将 $p_{a \to i}$ 参数化
+
+$$
+p_{a \rightarrow i}\left(\sigma_i\right) =\frac{1+\sigma_i \hat{m}_{a \rightarrow i} }{2}
+$$ (a16)
+
+接下来我们用一个局域场 $h_{i\to a}$ 及其偏置 $u_{i\to a}$ 来参数化 $q_{i \rightarrow a}$ 和 $p_{a \to i}$
+
+$$
+\begin{aligned}
+	q_{i \rightarrow a}\left(\sigma_i\right) & \equiv \frac{\exp \left(\beta h_{i \rightarrow a} \sigma_i\right)}{2 \cosh \beta h_{i \rightarrow a} }\\
+	p_{a \rightarrow i}\left(\sigma_i\right) & \equiv \frac{\exp \left(\beta u_{a \rightarrow i} \sigma_i\right)}{2 \cosh \beta u_{a \rightarrow i} }
+\end{aligned}
+$$ (a17)
+
+结合式 {eq}`a3` {eq}`a16` 可以得到
+
+$$
+\begin{aligned}
+&h_{i \rightarrow a}=\frac{1}{\beta}\left(\sum_{b \in \partial i \backslash a} \beta u_{b \rightarrow i}\right) \\
+&u_{a \rightarrow i}=\frac{1}{\beta} \tanh ^{-1}\left[\tanh \left(\beta J_a\right) \prod_{j \in \partial a \backslash i} \tanh \left(\beta h_{j \rightarrow a}\right)\right]
+\end{aligned}
+$$ (a18)
+
+式 {eq}`a18` 是一个迭代方程，通过迭代求解 $u_{b \rightarrow i}$ 后，即可通过下式求解 $m_i$
+
+$$
+m_i=\tanh \left(\sum_{b \in \partial i} \beta u_{b \rightarrow i}\right)
+$$ (a19)

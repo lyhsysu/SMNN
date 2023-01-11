@@ -332,6 +332,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   二、消息传递算法
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -378,6 +383,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   二、消息传递算法
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -399,7 +409,9 @@ title="Print to PDF"
 <p class="sidebar-title"></p>
 <div class="admonition-font-color-blue-1-font admonition">
 <p class="admonition-title">注 <font color="blue">1</font></p>
-<p>这是因为我们之后将用本章得到的结论对 Sourlas 码进行一个编程模拟。</p>
+<p>这是因为我们之后将用本章得到的结论对 Sourlas 码进行一个编程模拟。
+<br>
+此外，无限范围模型似乎又称作p-自旋模型。</p>
 </div>
 </aside>
 <p>在本节，我们以无限范围模型（Infinite-range model）为例<sup><font color="blue">1</font></sup>介绍如何使用空腔方法求解配分函数。无限范围模型是对 S-K 模型的推广，S-K 模型只考虑二体相互作用，无限范围模型则考虑了多个自旋的相互作用，其哈密顿量为</p>
@@ -613,21 +625,38 @@ Z^{\text{new} } = Z^{\text{old} }\sum_{\{\sigma_j | j \in \partial b\backslash i
 <p>可得</p>
 <div class="math notranslate nohighlight" id="equation-z6">
 <span class="eqno">(15)<a class="headerlink" href="#equation-z6" title="Permalink to this equation">#</a></span>\[
-Z^{\text{new} }\approx Z^{\text{old} } \sum_{\{\sigma_j | j \in \partial b\backslash i\} } \sum_{\sigma_i} \prod_{b \in \partial i}\prod_{j \in \partial b\backslash i} q_{j\to b}(\sigma_j) \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
+Z^{\text{new} }\approx Z^{\text{old} } \sum_{\{\sigma_j | j \in \partial b\backslash i\} } \sum_{\sigma_i} \prod_{b \in \partial i}\prod_{j \in \partial b\backslash i} \frac{1+\sigma_jm_{j \to b} }{2}(\sigma_j) \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
 \]</div>
-<p>再进行化简，得</p>
-<div class="math notranslate nohighlight" id="equation-z7">
-<span class="eqno">(16)<a class="headerlink" href="#equation-z7" title="Permalink to this equation">#</a></span>\[
-Z^{\text{new} } \approx Z^{\text{old} } \left( \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i}  \right)
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-font-color-blue-5-font admonition">
+<p class="admonition-title">注 <font color="blue">5</font></p>
+<p>至于为什么可以这么做……</p>
+</div>
+</aside>
+<p>我们将式 <a class="reference internal" href="#equation-z6">(15)</a> 中的求和 <span class="math notranslate nohighlight">\(\sum_{\sigma_i}\)</span> 与连乘 <span class="math notranslate nohighlight">\(\prod_{b \in \partial i}\)</span> 交换一下位置<sup><font color="blue">5</font></sup>，后半部分成为</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{\sigma_i}\prod_{j \in \partial b\backslash i} \frac{1+\sigma_jm_{j \to b} }{2} \exp \left[\beta \sum_{b\in \partial i} J_b \left(\sigma_i \prod_{j \in \partial b\backslash i} \sigma_j\right) \right]
 \]</div>
-<p>其中，</p>
+<p>这与式 <a class="reference internal" href="#equation-z2">(9)</a> 的后半部分相同，根据 <strong>推导细节 c</strong>，它等于</p>
+<div class="math notranslate nohighlight">
+\[
+\cosh(\beta J_b)\left(1+\tanh(\beta J_b)\prod_{i\in\partial b}m_{i\to b} \right)
+\]</div>
+<p>我们将其记为 <span class="math notranslate nohighlight">\(\Lambda_{b\to i}\)</span>。注意到在外面还有 <span class="math notranslate nohighlight">\(\sum_{\{\sigma_j | j \in \partial b\backslash i\} }\prod_{b \in \partial i}\)</span>，分别记</p>
 <div class="math notranslate nohighlight" id="equation-a7">
-<span class="eqno">(17)<a class="headerlink" href="#equation-a7" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(16)<a class="headerlink" href="#equation-a7" title="Permalink to this equation">#</a></span>\[
 \Lambda^\pm_{b\to i} \equiv\cosh(\beta J_b)\left( 1\pm \tanh(\beta J_b) \prod_{j \in \partial b\backslash i} m_{j\to b} \right)
 \]</div>
-<div class="dropdown admonition">
-<p class="admonition-title">推导细节 e</p>
-<p>待补充</p>
+<p>因此式 <a class="reference internal" href="#equation-z6">(15)</a> 化简为</p>
+<div class="math notranslate nohighlight" id="equation-z7">
+<span class="eqno">(17)<a class="headerlink" href="#equation-z7" title="Permalink to this equation">#</a></span>\[
+Z^{\text{new} } \approx Z^{\text{old} } \left( \prod_{b \in \partial i} \Lambda^+_{b\to i} + \prod_{b \in \partial i} \Lambda^-_{b\to i}  \right)
+\]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>这里仍有一步尚不清楚，即 <span class="math notranslate nohighlight">\(\sum_{\{\sigma_j | j \in \partial b\backslash i\} }\prod_{b \in \partial i}\)</span> 对  <span class="math notranslate nohighlight">\(\Lambda_{b\to i}\)</span> 的求和是如何处理的。</p>
 </div>
 <p>自由能的变化量为</p>
 <div class="math notranslate nohighlight" id="equation-a8">
@@ -643,8 +672,129 @@ Z^{\text{new} } \approx Z^{\text{old} } \left( \prod_{b \in \partial i} \Lambda^
 <span class="eqno">(19)<a class="headerlink" href="#equation-a9" title="Permalink to this equation">#</a></span>\[
 F = \sum_{i} \Delta F_i + \sum_{a} \Delta F_a - \sum_{a} |\partial a| \Delta F_a
 \]</div>
-<p>注意到，这里的 <span class="math notranslate nohighlight">\(\Lambda^{\pm}_{b\to i}\)</span> 在定义时【式 <a class="reference internal" href="#equation-a7">(17)</a>】用到了 <span class="math notranslate nohighlight">\(m_{j\to b}\)</span>，下一节介绍如何迭代求解。</p>
+<p>注意到，这里的 <span class="math notranslate nohighlight">\(\Lambda^{\pm}_{b\to i}\)</span> 在定义时【式 <a class="reference internal" href="#equation-a7">(16)</a>】用到了 <span class="math notranslate nohighlight">\(m_{j\to b}\)</span>，下一节介绍如何求解。</p>
 </section>
+</section>
+<section id="id6">
+<h2>二、消息传递算法<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<p style="text-align:center"><img src="https://user-images.githubusercontent.com/106574511/211763400-a7df0856-317b-4693-818a-320fb64c0c0f.png" alt="" class="bg-primary" width="400px"></p>
+<p>我们首先定义一个<strong>空腔磁化强度</strong>（cavity magnetization）<span class="math notranslate nohighlight">\(m_{i\to a}\)</span>，即变量节点 <span class="math notranslate nohighlight">\(i\)</span> 和功能节点 <span class="math notranslate nohighlight">\(a\)</span> 之间的连接不存在时，节点 <span class="math notranslate nohighlight">\(i\)</span> 的磁化强度</p>
+<div class="math notranslate nohighlight" id="equation-a10">
+<span class="eqno">(20)<a class="headerlink" href="#equation-a10" title="Permalink to this equation">#</a></span>\[
+m_{i\to a}=\sum_{x_i}x_iP_{i\to a}(x_i)=\sum_{x_i}x_i\frac{\exp\left[-\beta H_{i\to a}(x_i)\right]}{\sum_{x_i}\exp\left[-\beta H_{i\to a}(x_i)\right]}
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(H_{i \rightarrow a}\)</span> 是指把节点 <span class="math notranslate nohighlight">\(a\)</span> 拿掉后节点 <span class="math notranslate nohighlight">\(i\)</span> 的哈密顿量，</p>
+<div class="math notranslate nohighlight" id="equation-a11">
+<span class="eqno">(21)<a class="headerlink" href="#equation-a11" title="Permalink to this equation">#</a></span>\[
+H_{i \rightarrow a}=H_{\text {cavity } }-\sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j
+\]</div>
+<p><span class="math notranslate nohighlight">\(H_{\text {cavity } }\)</span>是指空腔内所有节点作为一个系统的哈密顿量，它包含了上图中 <span class="math notranslate nohighlight">\(b\)</span>、<span class="math notranslate nohighlight">\(c\)</span> 等节点与空腔外界的连接，即用红线围起来的边界部分 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>。求 <span class="math notranslate nohighlight">\(H_{i \rightarrow a}\)</span> 时要从 <span class="math notranslate nohighlight">\(H_{\text {cavity } }\)</span> 中减去空腔与 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> 连接的部分。</p>
+<p>我们通过空腔近似对式 <a class="reference internal" href="#equation-a10">(20)</a> 做一个trick，化简得到</p>
+<div class="math notranslate nohighlight" id="equation-a12">
+<span class="eqno">(22)<a class="headerlink" href="#equation-a12" title="Permalink to this equation">#</a></span>\[
+m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}-\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} }{\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} }
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\Lambda^{\pm}_{b\to i}\)</span> 仍由式 <a class="reference internal" href="#equation-a7">(16)</a> 定义。</p>
+<div class="dropdown admonition">
+<p class="admonition-title">推导细节 f</p>
+<p>首先将式 <a class="reference internal" href="#equation-a10">(20)</a> 改写为</p>
+<div class="math notranslate nohighlight">
+\[
+m_{i\to a}=\frac{\sum_{\sigma}\sigma_i\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }{\sum_{\sigma}\exp{-\beta H_{i\to a}(\boldsymbol{\sigma})} }=\frac{\frac{\sum_\sigma \sigma_i \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } }{\frac{\sum_\sigma \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } }
+\]</div>
+<p>考虑分母部分</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+	&amp;\frac{\sum_\sigma \exp \left(-\beta H_{i \rightarrow a}(\sigma)\right)}{Z_{\text {cavity } } } \\
+	&amp;= \frac{\sum_\sigma \exp \left[-\beta \left( H_{\text {cavity } }-\sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right) \right]}{Z_{\text {cavity } } }\\
+	&amp;=\frac{\sum_\sigma \exp(-\beta H_{\text {cavity } })  \exp \left(\beta \sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right)}{Z_{\text {cavity } } }\\
+	&amp;=\sum_\sigma\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } }\exp \left(\beta \sum_{b \in \partial i \backslash a} J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j \right)
+\end{aligned}
+\end{split}\]</div>
+<p>注意到 <span class="math notranslate nohighlight">\(\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } }\)</span> 正是空腔的联合概率分布，根据空腔假设，其等于空腔的边缘概率分布</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\exp(-\beta H_{\text {cavity } })}{Z_{\text {cavity } } } = P_{\text {cavity } }(\mathcal{B})
+\]</div>
+<p>因此分母部分改写为</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{\sigma}P_{\text {cavity } }(\mathcal{B}) \exp \left(\beta \sum_{b \in \partial i \backslash a}  J_b \sigma_i \prod_{j \in \partial b \backslash i} \sigma_j\right)
+\]</div>
+<p>将对自旋变量的求和 <span class="math notranslate nohighlight">\(\sum_{\sigma}\)</span> 分为对节点 <span class="math notranslate nohighlight">\(i\)</span> 和对边界 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> 两部分，并将空腔近似</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\text {cavity } }(\mathcal{B}) \approx \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} q_{j \rightarrow b}\left(\sigma_j\right)=\prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} \frac{1+\sigma_j m_{j\to b} }{2}
+\]</div>
+<p>代入，得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+	&amp;\sum_{\sigma}P_{\text {cavity } }(\mathcal{B}) \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
+	&amp;=\sum_{\sigma_i} \sum_{\mathcal{B} } P_{\text {cavity } }(\mathcal{B}) \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
+	&amp;=\quad\sum_{\sigma_i} \sum_{\mathcal{B} } \prod_{b \in \partial i \backslash a} \prod_{j \in \partial b \backslash i} \frac{1+\sigma_j m_{j\to b} }{2} \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]\\
+	&amp;=\sum_{\sigma_i}\prod_{b \in \partial i \backslash a}\sum_{\mathcal{B} }\prod_{j \in \partial b \backslash i}\frac{1+\sigma_j m_{j\to b} }{2} \exp \left[ \beta\sum_{b \in \partial i \backslash a}  J_b \left( \sigma_i \prod_{j \in \partial b \backslash i}\right) \sigma_j\right]
+\end{aligned}
+\end{split}\]</div>
+<p>这与式 <a class="reference internal" href="#equation-z6">(15)</a> 完全相同，经过同样的 trick 改写为</p>
+<div class="math notranslate nohighlight">
+\[
+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-} 
+\]</div>
+<p>对分子做一个类似（但有一点不同的）trick，可以改写为</p>
+<div class="math notranslate nohighlight">
+\[
+\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{+}-\prod_{b \in \partial i \backslash a} \Lambda_{b \rightarrow i}^{-}
+\]</div>
+<p><font color="red">具体怎么操作待补充</font></p>
+<p>由此，我们得到了式 <a class="reference internal" href="#equation-a12">(22)</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>从这里往下的内容还没有完全理解，有待详细补充</p>
+</div>
+<p>定义空腔磁化强度 <span class="math notranslate nohighlight">\(m_{j\to b}\)</span> 的<strong>共轭空腔磁化强度</strong>（conjugate cavity magnetization）为</p>
+<div class="math notranslate nohighlight" id="equation-a13">
+<span class="eqno">(23)<a class="headerlink" href="#equation-a13" title="Permalink to this equation">#</a></span>\[
+\hat{m}_{b \rightarrow j} \equiv \tanh \left(\beta J_b\right) \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}
+\]</div>
+<p>则式 <a class="reference internal" href="#equation-a7">(16)</a> 可以改写为</p>
+<div class="math notranslate nohighlight" id="equation-a14">
+<span class="eqno">(24)<a class="headerlink" href="#equation-a14" title="Permalink to this equation">#</a></span>\[
+\Lambda^\pm_{b\to i} =\cosh(\beta J_b)\left( 1\pm \hat{m}_{b \rightarrow j} \right)
+\]</div>
+<p>并且式 <a class="reference internal" href="#equation-a12">(22)</a> 可以改写为</p>
+<div class="math notranslate nohighlight" id="equation-a15">
+<span class="eqno">(25)<a class="headerlink" href="#equation-a15" title="Permalink to this equation">#</a></span>\[
+m_{i \rightarrow a}=\frac{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{b \rightarrow i}\right)-\prod_{b \in \partial i \backslash a}\left(1-\hat{m}_{b \rightarrow i}\right)}{\prod_{b \in \partial i \backslash a}\left(1+\hat{m}_{b \rightarrow i}\right)+\prod_{b \in \partial i \backslash a}\left(1-\hat{m}_{b \rightarrow i}\right)}
+\]</div>
+<p>与式 <a class="reference internal" href="#equation-a3">(7)</a> 相同，我们可以用共轭空腔磁化强度 <span class="math notranslate nohighlight">\(m_{a \rightarrow i}\)</span> 将 <span class="math notranslate nohighlight">\(p_{a \to i}\)</span> 参数化</p>
+<div class="math notranslate nohighlight" id="equation-a16">
+<span class="eqno">(26)<a class="headerlink" href="#equation-a16" title="Permalink to this equation">#</a></span>\[
+p_{a \rightarrow i}\left(\sigma_i\right) =\frac{1+\sigma_i \hat{m}_{a \rightarrow i} }{2}
+\]</div>
+<p>接下来我们用一个局域场 <span class="math notranslate nohighlight">\(h_{i\to a}\)</span> 及其偏置 <span class="math notranslate nohighlight">\(u_{i\to a}\)</span> 来参数化 <span class="math notranslate nohighlight">\(q_{i \rightarrow a}\)</span> 和 <span class="math notranslate nohighlight">\(p_{a \to i}\)</span></p>
+<div class="math notranslate nohighlight" id="equation-a17">
+<span class="eqno">(27)<a class="headerlink" href="#equation-a17" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+	q_{i \rightarrow a}\left(\sigma_i\right) &amp; \equiv \frac{\exp \left(\beta h_{i \rightarrow a} \sigma_i\right)}{2 \cosh \beta h_{i \rightarrow a} }\\
+	p_{a \rightarrow i}\left(\sigma_i\right) &amp; \equiv \frac{\exp \left(\beta u_{a \rightarrow i} \sigma_i\right)}{2 \cosh \beta u_{a \rightarrow i} }
+\end{aligned}
+\end{split}\]</div>
+<p>结合式 <a class="reference internal" href="#equation-a3">(7)</a> <a class="reference internal" href="#equation-a16">(26)</a> 可以得到</p>
+<div class="math notranslate nohighlight" id="equation-a18">
+<span class="eqno">(28)<a class="headerlink" href="#equation-a18" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;h_{i \rightarrow a}=\frac{1}{\beta}\left(\sum_{b \in \partial i \backslash a} \beta u_{b \rightarrow i}\right) \\
+&amp;u_{a \rightarrow i}=\frac{1}{\beta} \tanh ^{-1}\left[\tanh \left(\beta J_a\right) \prod_{j \in \partial a \backslash i} \tanh \left(\beta h_{j \rightarrow a}\right)\right]
+\end{aligned}
+\end{split}\]</div>
+<p>式 <a class="reference internal" href="#equation-a18">(28)</a> 是一个迭代方程，通过迭代求解 <span class="math notranslate nohighlight">\(u_{b \rightarrow i}\)</span> 后，即可通过下式求解 <span class="math notranslate nohighlight">\(m_i\)</span></p>
+<div class="math notranslate nohighlight" id="equation-a19">
+<span class="eqno">(29)<a class="headerlink" href="#equation-a19" title="Permalink to this equation">#</a></span>\[
+m_i=\tanh \left(\sum_{b \in \partial i} \beta u_{b \rightarrow i}\right)
+\]</div>
 </section>
 </section>
 
