@@ -642,3 +642,18 @@ $\hat{m}_{a \rightarrow i} =\tanh \beta u_{a \rightarrow i}$ 表示节点 $i$ �
 
 - 用于 DNN，见 Lucibello, Carlo, et al. "[Deep learning via message passing algorithms based on belief propagation.](https://arxiv.org/abs/2110.14583)" *Machine Learning: Science and Technology* 3.3 (2022): 035005.
 
+### 四、作业
+
+#### Assignment 1
+
+Use cavity method to calculate the free energy and magnetization of the Sherrington-Kirkpatrick (SK) model, and compare the result with numerical enumeration.
+
+参见：[用空腔方法求解 S-K 模型及数值模拟](https://lyhsysu.github.io/SMNN/Cavity_Assignment1.html)
+
+#### Assignment 2
+
+a: Write a program to implement the encoding and decoding scheme in Sourlas code system $\left(K \equiv|\partial a|=3, \mathrm{R} \equiv \frac{N}{M}=0.5\right)$. 
+
+b: Then show how the decoding performance changes with the flipping rate $p$ at a special temperature $\beta_p=\frac{1}{2} \ln \frac{1-p}{p}$.
+
+参见：[Sourlas 编码的数值模拟与探究](https://lyhsysu.github.io/SMNN/Cavity_Assignment1.html)
