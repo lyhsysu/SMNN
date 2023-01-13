@@ -6,54 +6,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>前言 &#8212; 神经网络的统计力学（中文笔记）</title>
+    <title>Sec 3. 空腔方法的应用 &#8212; 神经网络的统计力学（中文笔记）</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="引言" href="preface.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Appendix A. 用空腔方法求解 S-K 模型" href="Assignment1.html" />
+    <link rel="prev" title="Sec 2. 从空腔方法到消息传递算法" href="Sec2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -88,27 +89,27 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">神经网络的统计力学（中文笔记）</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
                     前言
                 </a>
             </li>
@@ -118,108 +119,76 @@ const thebe_selector_output = ".output, .cell_output"
   课程笔记
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="preface.html">
+  <a class="reference internal" href="../preface.html">
    引言
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Chapter1/intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
    自旋玻璃与空腔方法
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1/Sec1.html">
+    <a class="reference internal" href="Sec1.html">
      Sec 1. 空腔方法求解配分函数
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1/Sec2.html">
+    <a class="reference internal" href="Sec2.html">
      Sec 2. 从空腔方法到消息传递算法
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1/Sec3.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Sec 3. 空腔方法的应用
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1/supplementary.html">
-     Appendix A. 补充材料
+    <a class="reference internal" href="Assignment1.html">
+     Appendix A. 用空腔方法求解 S-K 模型
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1/Assignment1.html">
-     Appendix B. 空腔方法求解 S-K 模型
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter1/Assignment2.html">
-     Appendix C. Sourlas 码的程序模拟
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Chapter2/intro.html">
-   变分平均场理论与信念传播算法
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter2/Sec1.html">
-     Sec 1. 变分方法与变分自由能
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter2/Sec2.html">
-     Sec 2. 平均场近似
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter2/Sec3.html">
-     Sec 3. Bethe 近似
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Chapter2/supplementary.html">
-     Appendix A. 补充材料
+    <a class="reference internal" href="Assignment2.html">
+     Appendix B. Sourlas 编码的数值模拟
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="MC.html">
+  <a class="reference internal" href="../VMFandBP.html">
+   变分平均场理论与信念传播算法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MC.html">
    统计物理中的蒙特卡洛方法
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="HTE.html">
+  <a class="reference internal" href="../HTE.html">
    高温展开
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="NishimoriLine.html">
+  <a class="reference internal" href="../NishimoriLine.html">
    Nishimor 线
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="REM.html">
+  <a class="reference internal" href="../REM.html">
    随机能量模型
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Hopfield.html">
+  <a class="reference internal" href="../Hopfield.html">
    Hopfield 网络的统计物理
   </a>
  </li>
@@ -231,7 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="format.html">
+  <a class="reference internal" href="../format.html">
    *技术与排版规范
   </a>
  </li>
@@ -308,7 +277,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="../_sources/Chapter1/Sec3.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -345,23 +314,70 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnn">
+   1 空腔方法在 RNN 中的应用
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2 空腔方法在其他方面的应用（拓展阅读）
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>前言</h1>
+                <h1>Sec 3. 空腔方法的应用</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnn">
+   1 空腔方法在 RNN 中的应用
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2 空腔方法在其他方面的应用（拓展阅读）
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -369,38 +385,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>前言<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p><img alt="SMNN" src="https://i.328888.xyz/2023/01/09/0heeA.md.png" /></p>
-<p>这是”神经网络的统计力学“课程的学习笔记（中文版）</p>
-<p>这门课是<a class="reference external" href="https://spe.sysu.edu.cn/node/2338">黄海平老师</a>开设的一门网课，详见<a class="reference external" href="https://campus.swarma.org/course/4543">集智学园</a></p>
-<p>课程参考书：<a class="reference external" href="https://link.springer.com/book/10.1007/978-981-16-7570-6#about-this-book">Statistical Mechanics of Neural Networks</a></p>
-<hr class="docutils" />
-<div class="admonition- admonition">
-<p class="admonition-title">目录</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-3">
+<h1>Sec 3. 空腔方法的应用<a class="headerlink" href="#sec-3" title="Permalink to this headline">#</a></h1>
+<section id="rnn">
+<h2>1 空腔方法在 RNN 中的应用<a class="headerlink" href="#rnn" title="Permalink to this headline">#</a></h2>
+<p>（待更新）</p>
+</section>
+<section id="id1">
+<h2>2 空腔方法在其他方面的应用（拓展阅读）<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>引言</p></li>
-<li><p>自旋玻璃与空腔方法</p>
-<ul>
-<li><p>Sec 1. 空腔方法求解配分函数</p></li>
-<li><p>Sec 2. 从空腔方法到消息传递算法</p></li>
-<li><p>Sec 3. 空腔方法的应用</p></li>
-<li><p>Appendix A. 补充材料</p></li>
-<li><p>Appendix B. 用空腔方法求解 S-K 模型及数值模拟</p></li>
-<li><p>Appendix C. Sourlas 编码的数值模拟与探究</p></li>
+<li><p>用于 Sourlas 编码，见 Huang, Haiping, and Haijun Zhou. “<a class="reference external" href="https://arxiv.org/abs/0905.2817">Cavity approach to the Sourlas code system.</a>” <em>Physical Review E</em> 80.5 (2009): 056113.</p></li>
+<li><p>用于随机矩阵，见 Rogers, Tim, et al. “<a class="reference external" href="https://arxiv.org/abs/0803.1553">Cavity approach to the spectral density of sparse symmetric random matrices.</a>” <em>Physical Review E</em> 78.3 (2008): 031116.</p></li>
+<li><p>用于受限玻尔兹曼机（RBM），见 Huang, Haiping, and Taro Toyoizumi. “<a class="reference external" href="https://arxiv.org/abs/1502.00186">Advanced mean-field theory of the restricted Boltzmann machine.</a>” <em>Physical Review E</em> 91.5 (2015): 050101.</p></li>
+<li><p>用于 Hopfield 网络，见 Mézard, Marc. “<a class="reference external" href="https://arxiv.org/abs/1608.01558">Mean-field message-passing equations in the Hopfield model and its generalizations.</a>” <em>Physical Review E</em> 95.2 (2017): 022117.</p></li>
+<li><p>用于 SGD，见 Agoritsas, Elisabeth, et al. “<a class="reference external" href="https://arxiv.org/abs/1710.04894">Out-of-equilibrium dynamical mean-field equations for the perceptron model.</a>” <em>Journal of Physics A: Mathematical and Theoretical</em> 51.8 (2018): 085002.</p></li>
+<li><p>用于 DNN，见 Lucibello, Carlo, et al. “<a class="reference external" href="https://arxiv.org/abs/2110.14583">Deep learning via message passing algorithms based on belief propagation.</a>” <em>Machine Learning: Science and Technology</em> 3.3 (2022): 035005.</p></li>
 </ul>
-</li>
-<li><p>变分平均场理论与信念传播算法</p></li>
-<li><p>统计物理中的蒙特卡洛方法</p></li>
-<li><p>高温展开</p></li>
-</ul>
-</div>
-<br>
-by [李宇豪](https://lyhsysu.github.io/)
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -416,7 +417,7 @@ by [李宇豪](https://lyhsysu.github.io/)
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./."
+            path: "./Chapter1"
         },
         predefinedOutput: true
     }
@@ -430,10 +431,17 @@ by [李宇豪](https://lyhsysu.github.io/)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="preface.html" title="next page">
+    <a class='left-prev' id="prev-link" href="Sec2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Sec 2. 从空腔方法到消息传递算法</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Assignment1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">引言</p>
+        <p class="prev-next-title">Appendix A. 用空腔方法求解 S-K 模型</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -458,7 +466,7 @@ by [李宇豪](https://lyhsysu.github.io/)
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>

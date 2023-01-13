@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Sec 1. 变分方法与变分自由能 &#8212; 神经网络的统计力学（中文笔记）</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sec 2. 平均场近似" href="Sec2.html" />
+    <link rel="prev" title="变分平均场理论与信念传播算法" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">神经网络的统计力学（中文笔记）</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    前言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  课程笔记
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   引言
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter1/intro.html">
+   自旋玻璃与空腔方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Sec1.html">
+     Sec 1. 空腔方法求解配分函数
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Sec2.html">
+     Sec 2. 从空腔方法到消息传递算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Sec3.html">
+     Sec 3. 空腔方法的应用
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/supplementary.html">
+     Appendix A. 补充材料
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Assignment1.html">
+     Appendix B. 空腔方法求解 S-K 模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Assignment2.html">
+     Appendix C. Sourlas 编码的数值模拟
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   变分平均场理论与信念传播算法
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Sec 1. 变分方法与变分自由能
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Sec2.html">
+     Sec 2. 平均场近似
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Sec3.html">
+     Sec 3. Bethe 近似
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="supplementary.html">
+     Appendix A. 补充材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../VMFandBP.html">
+   变分平均场理论与信念传播算法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../MC.html">
+   统计物理中的蒙特卡洛方法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../HTE.html">
+   高温展开
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../NishimoriLine.html">
+   Nishimor 线
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../REM.html">
+   随机能量模型
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Hopfield.html">
+   Hopfield 网络的统计物理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../format.html">
+   *技术与排版规范
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Chapter2/Sec1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Sec 1. 变分方法与变分自由能</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-1">
+<h1>Sec 1. 变分方法与变分自由能<a class="headerlink" href="#sec-1" title="Permalink to this headline">#</a></h1>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-font-color-blue-1-font admonition">
+<p class="admonition-title">注 <font color="blue">1</font></p>
+<p>这里采用热力学的写法，将能量写为 <span class="math notranslate nohighlight">\(E(x)\)</span>。</p>
+</div>
+</aside>
+<p>对于一个真实分布<sup><font color="blue">1</font></sup></p>
+<div class="math notranslate nohighlight" id="equation-b1">
+<span class="eqno">(33)<a class="headerlink" href="#equation-b1" title="Permalink to this equation">#</a></span>\[
+P(\boldsymbol{x})=\frac{e^{-\beta E(x)}}{Z} \qquad Z=\sum_x e^{-\beta E(x)} \qquad E(\boldsymbol{x})=-\sum_a J_a \prod_{i \in \partial a} x_i
+\]</div>
+<p>根据 <span class="math notranslate nohighlight">\(Z\)</span> 可以计算 Helmholtz 自由能 <span class="math notranslate nohighlight">\(F_H=-\ln Z\)</span>，但是 <span class="math notranslate nohighlight">\(Z\)</span> 是 <span class="math notranslate nohighlight">\(\mathcal{O}(N^2)\)</span>，很难直接计算。本章通过构造一个Gibbs自由能 <span class="math notranslate nohighlight">\(F(b)\)</span>（其中 <span class="math notranslate nohighlight">\(b(x)\)</span> 是真实分布，<span class="math notranslate nohighlight">\(F(b)\)</span> 是泛函）并使用变分方法使其逼近真实的Helmholtz自由能 <span class="math notranslate nohighlight">\(F_H=-\ln Z\)</span>。</p>
+<div class="proof theorem admonition" id="theorem-0">
+<p class="admonition-title"><span>Theorem </span> (最大熵原理)</p>
+<section class="theorem-content" id="proof-content">
+<p>随机变量的概率分布是很难测定的。给定分布的约束（如期望、方差等可测得值）的情况下，在所有可能的分布中，熵最大的分布代表着信息量最大的分布，是最好的、最接近真实分布的。</p>
+</section>
+</div><p>说明如下：</p>
+<p>对于一个未知分布 <span class="math notranslate nohighlight">\(P_r\)</span>，其熵定义为</p>
+<div class="math notranslate nohighlight" id="equation-b2">
+<span class="eqno">(34)<a class="headerlink" href="#equation-b2" title="Permalink to this equation">#</a></span>\[
+S=-k\sum_{r}P_r\ln P_r
+\]</div>
+<p>该分布要满足归一化和能量守恒（系统的总能量为定值）的约束，即</p>
+<div class="math notranslate nohighlight" id="equation-b3">
+<span class="eqno">(35)<a class="headerlink" href="#equation-b3" title="Permalink to this equation">#</a></span>\[
+\sum_r P_r=1 \qquad \sum_r E_r P_r=\mu
+\]</div>
+<p>使用拉格朗日乘子法求解条件极值（见 <strong>推导细节 a</strong>），可以得到</p>
+<div class="math notranslate nohighlight" id="equation-b4">
+<span class="eqno">(36)<a class="headerlink" href="#equation-b4" title="Permalink to this equation">#</a></span>\[
+P_r=\frac{\exp\left(-\beta E_r\right)}{\sum_r \exp\left(-\beta E_r\right)}
+\]</div>
+<p>这正是真实分布中 <span class="math notranslate nohighlight">\(P(\boldsymbol{x})\)</span> 的表达式。</p>
+<div class="dropdown admonition">
+<p class="admonition-title">推导细节 a</p>
+<p>构造Lagrangian</p>
+<div class="math notranslate nohighlight">
+\[
+L=-k\sum_{r}P_r\ln P_r+\lambda_1\left(\sum_r P_r-1\right)+\lambda_2\left(\sum_r E_r P_r-\mu\right)
+\]</div>
+<p>取其变分为零</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\delta L}{\delta P_r}=\sum_{r}\left[-k(\ln P_r+1)+\lambda_1+\lambda_2E_r \right]=0
+\]</div>
+<p>即</p>
+<div class="math notranslate nohighlight">
+\[
+P_r=\exp\left( -1+\frac{\lambda_1}{k}+\frac{\lambda_2}{k}E_r\right)
+\]</div>
+<p>代入 <span class="math notranslate nohighlight">\(P_r\)</span> 的归一化条件得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+    &amp;\sum_r P_r=\sum_r \exp\left( -1+\frac{\lambda_1}{k}+\frac{\lambda_2}{k}E_r\right)=1\\
+    \Longrightarrow &amp;\exp\left( -1+\frac{\lambda_1}{k}\right)\sum_r \exp\left(\frac{\lambda_2}{k}E_r\right)=1\\
+    \Longrightarrow &amp;\exp\left( -1+\frac{\lambda_1}{k}\right)=\frac{1}{\sum_r \exp\left(\frac{\lambda_2}{k}E_r\right)}
+\end{aligned}
+\end{split}\]</div>
+<p>令 <span class="math notranslate nohighlight">\(-\beta \equiv \frac{\lambda_2}{k}\)</span>，因此 <span class="math notranslate nohighlight">\(P_r\)</span> 可写为</p>
+<div class="math notranslate nohighlight">
+\[
+P_r=\frac{\exp\left(-\beta E_r\right)}{\sum_r \exp\left(-\beta E_r\right)}
+\]</div>
+</div>
+<p>对于真实分布 <span class="math notranslate nohighlight">\(b(x)\)</span>，Gibbs 自由能 <span class="math notranslate nohighlight">\(F(b)\)</span> 是 <span class="math notranslate nohighlight">\(b(x)\)</span> 的泛函，并且设 <span class="math notranslate nohighlight">\(\beta=1\)</span>。在热力学中，Gibbs 自由能写为</p>
+<div class="math notranslate nohighlight" id="equation-b5">
+<span class="eqno">(37)<a class="headerlink" href="#equation-b5" title="Permalink to this equation">#</a></span>\[
+F(b)=U(b)-H(b)
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(U(b)\)</span> 是内能；<span class="math notranslate nohighlight">\(H(b)\)</span> 是熵（而不是哈密顿量），他们分别写为</p>
+<div class="math notranslate nohighlight" id="equation-b6">
+<span class="eqno">(38)<a class="headerlink" href="#equation-b6" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+    &amp;U(b)=\sum_x b(x) E(x) \\
+    &amp;H(b)=-\sum_x b(x) \ln b(x)
+\end{aligned}
+\end{split}\]</div>
+<p>所谓的变分自由能就是指我们基于真实分布 <span class="math notranslate nohighlight">\(b(x)\)</span> 构造的这个 Gibbs 自由能 <span class="math notranslate nohighlight">\(F(b)\)</span>，因为是用变分的方法去逼近真实的 Helmholtz 自由能，所以又称为变分自由能。对 Gibbs 自由能 <span class="math notranslate nohighlight">\(F(b)\)</span> 和 Helmholtz 自由能 <span class="math notranslate nohighlight">\(F_H\)</span> 作差，得</p>
+<div class="math notranslate nohighlight" id="equation-b7">
+<span class="eqno">(39)<a class="headerlink" href="#equation-b7" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+F(b)-F_H &amp;=\sum_{\boldsymbol{x}} b(\boldsymbol{x}) E(\boldsymbol{x})+\sum_{\boldsymbol{x}} b(\boldsymbol{x}) \ln b(\boldsymbol{x})+\ln Z \\
+&amp;=\sum_{\boldsymbol{x}} b(\boldsymbol{x})(-\ln Z-\ln P(\boldsymbol{x}))+\sum_{\boldsymbol{x}} b(\boldsymbol{x}) \ln b(\boldsymbol{x})+\ln Z \\
+&amp;=\sum_{\boldsymbol{x}} b(\boldsymbol{x}) \ln \frac{b(\boldsymbol{x})}{P(\boldsymbol{x})}=D_{KL}(b \| P)
+\end{aligned}
+\end{split}\]</div>
+<p>其中，第二步用到了由 <span class="math notranslate nohighlight">\(P(\boldsymbol{x})=\frac{e^{- E(\boldsymbol{x})}}{Z}\)</span> 得到的 <span class="math notranslate nohighlight">\(E(\boldsymbol{x})=-\ln Z-\ln P(\boldsymbol{x})\)</span>。可以看到，二者之差为一个KL散度的形式。</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span>Definition </span> (Kullback-Leibler 散度)</p>
+<section class="definition-content" id="proof-content">
+<p>KL散度是用来度量两个概率分布相似度的指标。假设对随机变量 <span class="math notranslate nohighlight">\(\xi\)</span> 存在两个概率分布 <span class="math notranslate nohighlight">\(P\)</span>、<span class="math notranslate nohighlight">\(Q\)</span>，定义从 <span class="math notranslate nohighlight">\(P\)</span> 到 <span class="math notranslate nohighlight">\(Q\)</span> 的KL散度为</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{D}_{\mathrm{KL}}(P \| Q)=\sum_i P(i) \ln \left(\frac{P(i)}{Q(i)}\right) \quad\text{或}\quad \int_{-\infty}^{\infty} p(\mathbf{x}) \ln \left(\frac{p(\mathbf{x})}{q(\mathbf{x})}\right) \mathrm{~d} \mathbf{x}
+\]</div>
+<p>可以证明，KL散度具有非负性。以离散形式为例：根据Jensen’s不等式</p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_{i=1}^n \lambda_i f\left(x_i\right) \leq f\left(\sum_{i=1}^n \lambda_i x_i\right), \quad\sum_{i=1}^n \lambda_i=1
+\]</div>
+<p>并且有 <span class="math notranslate nohighlight">\(\sum_i P(i)=1\)</span>、<span class="math notranslate nohighlight">\(\sum_i Q(i)=1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    \sum_i P(i) \ln \left(\frac{Q(i)}{P(i)}\right) \leq \ln\left(\sum_i P(i)\cdot \frac{Q(i)}{P(i)} \right)=\ln\left(\sum_i Q(i)\right)=\ln(1)=0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    \mathbb{D}_{\mathrm{KL}}(P \| Q)=-\sum_i P(i) \ln \left(\frac{Q(i)}{P(i)}\right) \geq 0
+\]</div>
+<p>当且仅当<span class="math notranslate nohighlight">\(P=Q\)</span>时取等号。</p>
+</section>
+</div><p>根据KL散度的非负性，可以知道 <span class="math notranslate nohighlight">\(F(b)-F_H=D_{KL}(b \| P)\geq 0\)</span>，即变分自由能的下限为Helmholtz自由能，此时分布 <span class="math notranslate nohighlight">\(b(x)=P(x)\)</span>。为了求解自由能，我们首先要给定 <span class="math notranslate nohighlight">\(b(x)\)</span> 的一个具体形式。接下来两节分别给出了 <span class="math notranslate nohighlight">\(b(x)\)</span> 的两种近似：平均场和 Bethe 近似。</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">变分平均场理论与信念传播算法</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Sec2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sec 2. 平均场近似</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 李宇豪<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

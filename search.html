@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -112,7 +113,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Preface
+                    前言
                 </a>
             </li>
         </ul>
@@ -124,18 +125,82 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="preface.html">
-   Introduction
+   引言
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CavityMethod.html">
-   空腔方法与消息传递方程
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Chapter1/intro.html">
+   自旋玻璃与空腔方法
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1/Sec1.html">
+     Sec 1. 空腔方法求解配分函数
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1/Sec2.html">
+     Sec 2. 从空腔方法到消息传递算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1/Sec3.html">
+     Sec 3. 空腔方法的应用
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1/supplementary.html">
+     Appendix A. 补充材料
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1/Assignment1.html">
+     Appendix B. 空腔方法求解 S-K 模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter1/Assignment2.html">
+     Appendix C. Sourlas 码的程序模拟
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="VMFandBP.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Chapter2/intro.html">
    变分平均场理论与信念传播算法
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter2/Sec1.html">
+     Sec 1. 变分方法与变分自由能
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter2/Sec2.html">
+     Sec 2. 平均场近似
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter2/Sec3.html">
+     Sec 3. Bethe 近似
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Chapter2/supplementary.html">
+     Appendix A. 补充材料
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="MC.html">
@@ -160,23 +225,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="Hopfield.html">
    Hopfield 网络的统计物理
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  作业
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Cavity_Assignment1.html">
-   用空腔方法求解 S-K 模型及数值模拟
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Cavity_Assignment2.html">
-   Sourlas 编码的数值模拟与探究
   </a>
  </li>
 </ul>
