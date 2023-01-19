@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>S-K模型的复本对称解 &#8212; 神经网络的统计力学（中文笔记）</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="*技术与排版规范" href="../format.html" />
+    <link rel="prev" title="Hopfield网络的统计物理" href="../Chapter7/intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">神经网络的统计力学（中文笔记）</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    前言
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  课程笔记
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../preface.html">
+   引言
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter1/intro.html">
+   自旋玻璃与空腔方法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Sec1.html">
+     Sec 1. 空腔方法求解配分函数
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Sec2.html">
+     Sec 2. 从空腔方法到消息传递算法
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Sec3.html">
+     Sec 3. 空腔方法的应用
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/supplementary.html">
+     Appendix A. 补充材料
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Assignment1.html">
+     Appendix B. 空腔方法求解 S-K 模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter1/Assignment2.html">
+     Appendix C. Sourlas 码的程序模拟
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Chapter2/intro.html">
+   变分平均场理论与信念传播算法
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Sec1.html">
+     Sec 1. 变分方法与变分自由能
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Sec2.html">
+     Sec 2. 平均场近似
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Sec3.html">
+     Sec 3. Bethe 近似
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/supplementary.html">
+     Appendix A. 补充材料
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Assignment1.html">
+     Appendix B. 树状图中Bethe近似对应的概率分布
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Assignment2.html">
+     Appendix C. 用信念传播算法求解S-K模型
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Chapter2/Assignment3.html">
+     Appendix D. 用Bethe近似求解逆伊辛问题
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter3/intro.html">
+   统计物理中的蒙特卡洛方法
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter4/intro.html">
+   高温展开
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter5/intro.html">
+   西森线
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter6/intro.html">
+   随机能量模型
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Chapter7/intro.html">
+   Hopfield网络的统计物理
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  自旋玻璃
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   S-K模型的复本对称解
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../format.html">
+   *技术与排版规范
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/SpinGlass/RS.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#replica-trick">
+   1 复本技巧 Replica trick
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2 复本对称解
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>S-K模型的复本对称解</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#replica-trick">
+   1 复本技巧 Replica trick
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   2 复本对称解
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="s-k">
+<h1>S-K模型的复本对称解<a class="headerlink" href="#s-k" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>作者：李宇豪</p></li>
+<li><p>日期：2023年1月19日</p></li>
+<li><p>更新：2023年1月19日</p></li>
+<li><p>许可：<a rel="license" href="http://creativecommons。org/licenses/by-nc-sa/4。0/">CC BY-NC-SA 4.0</a></p></li>
+</ul>
+<hr class="docutils" />
+<p>S-K模型的哈密顿量写为</p>
+<div class="math notranslate nohighlight" id="equation-sg1">
+<span class="eqno">(92)<a class="headerlink" href="#equation-sg1" title="Permalink to this equation">#</a></span>\[
+    H=-\sum_{i&lt;j} J_{i j} S_i S_j-h \sum_i S_i
+\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-font-color-blue-1-font admonition">
+<p class="admonition-title">注 <font color="blue">1</font></p>
+<p>注意这里的高斯分布含有归一化因子<span class="math notranslate nohighlight">\(1/N\)</span>，这是为了保证哈密顿量 <span class="math notranslate nohighlight">\(\mathcal{O}(N)\)</span>，即是一个广延量。</p>
+</div>
+</aside>
+<p>其中，<span class="math notranslate nohighlight">\(J_{ij}\)</span> 服从高斯分布 <span class="math notranslate nohighlight">\(J_{ij}\sim N\left(\frac{J_0}{N},\frac{J^2}{N}\right)\)</span><sup><font color="blue">1</font></sup>。系统的配分函数为</p>
+<div class="math notranslate nohighlight" id="equation-sg2">
+<span class="eqno">(93)<a class="headerlink" href="#equation-sg2" title="Permalink to this equation">#</a></span>\[
+    Z=\mathrm{Tr~}e^{-\beta H}
+\]</div>
+<p>其中<span class="math notranslate nohighlight">\(\mathrm{Tr~}:=\sum_{\{S_i=\pm 1\}}\)</span>，称为 trace operation。利用配分函数 <a class="reference internal" href="#equation-sg2">(93)</a> 可以计算自由能：</p>
+<div class="math notranslate nohighlight" id="equation-sg3">
+<span class="eqno">(94)<a class="headerlink" href="#equation-sg3" title="Permalink to this equation">#</a></span>\[
+    F=-T\log Z=-T\log \mathrm{Tr~}e^{-\beta H}
+\]</div>
+<p>注意到，<span class="math notranslate nohighlight">\(F\)</span>是<span class="math notranslate nohighlight">\(Z\)</span>的函数，而 <span class="math notranslate nohighlight">\(Z\)</span>是 <span class="math notranslate nohighlight">\(\boldsymbol{J}\equiv\{J_{ij}\}\)</span> 的函数。对于一个确定的系统，<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quenched）。为了获得最终的自由能，我们需要将<span class="math notranslate nohighlight">\(F\)</span>对<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>取平均，也即对 <span class="math notranslate nohighlight">\(\log Z\)</span>取平均（称为构型平均，configurational average）：</p>
+<div class="math notranslate nohighlight" id="equation-sg4">
+<span class="eqno">(95)<a class="headerlink" href="#equation-sg4" title="Permalink to this equation">#</a></span>\[
+    [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
+\]</div>
+<section id="replica-trick">
+<h2>1 复本技巧 Replica trick<a class="headerlink" href="#replica-trick" title="Permalink to this headline">#</a></h2>
+<p>由于 <span class="math notranslate nohighlight">\(\log Z\)</span> 对<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>的依赖关系是十分复杂的，我们无法直接求  <span class="math notranslate nohighlight">\(\log Z\)</span> 。复本技巧（replica trick）是一个可以将对 <span class="math notranslate nohighlight">\(\log Z\)</span> 的构型平均转移到对 <span class="math notranslate nohighlight">\(Z^n\)</span> 的构型平均的技巧。</p>
+<div class="admonition-replica-trick admonition">
+<p class="admonition-title">replica trick</p>
+<div class="math notranslate nohighlight">
+\[
+[\log Z]=\lim_{n\to 0}\frac{[Z^n]-1}{n}    
+\]</div>
+<p>这个式子的意义是，准备一个系统的 <span class="math notranslate nohighlight">\(n\)</span> 份复本，计算其配分函数的乘积的构型平均，然后取极限 <span class="math notranslate nohighlight">\(n\to 0\)</span>。</p>
+</div>
+<p>利用复本技巧，我们可以写出配分函数的复本平均（replica average）：</p>
+<div class="math notranslate nohighlight" id="equation-sg5">
+<span class="eqno">(96)<a class="headerlink" href="#equation-sg5" title="Permalink to this equation">#</a></span>\[
+\left[Z^n\right]=\int \prod_{i&lt;j} d J_{i j} P\left(J_{i j}\right)\mathrm{~~Tr~} \exp \left(\beta \sum_{i&lt;j} J_{i j} \sum_{\alpha=1}^n S_i^\alpha S_j^\alpha+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right)
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\mathrm{Tr~}=\sum_{\left\{\mathbf{s}^\alpha, \mathbf{s}^\beta, \ldots, \mathbf{s}^n\right\}}\)</span>。将 <span class="math notranslate nohighlight">\(P\left(J_{i j}\right)\)</span> 的表达式</p>
+<div class="math notranslate nohighlight" id="equation-sg6">
+<span class="eqno">(97)<a class="headerlink" href="#equation-sg6" title="Permalink to this equation">#</a></span>\[
+    P\left(J_{i j}\right)=\frac{1}{J} \sqrt{\frac{N}{2 \pi}} \exp \left\{-\frac{N}{2 J^2}\left(J_{i j}-\frac{J_0}{N}\right)^2\right\}
+\]</div>
+<p>代入上式，然后进行一个看不懂的积分，得</p>
+<div class="math notranslate nohighlight" id="equation-sg7">
+<span class="eqno">(98)<a class="headerlink" href="#equation-sg7" title="Permalink to this equation">#</a></span>\[
+\left[Z^n\right]=C_1 \mathrm{~~Tr~} \exp \left\{\frac{1}{N} \sum_{i&lt;j}\left(\frac{1}{2} \beta^2 J^2 \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\beta J_0 \sum_\alpha S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
+\]</div>
+<p>利用如下技巧</p>
+<div class="math notranslate nohighlight" id="equation-sg7-5">
+<span class="eqno">(99)<a class="headerlink" href="#equation-sg7-5" title="Permalink to this equation">#</a></span>\[
+    \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta=$ $2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\sum_\alpha\left(S_i^\alpha S_j^\alpha\right)^2=2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n
+\]</div>
+<p>式 <a class="reference internal" href="#equation-sg7">(98)</a> 的指数部分改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg8">
+<span class="eqno">(100)<a class="headerlink" href="#equation-sg8" title="Permalink to this equation">#</a></span>\[
+\exp \left\{\frac{1}{N} \sum_{i&lt;j}\left(\frac{1}{2} \beta^2 J^2\left(2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n\right)+\beta J_0 \sum_\alpha S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
+\]</div>
+<p>注意到指数上第一项中的求和号中含有与<span class="math notranslate nohighlight">\(i\)</span>、<span class="math notranslate nohighlight">\(j\)</span>无关的项<span class="math notranslate nohighlight">\(\frac{1}{2} \beta^2 J^2n\)</span>，并且求和 <span class="math notranslate nohighlight">\(\sum_{i&lt;j}\)</span> 共有 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 项，因此将常数项提到前面，改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg9">
+<span class="eqno">(101)<a class="headerlink" href="#equation-sg9" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\left[Z^n\right]=&amp;C_1 \exp \left(\frac{(N-1) \beta^2 J^2 n}{4}\right) \\
+&amp;\mathrm{Tr~} \exp \left\{\frac{1}{N} \sum_{i&lt;j}\left(\beta^2 J^2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\beta J_0 \sum_\alpha S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
+\end{aligned}
+\end{split}\]</div>
+<p>并且，根据一个技巧 <span class="math notranslate nohighlight">\(\left(\sum_iA_i\right)^2=\sum_iA_i^2+\sum_{i\neq j}A_iA_j=\sum_iA_i^2+2\sum_{i&lt; j}A_iA_j\)</span>，即</p>
+<div class="math notranslate nohighlight" id="equation-sg10">
+<span class="eqno">(102)<a class="headerlink" href="#equation-sg10" title="Permalink to this equation">#</a></span>\[
+    \sum_{i&lt; j}A_iA_j=\frac{1}{2}\left(\left(\sum_iA_i\right)^2-\sum_iA_i^2\right)
+\]</div>
+<p>可以分别改写</p>
+<div class="math notranslate nohighlight" id="equation-sg11">
+<span class="eqno">(103)<a class="headerlink" href="#equation-sg11" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\frac{1}{N} \sum_{i&lt;j} \beta^2 J^2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta &amp; =\frac{\beta^2 J^2}{2 N}\left(\sum_{\alpha&lt;\beta}\left(\sum_i S_i^\alpha S_i^\beta\right)^2-\sum_i \sum_{\alpha&lt;\beta}  (S_i^\alpha)^2 (S_i^\beta)^2\right) \\
+&amp; =\frac{\beta^2 J^2}{2 N} \sum_{\alpha&lt;\beta}\left(\sum_i S_i^\alpha S_i^\beta\right)^2-\frac{\beta^2 J^2}{2 N} \sum_i \sum_{\alpha&lt;\beta} 1
+\end{aligned}
+\end{split}\]</div>
+<p>和</p>
+<div class="math notranslate nohighlight" id="equation-sg12">
+<span class="eqno">(104)<a class="headerlink" href="#equation-sg12" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\frac{\beta J_0}{N} \sum_{i&lt;j} \sum_\alpha S_i^\alpha S_j^\alpha&amp;=\frac{\beta J_0}{2 N}\left(\sum_\alpha\left(\sum_i S_i^\alpha\right)^2 -\sum_i \sum_{\alpha}  (S_i^\alpha)^2 \right) \\
+&amp;=\frac{\beta J_0}{2 N} \sum_\alpha\left(\sum_i S_i^\alpha\right)^2-\frac{\beta J_0}{2 N} \sum_i \sum_\alpha 1
+\end{aligned}
+\end{split}\]</div>
+<p>忽略掉上两式中的常数项，并且根据大<span class="math notranslate nohighlight">\(N\)</span>极限下的近似<span class="math notranslate nohighlight">\(\exp \left(\frac{(N-1) \beta^2 J^2 n}{4}\right)\approx \exp \left(\frac{N \beta^2 J^2 n}{4}\right)\)</span>，式 <a class="reference internal" href="#equation-sg9">(101)</a> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg13">
+<span class="eqno">(105)<a class="headerlink" href="#equation-sg13" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\left[Z^n\right]&amp;=C_2 \exp \left(\frac{N \beta^2 J^2 n}{4}\right)\\
+&amp;=\mathrm{Tr~} \exp \left\{\frac{\beta^2 J^2}{2 N} \sum_{\alpha&lt;\beta}\left(\sum_i S_i^\alpha S_i^\beta\right)^2+\frac{\beta J_0}{2 N} \sum_\alpha\left(\sum_i S_i^\alpha\right)^2+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
+\end{aligned}
+\end{split}\]</div>
+<p>再利用如下变换将<span class="math notranslate nohighlight">\(\left(\sum_i S_i^\alpha S_i^\beta\right)^2\)</span> 和 <span class="math notranslate nohighlight">\(\left(\sum_i S_i^\alpha\right)^2\)</span> 线性化。</p>
+<div class="admonition-hubbard-stratonovich-transform admonition">
+<p class="admonition-title">Hubbard-Stratonovich transform</p>
+<div class="math notranslate nohighlight">
+\[
+\exp \left(\frac{y^2}{2}\right)=\int_{-\infty}^{\infty} \frac{\mathrm{d} x}{\sqrt{2 \pi}} \exp \left(-\frac{x^2}{2}\right) \exp (x y)
+\]</div>
+</div>
+<p>令 <span class="math notranslate nohighlight">\(x:=\beta J\sqrt{N}q_{\alpha\beta}\)</span>，<span class="math notranslate nohighlight">\(y:=\beta J\sum_i S_i^\alpha S_i^\beta/\sqrt{N}\)</span>，有</p>
+<div class="math notranslate nohighlight" id="equation-sg14">
+<span class="eqno">(106)<a class="headerlink" href="#equation-sg14" title="Permalink to this equation">#</a></span>\[
+\exp \frac{\beta^2 J^2}{2 N}\left(\sum_i S_i^\alpha S_i^\beta\right)^2  =\int_{-\infty}^{\infty} \frac{\mathrm{d} q_{\alpha \beta}}{\sqrt{2 \pi}} \exp \left(-\beta^2 J^2 N \frac{q_{\alpha \beta}^2}{2}+\beta^2 J^2 q_{\alpha \beta} \sum_i S_i^\alpha S_i^\beta\right)
+\]</div>
+<p>令 <span class="math notranslate nohighlight">\(x:=\sqrt{\beta JN}m_{\alpha}\)</span>，<span class="math notranslate nohighlight">\(y:=\sqrt{\beta J/N}\sum_i S_i^\alpha\)</span>，有</p>
+<div class="math notranslate nohighlight" id="equation-sg15">
+<span class="eqno">(107)<a class="headerlink" href="#equation-sg15" title="Permalink to this equation">#</a></span>\[
+\exp \frac{\beta J_0}{2 N}\left(\sum_i S_i^\alpha\right)^2 =\int_{-\infty}^{\infty} \frac{\mathrm{d} m_\alpha}{\sqrt{2 \pi}} \exp \left(-\beta J_0 N m_\alpha^2+\beta J_0 m_\alpha \sum_i S_i^\alpha\right)
+\]</div>
+<p>其中，忽略了积分号前面的常数（由 <span class="math notranslate nohighlight">\(\mathrm{d}x\)</span> 带来的）。式 <a class="reference internal" href="#equation-sg13">(105)</a> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg16">
+<span class="eqno">(108)<a class="headerlink" href="#equation-sg16" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\left[Z^n\right]=&amp;\;C_3 \exp \left(\frac{N \beta^2 J^2 n}{4}\right) \int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} \mathrm{d}q_{\alpha \beta} \prod_\alpha \mathrm{d}m_\alpha\\
+&amp;\mathrm{Tr~} \exp \left(-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta} q_{\alpha \beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha m_\alpha^2\right) \\
+&amp;\exp \left(\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} \sum_i S_i^\alpha S_i^\beta+\beta J_0 \sum_\alpha m_\alpha \sum_i S_i^\alpha\right) \exp \left(\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right)\\
+=&amp;\;C_3 \exp \left(\frac{N \beta^2 J^2 n}{4}\right) \int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} \mathrm{d}q_{\alpha \beta} \prod_\alpha \mathrm{d}m_\alpha\\
+&amp;\;\exp \left(-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta} q_{\alpha \beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha m_\alpha^2\right) \\
+&amp;\;\mathrm{Tr~}\exp \left(\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} \sum_i S_i^\alpha S_i^\beta+\beta \sum_\alpha\left(J_0 m_\alpha+h\right) \sum_i S_i^\alpha\right)
+\end{aligned}
+\end{split}\]</div>
+<p>将最后一项指数上的求和号拿下来成为连乘号，即</p>
+<div class="math notranslate nohighlight" id="equation-sg17">
+<span class="eqno">(109)<a class="headerlink" href="#equation-sg17" title="Permalink to this equation">#</a></span>\[
+    \prod_{i=1}^N \mathrm{Tr~}\exp \left(\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} S_i^\alpha S_i^\beta+\beta \sum_\alpha\left(J_0 m_\alpha+h\right)  S_i^\alpha\right)
+\]</div>
+<p>令</p>
+<div class="math notranslate nohighlight" id="equation-sg18">
+<span class="eqno">(110)<a class="headerlink" href="#equation-sg18" title="Permalink to this equation">#</a></span>\[
+    L:=\beta^2 J^2 \sum_{\alpha&lt;\beta} q_{\alpha \beta} S_i^\alpha S_i^\beta+\beta \sum_\alpha\left(J_0 m_\alpha+h\right)  S_i^\alpha
+\]</div>
+<p>考虑到连乘中的每一项都是对相同的变量 <span class="math notranslate nohighlight">\(\left\{\mathbf{s}^\alpha, \mathbf{s}^\beta, \ldots, \mathbf{s}^n\right\}\)</span> 的相同取值 <span class="math notranslate nohighlight">\(\{\pm 1\}\)</span> 进行的，与 <span class="math notranslate nohighlight">\(i\)</span> 无关，因此</p>
+<div class="math notranslate nohighlight" id="equation-sg19">
+<span class="eqno">(111)<a class="headerlink" href="#equation-sg19" title="Permalink to this equation">#</a></span>\[
+    \prod_{i=1}^N \mathrm{Tr~}\exp \left(L\right)=\Big(\mathrm{Tr~}\exp \left(L\right)\Big)^N=\exp \Big\{ N\log\Big(\mathrm{Tr~}\exp \left(L\right)\Big) \Big\}
+\]</div>
+<p>式 <a class="reference internal" href="#equation-sg16">(108)</a> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg20">
+<span class="eqno">(112)<a class="headerlink" href="#equation-sg20" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\left[Z^n\right] =&amp;C_4 \exp \left(\frac{N \beta^2 J^2 n}{4}\right) \int_{-\infty}^{\infty} \prod_{\alpha&lt;\beta} d q_{\alpha \beta} \prod_\alpha d m_\alpha \\
+&amp; \exp \left\{-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta} q_{\alpha \beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha m_\alpha^2+N\log\Big(\mathrm{Tr~}\exp \left(L\right)\Big)\right\}
+\end{aligned}
+\end{split}\]</div>
+<p>接下来用鞍点近似法（method of steepest descent）来考虑这个积分</p>
+<div class="admonition-method-of-steepest-descent admonition">
+<p class="admonition-title">method of steepest descent</p>
+<p>考虑如下积分在 <span class="math notranslate nohighlight">\(\lambda\)</span> 为正的大实数时的渐进行为</p>
+<div class="math notranslate nohighlight">
+\[
+    I(\lambda) =\int_C\mathrm{d}z e^{\lambda g(z)}
+\]</div>
+<p>可以用下式近似作为积分结果</p>
+<div class="math notranslate nohighlight">
+\[
+I(\lambda)=e^{i \theta} \sqrt{\frac{2 \pi}{\lambda\left|g^{\prime \prime}\left(z_0\right)\right|}} e^{\lambda g\left(z_0\right)}[1+\mathcal{O}(1 / \lambda)]
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(z_0\)</span>是函数的鞍点</p>
+</div>
+<p>式 <a class="reference internal" href="#equation-sg20">(112)</a> 的积分中，最后一项指数上与 <span class="math notranslate nohighlight">\(N\)</span> 成正比，在大 <span class="math notranslate nohighlight">\(N\)</span>极限下，积分结果由指数上的宗量的最大值决定。即</p>
+<div class="math notranslate nohighlight" id="equation-sg21">
+<span class="eqno">(113)<a class="headerlink" href="#equation-sg21" title="Permalink to this equation">#</a></span>\[
+\left[Z^n\right]=C_4 \exp \left\{\frac{N \beta^2 J^2 n}{4}-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta}\left(q_{\alpha \beta}^{\star}\right)^2-\frac{\beta J_0 N}{2} \sum_\alpha\left(m_\alpha^{\star}\right)^2+N \log \mathrm{Tr~} \exp (L)\right\}
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\left\{q_{\alpha \beta}^{\star}, m_\alpha^{\star}\right\}=\arg \max _{\left\{q_{\alpha \beta}, m_\alpha\right\}} E\)</span></p>
+<div class="math notranslate nohighlight" id="equation-sg22">
+<span class="eqno">(114)<a class="headerlink" href="#equation-sg22" title="Permalink to this equation">#</a></span>\[
+\begin{aligned}
+E:=-\frac{\beta^2 J^2 N}{2} \sum_{\alpha&lt;\beta} q_{\alpha \beta}^2-\frac{\beta J_0 N}{2} \sum_\alpha m_\alpha^2+N \log \mathrm{Tr~}\exp (L) 
+\end{aligned}
+\]</div>
+<p>令 <span class="math notranslate nohighlight">\(\frac{\partial}{\partial q_{\alpha\beta}}E=0\)</span>，得</p>
+<div class="math notranslate nohighlight" id="equation-sg23">
+<span class="eqno">(115)<a class="headerlink" href="#equation-sg23" title="Permalink to this equation">#</a></span>\[
+q_{\alpha \beta}^{\star}=\frac{1}{\beta^2 J^2} \frac{\partial}{\partial q_{\alpha \beta}} \log \mathrm{Tr~} \exp (L)=\frac{1}{\beta^2 J^2} \frac{\mathrm{Tr~} \exp (L) \beta^2 J^2}{\mathrm{Tr~}\exp (L)} S^\alpha S^\beta=\frac{\mathrm{Tr~} S^\alpha S^\beta \exp (L)}{\mathrm{Tr~}\exp (L)}
+\]</div>
+<p>令 <span class="math notranslate nohighlight">\(\frac{\partial}{\partial m_{\alpha}}E=0\)</span>，得</p>
+<div class="math notranslate nohighlight" id="equation-sg24">
+<span class="eqno">(116)<a class="headerlink" href="#equation-sg24" title="Permalink to this equation">#</a></span>\[
+m_\alpha^{\star}=\frac{1}{\beta J_0} \frac{\partial}{\partial m_\alpha} \log \mathrm{Tr~}  \exp (L)=\frac{1}{\beta J_0}\frac{\mathrm{Tr~}  \exp (L)\beta J_0}{\mathrm{Tr~}  \exp (L)} S^\alpha=\frac{\mathrm{Tr~}  S^\alpha \exp (L)}{\mathrm{Tr~}  \exp (L)}
+\]</div>
+<p>再将式 <a class="reference internal" href="#equation-sg21">(113)</a> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg24-5">
+<span class="eqno">(117)<a class="headerlink" href="#equation-sg24-5" title="Permalink to this equation">#</a></span>\[
+\left[Z^n\right]=C_4 \exp \left\{N n\left(\frac{\beta^2 J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha \beta}^{\star}\right)^2-\frac{\beta J_0}{2 n} \sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log\mathrm{Tr~} \exp (L)\right)\right\}
+\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-font-color-blue-2-font admonition">
+<p class="admonition-title">注 <font color="blue">2</font></p>
+<p>这里其实是一个“<span class="math notranslate nohighlight">\(0\cdot\infty\)</span>”极限未定式，应当讨论无穷的阶数。但是现在先姑且认为<span class="math notranslate nohighlight">\(0\cdot\infty=0\)</span></p>
+</div>
+</aside>
+<p>考虑 <span class="math notranslate nohighlight">\(n\to 0\)</span> 的极限，此时指数上的宗量趋于零<font color="blue">2</font></sup>，利用麦克劳林展开（Maclaurin’s series）得</p>
+<div class="math notranslate nohighlight" id="equation-sg25">
+<span class="eqno">(118)<a class="headerlink" href="#equation-sg25" title="Permalink to this equation">#</a></span>\[
+\left[Z^n\right] \approx 1+N n\left\{\frac{\beta^2 J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha \beta}^{\star}\right)^2-\frac{\beta J_0}{2 n} \sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log \mathrm{Tr~} \exp (L)\right\}
+\]</div>
+<p>至此，我们要求的构型平均 <span class="math notranslate nohighlight">\(\left[\log Z\right] \)</span>可以写为</p>
+<div class="math notranslate nohighlight" id="equation-sg26">
+<span class="eqno">(119)<a class="headerlink" href="#equation-sg26" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\left[\log Z\right] &amp; = N\lim _{n \rightarrow 0} \frac{\left[Z^n\right]-1}{N n} \\
+&amp; = N\lim _{n \rightarrow 0}\left\{\frac{\beta^2 J^2}{4}-\frac{\beta^2 J^2}{2 n} \sum_{\alpha&lt;\beta}\left(q_{\alpha \beta}^{\star}\right)^2-\frac{\beta J_0}{2 n} \sum_\alpha\left(m_\alpha^{\star}\right)^2+\frac{1}{n} \log \mathrm{Tr~}  \exp (L)\right\}\\
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="id1">
+<h2>2 复本对称解<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>要进一步求解这个问题，就需要考虑参数 <span class="math notranslate nohighlight">\(q_{\alpha\beta}\)</span>、<span class="math notranslate nohighlight">\(m_\alpha\)</span>对<span class="math notranslate nohighlight">\(\alpha\)</span>、<span class="math notranslate nohighlight">\(\beta\)</span>的依赖关系。一个朴素的假设是，各个复本都是等价的，<span class="math notranslate nohighlight">\(q_{\alpha\beta}\)</span>、<span class="math notranslate nohighlight">\(m_\alpha\)</span>与<span class="math notranslate nohighlight">\(\alpha\)</span>、<span class="math notranslate nohighlight">\(\beta\)</span>无关，即 <span class="math notranslate nohighlight">\(\forall \alpha, \beta: q_{\alpha \beta}=q, m_\alpha=m\)</span>，这就是所谓的复本对称假设。</p>
+<p>根据这个假设，式 <a class="reference internal" href="#equation-sg26">(119)</a> 可以写为</p>
+<div class="math notranslate nohighlight" id="equation-sg27">
+<span class="eqno">(120)<a class="headerlink" href="#equation-sg27" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+[\log Z] &amp; =N\lim _{n \rightarrow 0}\left\{\frac{\beta^2 J^2}{4}-\frac{\beta^2 J^2(n-1)}{4} q^2-\frac{\beta J_0}{2} m^2+\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\right\} \\
+&amp; =N\left\{\frac{\beta^2 J^2}{4}\left(1+q^2\right)-\frac{\beta J_0}{2} m^2+\lim _{n \rightarrow 0} \frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\right\}
+\end{aligned}
+ \end{split}\]</div>
+<p>其中第一步用到了求和 <span class="math notranslate nohighlight">\(\sum_{\alpha&lt;\beta}\)</span> 共有 <span class="math notranslate nohighlight">\(n(n-1)/2\)</span> 项，并且</p>
+<div class="math notranslate nohighlight" id="equation-sg28">
+<span class="eqno">(121)<a class="headerlink" href="#equation-sg28" title="Permalink to this equation">#</a></span>\[
+    L*:=L(q_{\alpha \beta}=q, m_\alpha=m)=\beta^2 J^2 q \sum_{\alpha&lt;\beta} S^\alpha S^\beta+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha
+\]</div>
+<p>考虑式 <a class="reference internal" href="#equation-sg27">(120)</a> 的最后一项</p>
+<div class="math notranslate nohighlight" id="equation-sg29">
+<span class="eqno">(122)<a class="headerlink" href="#equation-sg29" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\\
+&amp;=\frac{1}{n} \log \mathrm{Tr~}\exp \left(\beta^2 J^2 q \sum_{\alpha&lt;\beta} S^\alpha S^\beta+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\\
+&amp;=\frac{1}{n} \log \mathrm{Tr~}\exp \left\{\frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2-\frac{1}{2}\beta^2 J^2 qn+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right\}\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2} \right) \mathrm{Tr~}\exp 
+\left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha \right] \right\}
+\end{aligned}
+\end{split}\]</div>
+<p>对于<span class="math notranslate nohighlight">\(\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]\)</span>，再次使用Hubbard-Stratonovich变换对其线性化：令<span class="math notranslate nohighlight">\(x:=\hat{z}\beta J\sqrt{q}\)</span>，<span class="math notranslate nohighlight">\(y:=\beta J\sqrt{q}\sum_\alpha S^\alpha\)</span>，有</p>
+<div class="math notranslate nohighlight" id="equation-sg30">
+<span class="eqno">(123)<a class="headerlink" href="#equation-sg30" title="Permalink to this equation">#</a></span>\[
+    \exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]=\int_C \mathrm{d}\hat{z}\sqrt{\frac{\beta^2 J^2 q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2 q\right)\exp\left(\beta^2 J^2 q\hat{z}\sum_{\alpha} S^\alpha\right)
+ \]</div>
+<p>注意到</p>
+<div class="math notranslate nohighlight" id="equation-sg31">
+<span class="eqno">(124)<a class="headerlink" href="#equation-sg31" title="Permalink to this equation">#</a></span>\[
+    \mathrm{d}\hat{z}\sqrt{\frac{\beta^2 J^2 q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2 q\right)=\mathrm{d}\hat{z}p(\hat{z}),\quad p(\hat{z}):=\sqrt{\frac{\beta^2 J^2 q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2 q\right)
+ \]</div>
+<p>即 <span class="math notranslate nohighlight">\(\hat{z}\)</span> 是一个服从 <span class="math notranslate nohighlight">\(p(\hat{z})\)</span> 的高斯变量，将其变换为标准高斯，即令 <span class="math notranslate nohighlight">\(z=\sqrt{\beta^2 J^2 q}\hat{z}\)</span>，则 <span class="math notranslate nohighlight">\(z\sim\mathcal{N}(0,1)\)</span>。式 <a class="reference internal" href="#equation-sg30">(123)</a> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg32">
+<span class="eqno">(125)<a class="headerlink" href="#equation-sg32" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]&amp;=\int_C \frac{\mathrm{d}z}{\sqrt{2\pi}} \exp\left(-\frac{z^2}{2}\right)\exp\left(\beta J\sqrt{q}z\sum_{\alpha} S^\alpha\right)\\
+&amp;=\int_C Dz\exp\left(\beta J\sqrt{q}z\sum_{\alpha} S^\alpha\right)
+\end{aligned}
+ \end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(Dz=\mathrm{d}z\exp\left(-z^2/2\right)/\sqrt{2\pi} \)</span> 是标准高斯测度。因此式 <a class="reference internal" href="#equation-sg29">(122)</a> 写为</p>
+<div class="math notranslate nohighlight" id="equation-sg33">
+<span class="eqno">(126)<a class="headerlink" href="#equation-sg33" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2} \right) \mathrm{Tr~}\exp 
+\left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha \right] \right\}\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2} \right) \mathrm{Tr~}\int_C Dz\exp\left(\beta J\sqrt{q}z\sum_{\alpha} S^\alpha+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\right\}
+\end{aligned}
+ \end{split}\]</div>
+<p>对于上式最后一项，有</p>
+<div class="math notranslate nohighlight" id="equation-sg34">
+<span class="eqno">(127)<a class="headerlink" href="#equation-sg34" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;\mathrm{Tr~}\int_C Dz\exp\left(\beta J\sqrt{q}z\sum_{\alpha} S^\alpha+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha\right)\\
+&amp;=\int_C Dz\mathrm{~Tr~}\exp\left[\sum_{\alpha} S^\alpha\Big(\beta J\sqrt{q}z+\beta\left(J_0 m+h\right)\Big)\right]\\
+&amp;=\int_C Dz \prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\Big(\beta J\sqrt{q}z+\beta\left(J_0 m+h\right)\Big)\right]\\
+&amp;=\int_C Dz \prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\beta\hat{H}(z)\right]
+\end{aligned}
+ \end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\hat{H}(z):=J\sqrt{q}z+\left(J_0 m+h\right)\)</span>。\
+注意到上式最后一步连乘中的每一项都是同样对 <span class="math notranslate nohighlight">\(\{ S^\alpha =\pm 1 \}\)</span> 求和，因此连乘可以转为指数</p>
+<div class="math notranslate nohighlight" id="equation-sg35">
+<span class="eqno">(128)<a class="headerlink" href="#equation-sg35" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\beta\hat{H}(z)\right]&amp;=\prod_{\alpha=1}^n \left\{ \exp\Big(-\beta\hat{H}(z)\Big) +\exp\Big(\beta\hat{H}(z)\Big) \right\}\\
+&amp;=\left\{ 2\cosh\Big(\beta\hat{H}(z)\Big) \right\}^n=\exp\left\{n\log \left[2\cosh\Big(\beta\hat{H}(z)\Big) \right]\right\}
+\end{aligned}
+ \end{split}\]</div>
+<p>式 <a class="reference internal" href="#equation-sg29">(122)</a> 最终写为
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp;\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right)\\
+&amp;=\frac{1}{n} \log \left\{ \exp\left( -\frac{\beta^2 J^2 qn}{2} \right) \int Dz \exp\left\{n\log \left[2\cosh\Big(\beta\hat{H}(z)\Big) \right] \right\}\right\}\\
+&amp;=\frac{1}{n} \log \int Dz~ \exp\left\{n\log \left[2\cosh\Big(\beta\hat{H}(z)\Big)\right]  -\frac{n}{2}\beta^2 J^2 q \right\}
+\end{aligned}
+ \)</span>$ (sg36)</p>
+<p>当 <span class="math notranslate nohighlight">\(n\to 0\)</span>时，利用麦克劳林展开</p>
+<div class="math notranslate nohighlight" id="equation-sg37">
+<span class="eqno">(129)<a class="headerlink" href="#equation-sg37" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\frac{1}{n} \log \mathrm{Tr~} \exp \left(L*\right) &amp;\approx \frac{1}{n} \log \left\{1+n \int D z~ \log\left[ 2\cosh\Big(\beta\hat{H}(z)\Big)\right]-\frac{n}{2} \beta^2 J^2 q\int D z\right\}\\
+&amp;\approx \int D z~ \log\left[ 2 \cosh \Big(\beta\hat{H}(z)\Big)\right] -\frac{1}{2} \beta^2 J^2 q
+\end{aligned}
+ \end{split}\]</div>
+<p>其中，第一步是利用指数函数在 <span class="math notranslate nohighlight">\(0\)</span> 附近的展开，第二步是利用对数函数在 <span class="math notranslate nohighlight">\(1\)</span> 附近的展开。由此，式 <a class="reference internal" href="#equation-sg27">(120)</a> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-sg38">
+<span class="eqno">(130)<a class="headerlink" href="#equation-sg38" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+[\log Z] &amp;=N\left\{\frac{\beta^2 J^2}{4}\left(1+q^2\right)-\frac{\beta J_0}{2} m^2+\lim _{n \rightarrow 0} \left\{\int D z~ \log\left[ 2 \cosh \Big(\beta\hat{H}(z)\Big)\right] -\frac{1}{2} \beta^2 J^2 q\right\}\right\}\\
+&amp;=N\left\{\frac{\beta^2 J^2}{4}\left(1-q^2\right)-\frac{\beta J_0}{2} m^2+\int D z~ \log\left[ 2 \cosh \Big(\beta\hat{H}(z)\Big)\right]\right\}
+\end{aligned}
+ \end{split}\]</div>
+<p>根据</p>
+<div class="math notranslate nohighlight" id="equation-sg38-5">
+<span class="eqno">(131)<a class="headerlink" href="#equation-sg38-5" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;\frac{\partial}{\partial m}[\log Z]= -\beta J_0m+\int \mathrm{D} z(\tanh \beta \tilde{H}(z)) \cdot \beta J_0=0\\
+&amp;\frac{\partial}{\partial q}[\log Z]= \frac{\beta^2 J^2}{2}(q-1)+\int \mathrm{D} z(\tanh \beta \tilde{H}(z)) \cdot \frac{\beta J}{2 \sqrt{q}} z=0
+\end{aligned}
+ \end{split}\]</div>
+<p>得</p>
+<div class="math notranslate nohighlight" id="equation-sg39">
+<span class="eqno">(132)<a class="headerlink" href="#equation-sg39" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;m=\int D z \tanh \beta \tilde{H}(z)\\
+&amp;q=1-\int D z \operatorname{sech}^2 \beta \tilde{H}(z)=\int D z \tanh ^2 \beta \tilde{H}(z)
+\end{aligned}
+ \end{split}\]</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./SpinGlass"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../Chapter7/intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Hopfield网络的统计物理</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../format.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">*技术与排版规范</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 李宇豪<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
