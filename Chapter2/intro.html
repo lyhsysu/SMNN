@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sec 1. 变分方法与变分自由能" href="Sec1.html" />
-    <link rel="prev" title="Appendix C. Sourlas 编码的数值模拟" href="../Chapter1/Assignment2.html" />
+    <link rel="prev" title="Appendix C. Sourlas 码的程序模拟" href="../Chapter1/Assignment2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -162,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chapter1/Assignment2.html">
-     Appendix C. Sourlas 编码的数值模拟
+     Appendix C. Sourlas 码的程序模拟
     </a>
    </li>
   </ul>
@@ -383,6 +385,51 @@ title="Print to PDF"
 <p class="admonition-title">摘要</p>
 <p>摘要</p>
 </div>
+<div class="admonition-assignment-1 admonition">
+<p class="admonition-title">Assignment 1</p>
+<p>关于树状图中Bethe近似对应的分布</p>
+<p>在本篇Sec.3.1中，我们使用对树状图划分区域的方式得到了Bethe自由能</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+F_{\text {Bethe }}
+= &amp; -\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln f_a\left(\boldsymbol{x}_a\right)+\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right) \\
+&amp;-\sum_i\left(d_i-1\right) \sum_{x_i} b_i\left(x_i\right) \ln b_i\left(x_i\right)
+\end{aligned}
+\end{split}\]</div>
+<p>实际上，根据以上结果，以及变分自由能的定义</p>
+<div class="math notranslate nohighlight">
+\[
+F(b)=U(b)-H(b)
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(U(b)=\sum_x b(x) E(x) ,\; H(b)=-\sum_x b(x) \ln b(x)\)</span></p>
+<p>我们可以直接总结出 <span class="math notranslate nohighlight">\(b(x)\)</span> 的形式为</p>
+<div class="math notranslate nohighlight">
+\[
+b_{B A}(\boldsymbol{x})=\frac{\prod_a b_a\left(\boldsymbol{x}_a\right)}{\prod_i b_i\left(x_i\right)^{d_i-1}}
+\]</div>
+<p>文献[2]中提到这是在文献[3]中提出的一个“广为人知”的结论，但是我目前还没有理解文献[3]中的内容，留待以后补充。</p>
+<p>关于 <span class="math notranslate nohighlight">\(b_{BA}(x)\)</span>，有两个小题：(1) 证明 <span class="math notranslate nohighlight">\(b_{BA}(x)\)</span> 是归一化的；(2) 证明在无环的树状图中，<span class="math notranslate nohighlight">\(b_{BA}(x)\)</span> 是精确的</p>
+</div>
+<div class="admonition-assignment-2 admonition">
+<p class="admonition-title">Assignment 2</p>
+<p>用Belief Propagation求解SK model中的 <span class="math notranslate nohighlight">\(C_{ij}\)</span></p>
+</div>
+<div class="admonition-assignment-3 admonition">
+<p class="admonition-title">Assignment 3</p>
+<p>用Bethe Approximation求解inverse Ising problem</p>
+</div>
+<div class="admonition-reference admonition">
+<p class="admonition-title">Reference</p>
+<p>[1] Yedidia, Jonathan S., William T. Freeman, and Yair Weiss. “<a class="reference external" href="https://www.cs.huji.ac.il/course/2005/pmai/tirguls/TR2001-22.pdf">Understanding belief propagation and its generalizations.</a>” <em>Exploring artificial intelligence in the new millennium</em> 8.236-239 (2003): 0018-9448.</p>
+<p>[2] Yedidia, Jonathan S., William T. Freeman, and Yair Weiss. “<a class="reference external" href="https://www.cs.princeton.edu/courses/archive/spring06/cos598C/papers/YedidaFreemanWeiss2004.pdf">Constructing free-energy approximations and generalized belief propagation algorithms.</a>” <em>IEEE Transactions on information theory</em> 51.7 (2005): 2282-2312.</p>
+<p>[3] Cowell, Robert. “<a class="reference external" href="https://link.springer.com/chapter/10.1007/978-94-011-5014-9_2">Advanced inference in Bayesian networks.</a>” <em>Learning in graphical models</em>. Springer, Dordrecht, 1998. 27-49.</p>
+<p>[4] Heskes, Tom. “<a class="reference external" href="https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=98a0dd903f0eea9fc35bd5f163563252c118ca60">On the uniqueness of loopy belief propagation fixed points.</a>” <em>Neural Computation</em> 16.11 (2004): 2379-2413.</p>
+<p>[5] Yuille, Alan. “<a class="reference external" href="https://www.cs.jhu.edu/~ayuille/JHUcourses/VisionAsBayesianInference2020/10/BeliefPropagationMFT.pdf">Belief propagation, mean-field, and bethe approximations.</a>” <em>Dept. Stat., Univ. California, Los Angeles, Los Angeles, CA, USA, Tech. Rep</em> 4 (2010).</p>
+<p>[6] Yedidia, Jonathan S., William T. Freeman, and Yair Weiss. “<a class="reference external" href="https://merl.com/publications/docs/TR2001-16.pdf">Bethe free energy, Kikuchi approximations, and belief propagation algorithms.</a>” <em>Advances in neural information processing systems</em> 13 (2001): 689.</p>
+<p>[7] Eric P. Xing “<a class="reference external" href="https://www.cs.cmu.edu/~epxing/Class/10708-17/notes-17/10708-scribe-lecture12.pdf">Variational Inference: Loopy Belief Propagation</a>” Probabilistic Graphical Models (10-708, Spring 2017) Lecture notes, School of Computer Science, Carnegie Mellon University</p>
+<p>[8] Ricci-Tersenghi, Federico. “<a class="reference external" href="https://arxiv.org/abs/1112.4814">The Bethe approximation for solving the inverse Ising problem: a comparison with other inference methods.</a>” <em>Journal of Statistical Mechanics: Theory and Experiment</em> 2012.08 (2012): P08015.</p>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -418,7 +465,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Appendix C. Sourlas 编码的数值模拟</p>
+            <p class="prev-next-title">Appendix C. Sourlas 码的程序模拟</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="Sec1.html" title="next page">

@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Appendix A. 补充材料" href="supplementary.html" />
@@ -162,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../Chapter1/Assignment2.html">
-     Appendix C. Sourlas 编码的数值模拟
+     Appendix C. Sourlas 码的程序模拟
     </a>
    </li>
   </ul>
@@ -198,11 +200,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../VMFandBP.html">
-   变分平均场理论与信念传播算法
-  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../MC.html">
@@ -351,12 +348,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bethe">
+   3.1 Bethe 近似与信念传播算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.2 树状因子图中的 Bethe 近似
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.3 Bethe 近似与空腔方法的等价性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.4 Bethe 近似与平均场近似
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -368,6 +404,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bethe">
+   3.1 Bethe 近似与信念传播算法
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   3.2 树状因子图中的 Bethe 近似
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.3 Bethe 近似与空腔方法的等价性
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.4 Bethe 近似与平均场近似
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -377,6 +441,396 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="sec-3-bethe">
 <h1>Sec 3. Bethe 近似<a class="headerlink" href="#sec-3-bethe" title="Permalink to this headline">#</a></h1>
+<p>平均场近似要求各个格点之间完全相互独立，这只能在温度比较高的时候实现，对于温度较低的情况，必须要考虑格点之间的关联。本节中的Bethe 近似就引入了格点间的部分关联。</p>
+<p>仍然使用如下的分布</p>
+<div class="math notranslate nohighlight" id="equation-c1">
+<span class="eqno">(46)<a class="headerlink" href="#equation-c1" title="Permalink to this equation">#</a></span>\[
+P(\boldsymbol{x})=\frac{e^{-\beta E(x)}}{Z} \qquad E(\boldsymbol{x})=-\sum_a J_a \prod_{i \in \partial a} x_i
+\]</div>
+<p>为了更好地在因子图中表示，我们首先进行一个变量替换，令</p>
+<div class="math notranslate nohighlight" id="equation-c2">
+<span class="eqno">(47)<a class="headerlink" href="#equation-c2" title="Permalink to this equation">#</a></span>\[
+f_a(\boldsymbol{x}_a)=e^{J_a \prod_{i \in \partial a} x_i}
+\]</div>
+<p><span class="math notranslate nohighlight">\(f_a(\boldsymbol{x}_a)\)</span> 表示一个相互作用 <span class="math notranslate nohighlight">\(a\)</span>，其中 <span class="math notranslate nohighlight">\(\boldsymbol{x}_a\)</span> 表示参与该相互作用的所有自旋变量。同样令 <span class="math notranslate nohighlight">\(\beta=1\)</span>，因此</p>
+<div class="math notranslate nohighlight" id="equation-c3">
+<span class="eqno">(48)<a class="headerlink" href="#equation-c3" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp; P(\boldsymbol{x})=\frac{1}{Z} \prod_a f_a\left(\boldsymbol{x}_a\right) \\
+&amp; E(\boldsymbol{x})=-\sum_a \ln f_a\left(\boldsymbol{x}_a\right) 
+\end{aligned}
+\end{split}\]</div>
+<p>显然，此时分布 <span class="math notranslate nohighlight">\(P(x)\)</span> 是因子连乘的形式，用因子图表示为</p>
+<p style="text-align:center"><img src="https://user-images.githubusercontent.com/106574511/212213084-192b03b7-3597-4594-b90c-b406ea370776.png" alt="" class="bg-primary" width="400px"></p>
+<p>这里variable node是表示自旋的变量节点，function node是表示相互作用的功能节点。对这个因子图进行区域划分，每一个区域都要将与其中的功能节点相连的所有变量节点都包含在里面。上图中的黄色虚线圈出来的不能算作一个区域，因为与功能节点<span class="math notranslate nohighlight">\(A\)</span>相连的变量节点<span class="math notranslate nohighlight">\(2\)</span>没有被包含在其中。</p>
+<p>对于一个区域 <span class="math notranslate nohighlight">\(R\)</span>，我们可以计算其内部的变分内能和变分熵：</p>
+<div class="math notranslate nohighlight" id="equation-c4">
+<span class="eqno">(49)<a class="headerlink" href="#equation-c4" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp; E_R\left(x_R\right)=-\sum_{a \in R} \ln f_a\left(\boldsymbol{x}_a\right) \\
+&amp; U_R\left(b_R\right)=\sum_{\boldsymbol{x}_R} b_R\left(\boldsymbol{x}_R\right) E_R\left(\boldsymbol{x}_R\right) \\
+&amp; H_R\left(b_R\right)=-\sum_{\boldsymbol{x}_R} b_R\left(\boldsymbol{x}_R\right) \ln b_R\left(\boldsymbol{x}_R\right)
+\end{aligned}
+\end{split}\]</div>
+<p>然后将各个区域的变分内能和变分熵相加，即</p>
+<div class="math notranslate nohighlight" id="equation-c5">
+<span class="eqno">(50)<a class="headerlink" href="#equation-c5" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{gathered}
+U_{\mathcal{R}}=\sum_{R \in \mathcal{R}} C_R U_R\left(b_R\right)\\
+H_{\mathcal{R}}=\sum_{R \in \mathcal{R}} C_R H_R\left(b_R\right)
+\end{gathered}
+\end{split}\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\mathcal{R}\)</span> 是所有区域的集合，<span class="math notranslate nohighlight">\(C_R\)</span> 是用于对区域进行计数的变量，满足</p>
+<div class="math notranslate nohighlight" id="equation-c6">
+<span class="eqno">(51)<a class="headerlink" href="#equation-c6" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{gathered}
+\sum_{R \in \mathcal{R}} \mathbb{I}[a \in R] C_R=1, \forall a \\
+\sum_{R \in \mathbb{R}} \mathbb{I}[i \in R] C_R=1, \forall i
+\end{gathered}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbb{I}[a \in R]\)</span> 表示如果功能节点 <span class="math notranslate nohighlight">\(a\)</span> 在区域 <span class="math notranslate nohighlight">\(R\)</span> 中，则 <span class="math notranslate nohighlight">\(C_R=1\)</span>，否则 <span class="math notranslate nohighlight">\(C_R=0\)</span>；同理，<span class="math notranslate nohighlight">\(\mathbb{I}[i \in R]\)</span> 表示如果变量节点 <span class="math notranslate nohighlight">\(i\)</span> 在区域 <span class="math notranslate nohighlight">\(R\)</span> 中，则 <span class="math notranslate nohighlight">\(C_R=1\)</span>，否则 <span class="math notranslate nohighlight">\(C_R=0\)</span>。</p>
+<p><span class="math notranslate nohighlight">\(\mathbb{I}[a \in R]\)</span> 与 <span class="math notranslate nohighlight">\(C_R\)</span> 相乘再求和后等于 <span class="math notranslate nohighlight">\(1\)</span> 表示节点 <span class="math notranslate nohighlight">\(a\)</span> 只被考虑了一次，因此上式对于 <span class="math notranslate nohighlight">\(C_R\)</span> 的约束实际上是要求所有的变量节点和功能节点在求和时只被考虑一次，这是就划分区域的要求。</p>
+<section id="bethe">
+<h2>3.1 Bethe 近似与信念传播算法<a class="headerlink" href="#bethe" title="Permalink to this headline">#</a></h2>
+<p>Bethe 近似划分区域的方式如下图所示</p>
+<p style="text-align:center"><img src="https://user-images.githubusercontent.com/106574511/212213770-4f299654-11d5-406d-944d-88eb0e3da531.png" alt="" class="bg-primary" width="400px"></p>
+<p>划分的区域有两种，一种称作“大区域”，是包含一个功能节点以及所有与其相连的变量节点的区域；另一种称作“小区域”，只包含一个变量节点。大区域的计数设为 <span class="math notranslate nohighlight">\(1\)</span>，小区域的计数设为 <span class="math notranslate nohighlight">\(1-d_i\)</span>，其中 <span class="math notranslate nohighlight">\(d_i\)</span> 是变量节点 <span class="math notranslate nohighlight">\(i\)</span> 参与的功能节点的数量，即</p>
+<div class="math notranslate nohighlight" id="equation-c7">
+<span class="eqno">(52)<a class="headerlink" href="#equation-c7" title="Permalink to this equation">#</a></span>\[
+C_{R_{L}}=1,\quad C_{R_{S}}=1-d_i
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>这种划分方式和计数方式很自然地满足了上面对于 <span class="math notranslate nohighlight">\(C_R\)</span> 的两条约束：</p>
+<p>对于第一条（针对功能节点的）约束，只有大区域中有功能节点参与了求和，并且对于每个功能节点 <span class="math notranslate nohighlight">\(a\)</span>，当其包含在某个区域 <span class="math notranslate nohighlight">\(R\)</span> 中使得 <span class="math notranslate nohighlight">\(\mathbb{I}[a \in R]=1\)</span> 时，都有且仅有这一个区域的计数 <span class="math notranslate nohighlight">\(C_{R_L}=1\)</span>；</p>
+<p>对于第二条（针对变量节点的）约束，每个变量节点 <span class="math notranslate nohighlight">\(i\)</span> 在其参与的 <span class="math notranslate nohighlight">\(d_i\)</span> 个大区域（功能节点）中使得 <span class="math notranslate nohighlight">\(\mathbb{I}[a \in R]=1,\,C_{R_{L}}=1\)</span>，并且使得其自身所在的小区域 <span class="math notranslate nohighlight">\(\mathbb{I}[a \in R]=1,\,C_{R_{S}}=1-d_i\)</span>，所有大区域的求和为 <span class="math notranslate nohighlight">\(d_i\)</span>，只有一个小区域参与了求和为 <span class="math notranslate nohighlight">\(1-d_i\)</span>，因此总的求和为 <span class="math notranslate nohighlight">\(1\)</span>。</p>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition-font-color-blue-2-font admonition">
+<p class="admonition-title">注 <font color="blue">2</font></p>
+<p>在这里指大区域，小区域内部没有相互作用</p>
+</div>
+</aside>
+<p>Bethe 近似划分区域后，<strong>只考虑各个区域<sup><font color="blue">2</font></sup>内部的相互作用，不考虑区域与区域间的相互作用</strong>，实际上是一个只考虑<strong>最近邻相互作用</strong>的模型。</p>
+<p>根据以上划分的区域，计算变分自由能</p>
+<div class="math notranslate nohighlight" id="equation-c8">
+<span class="eqno">(53)<a class="headerlink" href="#equation-c8" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;U_{\text {Bethe }}= -\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln f_a\left(\boldsymbol{x}_a\right) \\
+&amp;H_{\text {Bethe }}=-\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right)+\sum_i\left(d_i-1\right) \sum_{x_i} b_i\left(x_i\right) \ln b_i\left(x_i\right) \\
+&amp;F_{\text {Bethe }}= -\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln f_a\left(\boldsymbol{x}_a\right)+\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right) \\
+&amp;\qquad\qquad\, -\sum_i\left(d_i-1\right) \sum_{x_i} b_i\left(x_i\right) \ln b_i\left(x_i\right)
+\end{aligned}
+\end{split}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">推导细节 d</p>
+<p>变分内能</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+U_{\text {Bethe }}= &amp;\sum_{R \in \mathcal{R}} C_R U_R\left(b_R\right)=\sum_{R \in \mathcal{R}} C_R\sum_{\boldsymbol{x}_R} b_R\left(\boldsymbol{x}_R\right) E_R\left(\boldsymbol{x}_R\right)\\
+=&amp; \sum_a\sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \left[-\sum_{a \in R} \ln f_a\left(\boldsymbol{x}_a\right)\right] \\
+=&amp;-\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln f_a\left(\boldsymbol{x}_a\right) \\
+\end{aligned}
+\end{split}\]</div>
+<div class="admonition- admonition">
+<p class="admonition-title">注</p>
+<p>这里由于哈密顿量没有外场，实际上只有大区域贡献了内能，因此第一行中的求和下标 <span class="math notranslate nohighlight">\(R\in\mathcal{R}\)</span> 有 <span class="math notranslate nohighlight">\(a\)</span> 个，并且每个大区域中只有一个功能节点，第二行中的求和下标 <span class="math notranslate nohighlight">\(a\in R\)</span> 实际上只对一个 <span class="math notranslate nohighlight">\(a\)</span> 求和，<span class="math notranslate nohighlight">\(C_R=C_{R_L}=1\)</span>。如果哈密顿量是具有外场的形式，那么求Bethe内能时也需要考虑小区域的作用。</p>
+</div>
+<p>变分熵（大区域和小区域分别计算后求和）</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+H_{\text {Bethe }}= &amp;\sum_{R \in \mathcal{R}} C_R H_R\left(b_R\right)=\sum_{R \in \mathcal{R}} C_R \left[-\sum_{\boldsymbol{x}_R} b_R\left(\boldsymbol{x}_R\right) \ln b_R\left(\boldsymbol{x}_R\right)\right]\\
+=&amp;-\sum_aC_{R_L}\sum_{\boldsymbol{x}_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right)-\sum_iC_{R_S}\sum_{\boldsymbol{x}_i} b_i\left(\boldsymbol{x}_i\right) \ln b_i\left(\boldsymbol{x}_i\right) \\
+=&amp; -\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right)+\sum_i\left(d_i-1\right) \sum_{x_i} b_i\left(x_i\right) \ln b_i\left(x_i\right) 
+\end{aligned}
+\end{split}\]</div>
+<p>变分自由能</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+F_{\text {Bethe }}= &amp; \; U_{\text {Bethe }}-H_{\text {Bethe }}\\
+= &amp; -\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln f_a\left(\boldsymbol{x}_a\right)+\sum_a \sum_{x_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right) \\
+&amp;-\sum_i\left(d_i-1\right) \sum_{x_i} b_i\left(x_i\right) \ln b_i\left(x_i\right)
+\end{aligned}
+\end{split}\]</div>
+</div>
+<p>使用拉格朗日乘子法对变分自由能取极值时存在如下约束：</p>
+<div class="math notranslate nohighlight" id="equation-c9">
+<span class="eqno">(54)<a class="headerlink" href="#equation-c9" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp; \sum_{x_i} b_i\left(x_i\right)=1, \forall i \\
+&amp; \sum_{\boldsymbol{x}_a} b_a\left(\boldsymbol{x}_a\right)=1, \forall a \\
+&amp; \sum_{\boldsymbol{x}_a / x_i} b_a\left(\boldsymbol{x}_a\right)=b_i\left(x_i\right), \forall i, a
+\end{aligned}
+\end{split}\]</div>
+<p>前两条是归一化条件，第三条则是所谓的<strong>边际的一致性条件</strong>，即如果一个变量节点 <span class="math notranslate nohighlight">\(i\)</span> 参与了功能节点 <span class="math notranslate nohighlight">\(a\)</span>，那么除了 <span class="math notranslate nohighlight">\(i\)</span> 以外的所有参与功能节点 <span class="math notranslate nohighlight">\(a\)</span> 的变量节点的分布求和后等于 <span class="math notranslate nohighlight">\(i\)</span> 的分布。</p>
+<p>构造Lagrangian</p>
+<div class="math notranslate nohighlight" id="equation-c10">
+<span class="eqno">(55)<a class="headerlink" href="#equation-c10" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathcal{L}_{\text {Bethe }}= &amp; -\sum_a \sum_{\boldsymbol{x}_a} b_a\left(\boldsymbol{x}_a\right) \ln f_a\left(\boldsymbol{x}_a\right)+\sum_a \sum_{\boldsymbol{x}_a} b_a\left(\boldsymbol{x}_a\right) \ln b_a\left(\boldsymbol{x}_a\right) \\
+&amp;-\sum_i\left(d_i-1\right) \sum_{x_i} b_i\left(x_i\right) \ln b_i\left(x_i\right)\\
+&amp;+\sum_i \lambda_i\left(\sum_{x_i} b_i\left(x_i\right)-1\right)+\sum_a \lambda_a\left(\sum_{\boldsymbol{x}_a} b_a\left(\boldsymbol{x}_a\right)-1\right)\\
+&amp;+\sum_{i, a} \sum_{x_i} \rho_{i, a}\left(x_i\right)\left(\sum_{\boldsymbol{x}_a / x_i} b_a\left(\boldsymbol{x}_a\right)-b_i\left(x_i\right)\right)
+\end{aligned}
+\end{split}\]</div>
+<p>通过 <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}_{\text {Bethe }}}{\partial b_a}=0\)</span> 和 <span class="math notranslate nohighlight">\(\frac{\partial \mathcal{L}_{\text {Bethe }}}{\partial b_i}=0\)</span> 得</p>
+<div class="math notranslate nohighlight" id="equation-c11">
+<span class="eqno">(56)<a class="headerlink" href="#equation-c11" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;\hat{b}_i\left(x_i\right) \propto \prod_{a \in \partial i} P_{a \rightarrow i}\left(x_i\right)\\
+&amp;\hat{b}_a\left(\boldsymbol{x}_a\right)\propto f_a\left(\boldsymbol{x}_a\right)\prod_{i\in\partial a} P_{i \rightarrow a}\left(x_i\right)
+\end{aligned}
+\end{split}\]</div>
+<p>其中，</p>
+<div class="math notranslate nohighlight" id="equation-c12">
+<span class="eqno">(57)<a class="headerlink" href="#equation-c12" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;P_{a \rightarrow i}\left(x_i\right)=\sum_{\boldsymbol{x}_j: j \in \partial a \backslash i} f_a\left(\boldsymbol{x}_a\right) \prod_{j \in \partial a \backslash i} P_{j \rightarrow a}\left(x_j\right)\\
+&amp;P_{i \rightarrow a}=\frac{1}{Z_{i\to a}}\prod_{b\in i\backslash a}P_{b\to i}
+\end{aligned}
+\end{split}\]</div>
+<div class="dropdown admonition">
+<p class="admonition-title">推导细节 e</p>
+<p>再说吧</p>
+</div>
+</section>
+<section id="id1">
+<h2>3.2 树状因子图中的 Bethe 近似<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>对于如下图所示的一个无环的树状因子图（从任意一个节点出发无法回到自身节点），对于这类因子图表示的网络，只存在最近邻相互作用，因此 Bethe 近似是精确的。</p>
+<p style="text-align:center"><img src="https://user-images.githubusercontent.com/106574511/212237161-ad9281e7-c51a-4056-8950-694274b9e9d1.png" alt="" class="bg-primary" width="400px"></p>
+<p>对于该因子图，其联合概率分布可以拆分为</p>
+<div class="math notranslate nohighlight" id="equation-d1">
+<span class="eqno">(58)<a class="headerlink" href="#equation-d1" title="Permalink to this equation">#</a></span>\[
+p\left(x_1, x_2, x_3, x_4\right)=\frac{1}{Z} f_A\left(x_1, x_2\right) f_B\left(x_2, x_3, x_4\right) f_C\left(x_4\right)
+\]</div>
+<p>我们考虑第二个变量节点，即下图中红色的节点</p>
+<p style="text-align:center"><img src="https://user-images.githubusercontent.com/106574511/212237476-ecca974c-59cb-4865-b670-566491f1da2b.png" alt="" class="bg-primary" width="400px"></p>
+<p>根据上面得到的迭代方程</p>
+<div class="math notranslate nohighlight" id="equation-d2">
+<span class="eqno">(59)<a class="headerlink" href="#equation-d2" title="Permalink to this equation">#</a></span>\[
+b_i\left(x_i\right) \propto \prod_{a \in \partial i} P_{a \rightarrow i}\left(x_i\right), \quad P_{a \rightarrow i}\left(x_i\right)=\sum_{\boldsymbol{x}_j: j \in \partial a \backslash i} f_a\left(\boldsymbol{x}_a\right) \prod_{j \in \partial a \backslash i} P_{j \rightarrow a}\left(x_j\right)
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight" id="equation-d3">
+<span class="eqno">(60)<a class="headerlink" href="#equation-d3" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+b_i\left(x_2\right) &amp; \propto P_{A \rightarrow 2}\left(x_2\right) P_{B \rightarrow 2}\left(x_2\right) \\
+&amp; \propto\left(\sum_{x_1} f_A\left(x_1, x_2\right) P_{1 \rightarrow A}\left(x_1\right)\right)\left(\sum_{x_3, x_4} f_B\left(x_2, x_3, x_4\right) P_{3 \rightarrow B}\left(x_3\right) P_{4 \rightarrow B}\left(x_4\right)\right)
+\end{aligned}
+\end{split}\]</div>
+<p>注意到变量节点 <span class="math notranslate nohighlight">\(1\)</span> 和 <span class="math notranslate nohighlight">\(3\)</span> 都只参与了一个功能节点，因此 <span class="math notranslate nohighlight">\(P_{1 \rightarrow A}\)</span> 和 <span class="math notranslate nohighlight">\(P_{3 \rightarrow B}\)</span> 都等于 <span class="math notranslate nohighlight">\(1\)</span>。变量节点 <span class="math notranslate nohighlight">\(4\)</span> 参与了 <span class="math notranslate nohighlight">\(B\)</span>、<span class="math notranslate nohighlight">\(C\)</span> 两个功能节点，根据迭代方程</p>
+<div class="math notranslate nohighlight" id="equation-d4">
+<span class="eqno">(61)<a class="headerlink" href="#equation-d4" title="Permalink to this equation">#</a></span>\[
+P_{i \rightarrow a}=\frac{1}{Z_{i\to a}}\prod_{b\in i\backslash a}P_{b\to i}
+\]</div>
+<p>有</p>
+<div class="math notranslate nohighlight" id="equation-d5">
+<span class="eqno">(62)<a class="headerlink" href="#equation-d5" title="Permalink to this equation">#</a></span>\[
+P_{4 \rightarrow B}=P_{C\to 4}(x_4)
+\]</div>
+<p>再将 <span class="math notranslate nohighlight">\(P_{C\to 4}(x_4)\)</span> 放入迭代方程中，由于功能节点 <span class="math notranslate nohighlight">\(C\)</span> 只与 <span class="math notranslate nohighlight">\(4\)</span> 这一个变量节点相连，<span class="math notranslate nohighlight">\(P_{C\to 4}(x_4)=f_C(x_4)\)</span>。因此</p>
+<div class="math notranslate nohighlight" id="equation-d6">
+<span class="eqno">(63)<a class="headerlink" href="#equation-d6" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+b_i\left(x_2\right) &amp; \propto\left(\sum_{x_1} f_A\left(x_1, x_2\right) P_{1 \rightarrow A}\left(x_1\right)\right)\left(\sum_{x_3, x_4} f_B\left(x_2, x_3, x_4\right) P_{3 \rightarrow B}\left(x_3\right) P_{4 \rightarrow B}\left(x_4\right)\right)\\
+&amp; \propto\left(\sum_{x_1} f_A\left(x_1, x_2\right)\right)\left(\sum_{x_1, x_4} f_B\left(x_2, x_3, x_4\right) P_{C \rightarrow 4}\left(x_4\right)\right) \\
+&amp; \propto\left(\sum_{x_1} f_A\left(x_1, x_2\right)\right)\left(\sum_{x_3, x_4} f_B\left(x_2, x_3, x_4\right) f_C\left(x_4\right)\right) \\
+&amp; \propto \sum_{x_1, x_3, x_4} f_A\left(x_1, x_2\right) f_B\left(x_2, x_3, x_4\right) f_C\left(x_4\right)
+\end{aligned}
+\end{split}\]</div>
+<p>注意到 <span class="math notranslate nohighlight">\(\sum_{x_1, x_3, x_4} f_A\left(x_1, x_2\right) f_B\left(x_2, x_3, x_4\right) f_C\left(x_4\right)\)</span> 正是因子图中变量节点 <span class="math notranslate nohighlight">\(a\)</span> 的边际概率，即我们想要的 <span class="math notranslate nohighlight">\(b_i(x_2)\)</span> 的形式。</p>
+<p>同样地，对于功能节点 <span class="math notranslate nohighlight">\(B\)</span>，有</p>
+<div class="math notranslate nohighlight" id="equation-d7">
+<span class="eqno">(64)<a class="headerlink" href="#equation-d7" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+b_a\left(x_B\right) &amp; \propto f_B\left(x_2, x_3, x_4\right) P_{2 \rightarrow B}\left(x_2\right) P_{3 \rightarrow B}\left(x_3\right) P_{4 \rightarrow B}\left(x_4\right) \\
+&amp; \propto f_B\left(x_2, x_3, x_4\right)\left(P_{A \rightarrow 2}\left(x_2\right)\right)\left(P_{C \rightarrow 4}\left(x_4\right)\right) \\
+&amp; \propto f_B\left(x_2, x_3, x_4\right)\left(\sum_{x_1} f_A\left(x_1, x_2\right)\right)\left(P_{B \rightarrow 2}\left(x_2\right) P_{B \rightarrow 3}\left(x_3\right)\right) \\
+&amp; \propto f_B\left(x_2, x_3, x_4\right)\left(\sum_{x_1} f_A\left(x_1, x_2\right)\right)\left(f_C\left(x_4\right)\right) \\
+&amp; \propto \sum_{x_1} f_A\left(x_1, x_2\right) f_B\left(x_2, x_3, x_4\right) f_C\left(x_4\right)
+\end{aligned}
+\end{split}\]</div>
+<p>这也是 <span class="math notranslate nohighlight">\(b_a\left(x_B\right)\)</span> 的精确的形式。</p>
+<p>类似地，我们可以证明，对于这个树状因子图中所有的 <span class="math notranslate nohighlight">\(b_i(x_i)\)</span> 和 <span class="math notranslate nohighlight">\(b_a(x_a)\)</span> 都是精确的。</p>
+</section>
+<section id="id2">
+<h2>3.3 Bethe 近似与空腔方法的等价性<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>接下来我们只考虑空腔概率 <span class="math notranslate nohighlight">\(P_{i\to a}\)</span>，将</p>
+<div class="math notranslate nohighlight" id="equation-d8">
+<span class="eqno">(65)<a class="headerlink" href="#equation-d8" title="Permalink to this equation">#</a></span>\[
+P_{a \rightarrow i}\left(x_i\right)=\sum_{\boldsymbol{x}_j: j \in \partial a \backslash i} f_a\left(\boldsymbol{x}_a\right) \prod_{j \in \partial a \backslash i} P_{j \rightarrow a}\left(x_j\right)
+\]</div>
+<p>代入</p>
+<div class="math notranslate nohighlight" id="equation-d9">
+<span class="eqno">(66)<a class="headerlink" href="#equation-d9" title="Permalink to this equation">#</a></span>\[
+P_{i \rightarrow a}=\frac{1}{Z_{i\to a}}\prod_{b\in i\backslash a}P_{b\to i}
+\]</div>
+<p>并将 <span class="math notranslate nohighlight">\(f_a(x_a)\)</span> 的定义</p>
+<div class="math notranslate nohighlight" id="equation-d10">
+<span class="eqno">(67)<a class="headerlink" href="#equation-d10" title="Permalink to this equation">#</a></span>\[
+f_a(\boldsymbol{x}_a)=e^{J_a \prod_{i \in \partial a} x_i}
+\]</div>
+<p>一并代入，得</p>
+<div class="math notranslate nohighlight" id="equation-d11">
+<span class="eqno">(68)<a class="headerlink" href="#equation-d11" title="Permalink to this equation">#</a></span>\[
+P_{i \rightarrow a}\left(x_i\right)=\frac{1}{Z_{i \rightarrow a}} \prod_{b \in \partial i \backslash a} \sum_{x_j: j \in \partial b \backslash i} e^{J_a \prod_{i \in \partial a} x_i} \prod_{j \in \partial b \backslash i} P_{j \rightarrow b}\left(x_j\right)
+\]</div>
+<p>为了证明Bethe 近似与空腔方法是等价的，我们先假设 <span class="math notranslate nohighlight">\(P_{j\to b}\)</span> 是一个空腔概率，根据<a class="reference external" href="https://lyhsysu.github.io/SMNN/Chapter1/Sec1.html">空腔方法Sec.1中</a>（<strong>推导细节 B</strong>）的内容，若 <span class="math notranslate nohighlight">\(x_j\in\{\pm 1\}\)</span>，可以将其参数化为</p>
+<div class="math notranslate nohighlight" id="equation-d12">
+<span class="eqno">(69)<a class="headerlink" href="#equation-d12" title="Permalink to this equation">#</a></span>\[
+P_{j\to b}(x_j)=\frac{1+m_{j\to b}x_j}{2}
+\]</div>
+<p>接下来只要能根据该假设得到空腔的磁化强度的迭代方程，即说明该假设是自洽的。</p>
+<p>考虑 <span class="math notranslate nohighlight">\(x_i=+1\)</span> 时，令</p>
+<div class="math notranslate nohighlight" id="equation-d13">
+<span class="eqno">(70)<a class="headerlink" href="#equation-d13" title="Permalink to this equation">#</a></span>\[
+A_b^{+}=\sum_{x_j: j \in \partial b \backslash i} e^{J_b \prod_{j \in \partial b \backslash i} x_j} \prod_{j \in \partial b \backslash i} \frac{1+m_{j \rightarrow b} x_j}{2}
+\]</div>
+<p>这里与空腔方法第一小节中对 <span class="math notranslate nohighlight">\(\prod_{i \in \partial a} \frac{1+\sigma_i m_{i \rightarrow a}}{2}\)</span> 进行展开处理的操作（<strong>推导细节 c</strong>）类似，经过这个trick后可以得到</p>
+<div class="math notranslate nohighlight" id="equation-d14">
+<span class="eqno">(71)<a class="headerlink" href="#equation-d14" title="Permalink to this equation">#</a></span>\[
+A_b^{+}=\cosh J_b\left(1+\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}\right)
+\]</div>
+<p>类似地，当 <span class="math notranslate nohighlight">\(x_i=-1\)</span> 时，可得</p>
+<div class="math notranslate nohighlight" id="equation-d15">
+<span class="eqno">(72)<a class="headerlink" href="#equation-d15" title="Permalink to this equation">#</a></span>\[
+A_b^{-}=\cosh J_b\left(1-\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}\right)
+\]</div>
+<p>根据空腔磁化强度的定义</p>
+<div class="math notranslate nohighlight" id="equation-d16">
+<span class="eqno">(73)<a class="headerlink" href="#equation-d16" title="Permalink to this equation">#</a></span>\[
+m_{i\to a}=\sum_{x_i}x_iP_{i\to a}(x_i)=\sum_{x_i}x_i\frac{\exp\left[-\beta H_{i\to a}(x_i)\right]}{\sum_{x_i}\exp\left[-\beta H_{i\to a}(x_i)\right]}
+\]</div>
+<p>注意到我们这里定义的 <span class="math notranslate nohighlight">\(A_b^\pm\)</span> 与空腔方法第二小节空腔磁化强度部分的 <span class="math notranslate nohighlight">\(\Lambda_{b\to i}^\pm\)</span> 一致，按照相同的步骤可得</p>
+<div class="math notranslate nohighlight" id="equation-d17">
+<span class="eqno">(74)<a class="headerlink" href="#equation-d17" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+m_{i \rightarrow a} 
+&amp; =\frac{\prod_{b \in \partial i \backslash a} A_b^{+}-\prod_{b \in \partial i \backslash a} A_b^{-}}{\prod_{b \in \partial i \backslash a} A_b^{+}+\prod_{b \in \partial i \backslash a} A_b^{-}} \\
+&amp; =\frac{\prod_{b \in \partial i \backslash a}\left(1+\prod_1 \tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}\right)-\prod_{b \in \partial i \backslash a}\left(1-\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}\right)}{\prod_{b \in \partial i \backslash a}\left(1+\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}\right)+\prod_{b \in \partial i \backslash a}\left(1-\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}\right)}
+\end{aligned}
+\end{split}\]</div>
+<p>令</p>
+<div class="math notranslate nohighlight" id="equation-d18">
+<span class="eqno">(75)<a class="headerlink" href="#equation-d18" title="Permalink to this equation">#</a></span>\[
+\tanh u_{b \rightarrow i}=\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}
+\]</div>
+<p>即得空腔方法第二小节中空腔磁化强度的迭代方程：</p>
+<div class="math notranslate nohighlight" id="equation-d19">
+<span class="eqno">(76)<a class="headerlink" href="#equation-d19" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp;m_{i \rightarrow a}  =\tanh \left(\sum_{b \in \partial i \backslash a} u_{b \rightarrow i}\right) \\
+&amp;\tanh u_{b \rightarrow i}  =\tanh J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}
+\end{aligned}
+\end{split}\]</div>
+<p>从这里可以看到，Bethe 近似与空腔方法是等价的。</p>
+</section>
+<section id="id3">
+<h2>3.4 Bethe 近似与平均场近似<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>平均场近似是忽略自旋变量间的所有相互作用，Bethe 近似考虑了最近邻的相互作用，因此Bethe 近似是比平均场近似更高一级的近似。一般来说，高一级的近似是可以退化到低一级的近似的。本节将展示Bethe 近似如何退化到平均场近似。</p>
+<p>上一小节提到，Bethe 近似与空腔方法是等价的，因此我们继续从上一小节空腔的磁化强度出发，将 <span class="math notranslate nohighlight">\(\sum_{b \in \partial i \backslash a} u_{b \rightarrow i}\)</span> 改写为</p>
+<div class="math notranslate nohighlight" id="equation-d20">
+<span class="eqno">(77)<a class="headerlink" href="#equation-d20" title="Permalink to this equation">#</a></span>\[
+m_{i \rightarrow a}  =\tanh \left(\sum_{b \in \partial i} u_{b \rightarrow i}- u_{a\to i}\right)
+\]</div>
+<p>根据 <span class="math notranslate nohighlight">\(m_i=\tanh\left( \sum_{b \in \partial i} u_{b \rightarrow i}\right)\)</span> （已令 <span class="math notranslate nohighlight">\(\beta=1\)</span>），可以将 <span class="math notranslate nohighlight">\(\sum_{b \in \partial i} u_{b \rightarrow i}\)</span> 反表示为 <span class="math notranslate nohighlight">\(\tanh^{-1}(m_i)\)</span>。</p>
+<p>再利用</p>
+<div class="math notranslate nohighlight" id="equation-d21">
+<span class="eqno">(78)<a class="headerlink" href="#equation-d21" title="Permalink to this equation">#</a></span>\[
+\tanh (x+y)=\frac{\tanh x+\tanh y}{1+\tanh x \tanh y}
+\]</div>
+<p>以及</p>
+<div class="math notranslate nohighlight" id="equation-d22">
+<span class="eqno">(79)<a class="headerlink" href="#equation-d22" title="Permalink to this equation">#</a></span>\[
+\tanh u_{a \rightarrow i}  =\tanh J_a \prod_{j \in \partial a \backslash i} m_{j \rightarrow a}
+\]</div>
+<p>可得</p>
+<div class="math notranslate nohighlight" id="equation-d23">
+<span class="eqno">(80)<a class="headerlink" href="#equation-d23" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+m_{i \rightarrow a} &amp; =\tanh \left(\sum_{b \in \partial i} u_{b \rightarrow i}-u_{a \rightarrow i}\right) \\
+&amp; =\tanh \left(\tanh ^{-1}\left(m_i\right)-u_{a \rightarrow i}\right) \\
+&amp; =\frac{m_i-\tanh \beta J_a \prod_{j \in \partial a \backslash i} m_{j \rightarrow a}}{1-m_i \tanh \beta J_a \prod_{j \in \partial a \backslash i} m_{j \rightarrow a}},
+\end{aligned}
+\end{split}\]</div>
+<p>考虑一个 <span class="math notranslate nohighlight">\(i\)</span> 和 <span class="math notranslate nohighlight">\(j\)</span> 的二体相互作用，上式可以改写为两个迭代式：</p>
+<div class="math notranslate nohighlight" id="equation-d24">
+<span class="eqno">(81)<a class="headerlink" href="#equation-d24" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp; m_{i \rightarrow j}=\frac{m_i-\tanh \beta J_{i j} m_{j \rightarrow i}}{1-m_i \tanh \beta J_{i j} m_{j \rightarrow i}} \\
+&amp; m_{j \rightarrow i}=\frac{m_j-\tanh \beta J_{i j} m_{i \rightarrow j}}{1-m_j \tanh \beta J_{i j} m_{i \rightarrow j}}
+\end{aligned}
+\end{split}\]</div>
+<p>将两个式子互相带入，可分别得到 <span class="math notranslate nohighlight">\(m_{i\to j}\)</span> 和 <span class="math notranslate nohighlight">\(m_{j\to i}\)</span> 关于 <span class="math notranslate nohighlight">\(m_i\)</span>、<span class="math notranslate nohighlight">\(m_j\)</span> 及 <span class="math notranslate nohighlight">\(J_{ij}\)</span> 的表达式，将其记为 <span class="math notranslate nohighlight">\(f\)</span>，即</p>
+<div class="math notranslate nohighlight" id="equation-d25">
+<span class="eqno">(82)<a class="headerlink" href="#equation-d25" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+m_{i \rightarrow j} &amp; =f\left(m_i, m_j, \tanh \beta J_{i j}\right) \\
+m_{j \rightarrow i} &amp; =f\left(m_j, m_i, \tanh \beta J_{i j}\right) 
+\end{aligned}
+\end{split}\]</div>
+<p>其中，</p>
+<div class="math notranslate nohighlight" id="equation-d26">
+<span class="eqno">(83)<a class="headerlink" href="#equation-d26" title="Permalink to this equation">#</a></span>\[
+f(a, b, t) =\frac{1-t^2-\sqrt{\left(1-t^2\right)^2-4 t(a-b t)(b-a t)}}{2 t(b-a t)}
+\]</div>
+<p>（具体怎么算出来的，等以后再补充）</p>
+<p>对于 <span class="math notranslate nohighlight">\(m_i=\tanh\left( \sum_{b \in \partial i} u_{b \rightarrow i}\right)\)</span>，根据（注意从这里开始不再忽略 <span class="math notranslate nohighlight">\(\beta\)</span>）</p>
+<div class="math notranslate nohighlight" id="equation-d27">
+<span class="eqno">(84)<a class="headerlink" href="#equation-d27" title="Permalink to this equation">#</a></span>\[
+\tanh u_{b \rightarrow i}  =\tanh\beta J_b \prod_{j \in \partial b \backslash i} m_{j \rightarrow b}
+\]</div>
+<p>在二体相互作用中写为</p>
+<div class="math notranslate nohighlight" id="equation-d28">
+<span class="eqno">(85)<a class="headerlink" href="#equation-d28" title="Permalink to this equation">#</a></span>\[
+\tanh u_{j \rightarrow i}  =m_{i \rightarrow j} \tanh \beta J_{ij}
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(m_{i \rightarrow j} =f\left(m_i, m_j, \tanh \beta J_{i j}\right)\)</span>。因此</p>
+<div class="math notranslate nohighlight" id="equation-d29">
+<span class="eqno">(86)<a class="headerlink" href="#equation-d29" title="Permalink to this equation">#</a></span>\[
+u_{j \rightarrow i}  =\tanh^{-1}\Big[ f\left(m_i, m_j, \tanh \beta J_{i j}\right) \tanh \beta J_{ij}\Big]
+\]</div>
+<p>磁化强度写为</p>
+<div class="math notranslate nohighlight" id="equation-d30">
+<span class="eqno">(87)<a class="headerlink" href="#equation-d30" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+m_i&amp;=\tanh\left( \sum_{j \in \partial i} u_{j \rightarrow i}\right)\\
+&amp;=\tanh\left\{\sum_{j \in \partial i}\tanh^{-1}\big[ f\left(m_i, m_j, \tanh \beta J_{i j}\right) \tanh \beta J_{ij}\big]\right\}
+\end{aligned}
+\end{split}\]</div>
+<p>考虑温度较高时，即 <span class="math notranslate nohighlight">\(\beta\)</span> 较小时，根据近似</p>
+<div class="math notranslate nohighlight" id="equation-d31">
+<span class="eqno">(88)<a class="headerlink" href="#equation-d31" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp; \tanh ^{-1} x \approx x, \tanh x \approx x \\
+&amp; (1+x)^a \approx 1+a x+\frac{1}{2} a(a-1) x^2
+\end{aligned}
+\end{split}\]</div>
+<p>有</p>
+<div class="math notranslate nohighlight" id="equation-d32">
+<span class="eqno">(89)<a class="headerlink" href="#equation-d32" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+&amp; \tanh \beta J_{i j}\approx \beta J_{i j} \\
+&amp; \tanh^{-1}\big[ f\left(m_i, m_j, \tanh \beta J_{i j}\right) \tanh \beta J_{ij}\big]\approx\beta J_{ij}f\left(m_i, m_j, \beta J_{i j}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>并且对 <span class="math notranslate nohighlight">\(f(a,b,t)\)</span> 做某种复杂的近似操作，可以得到</p>
+<div class="math notranslate nohighlight" id="equation-d33">
+<span class="eqno">(90)<a class="headerlink" href="#equation-d33" title="Permalink to this equation">#</a></span>\[
+m_i=\tanh \left[\sum_{j \in \partial i}\left(\beta J_{i j} m_j-\beta^2 J_{i j}^2\left(1-m_j^2\right) m_i\right)\right]
+\]</div>
+<p>这个方程称为“TAP方程”，会在之后的一章中详细介绍。如果温度足够高，<span class="math notranslate nohighlight">\(\beta^2\)</span> 也作为高阶小量忽视掉，则</p>
+<div class="math notranslate nohighlight" id="equation-d34">
+<span class="eqno">(91)<a class="headerlink" href="#equation-d34" title="Permalink to this equation">#</a></span>\[
+m_i=\tanh \left(\beta\sum_{j \in \partial i} J_{i j} m_j\right)
+\]</div>
+<p>这就是我们在第三小节中用平均场近似得到的结果。</p>
+<p>从上面可以看到，Bethe 近似在温度较高时可以退化为平均场近似，因为高温实际上意味着自旋变量之间的相互作用减弱。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
