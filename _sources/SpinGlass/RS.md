@@ -25,13 +25,13 @@ $$
     Z=\mathrm{Tr~}e^{-\beta H}
 $$ (sg2)
 
-其中$\mathrm{Tr~}:=\sum_{\{S_i=\pm 1\}}$，称为 trace operation。利用配分函数 {eq}`sg2` 可以计算自由能：
+其中 $\mathrm{Tr~}:=\sum_{\{S_i=\pm 1\}}$，称为 trace operation。利用配分函数 {eq}`sg2` 可以计算自由能：
 
 $$
     F=-T\log Z=-T\log \mathrm{Tr~}e^{-\beta H}
 $$ (sg3)
 
-注意到，$F$是$Z$的函数，而 $Z$是 $\boldsymbol{J}\equiv\{J_{ij}\}$ 的函数。对于一个确定的系统，$\boldsymbol{J}$是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quenched）。为了获得最终的自由能，我们需要将$F$对$\boldsymbol{J}$取平均，也即对 $\log Z$取平均（称为构型平均，configurational average）：
+注意到，$F$ 是 $Z$ 的函数，而 $Z$ 是 $\boldsymbol{J}\equiv\{J_{ij}\}$ 的函数。对于一个确定的系统，$\boldsymbol{J}$ 是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quenched）。为了获得最终的自由能，我们需要将 $F$ 对 $\boldsymbol{J}$ 取平均，也即对 $\log Z$ 取平均（称为构型平均，configurational average）：
 
 $$
     [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
@@ -39,7 +39,7 @@ $$ (sg4)
 
 ## 1 复本技巧 Replica trick
 
-由于 $\log Z$ 对$\boldsymbol{J}$的依赖关系是十分复杂的，我们无法直接求  $\log Z$ 。复本技巧（replica trick）是一个可以将对 $\log Z$ 的构型平均转移到对 $Z^n$ 的构型平均的技巧。
+由于 $\log Z$ 对 $\boldsymbol{J}$ 的依赖关系是十分复杂的，我们无法直接求 $\log Z$。复本技巧（replica trick）是一个可以将对 $\log Z$ 的构型平均转移到对 $Z^n$ 的构型平均的技巧。
 
 ```{admonition} replica trick
 $$
@@ -69,7 +69,7 @@ $$ (sg7)
 利用如下技巧
 
 $$
-    \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta=$ $2 \sum_{\alpha<\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\sum_\alpha\left(S_i^\alpha S_j^\alpha\right)^2=2 \sum_{\alpha<\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n
+    \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta=2 \sum_{\alpha<\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\sum_\alpha\left(S_i^\alpha S_j^\alpha\right)^2=2 \sum_{\alpha<\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n
 $$ (sg7_5)
 
 式 {eq}`sg7` 的指数部分改写为
@@ -78,7 +78,7 @@ $$
 \exp \left\{\frac{1}{N} \sum_{i<j}\left(\frac{1}{2} \beta^2 J^2\left(2 \sum_{\alpha<\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n\right)+\beta J_0 \sum_\alpha S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
 $$ (sg8)
 
-注意到指数上第一项中的求和号中含有与$i$、$j$无关的项$\frac{1}{2} \beta^2 J^2n$，并且求和 $\sum_{i<j}$ 共有 $N(N-1)/2$ 项，因此将常数项提到前面，改写为
+注意到指数上第一项中的求和号中含有与 $i$、$j$ 无关的项 $\frac{1}{2} \beta^2 J^2n$，并且求和 $\sum_{i<j}$ 共有 $N(N-1)/2$ 项，因此将常数项提到前面，改写为
 
 $$
 \begin{aligned}
@@ -111,7 +111,7 @@ $$
 \end{aligned}
 $$ (sg12)
 
-忽略掉上两式中的常数项，并且根据大$N$极限下的近似$\exp \left(\frac{(N-1) \beta^2 J^2 n}{4}\right)\approx \exp \left(\frac{N \beta^2 J^2 n}{4}\right)$，式 {eq}`sg9` 改写为
+忽略掉上两式中的常数项，并且根据大 $N$ 极限下的近似 $\exp \left(\frac{(N-1) \beta^2 J^2 n}{4}\right)\approx \exp \left(\frac{N \beta^2 J^2 n}{4}\right)$，式 {eq}`sg9` 改写为
 
 $$
 \begin{aligned}
@@ -120,7 +120,7 @@ $$
 \end{aligned}
 $$ (sg13)
 
-再利用如下变换将$\left(\sum_i S_i^\alpha S_i^\beta\right)^2$ 和 $\left(\sum_i S_i^\alpha\right)^2$ 线性化。
+再利用如下变换将 $\left(\sum_i S_i^\alpha S_i^\beta\right)^2$ 和 $\left(\sum_i S_i^\alpha\right)^2$ 线性化。
 
 ```{admonition} Hubbard-Stratonovich transform
 $$
@@ -195,7 +195,7 @@ $$
 I(\lambda)=e^{i \theta} \sqrt{\frac{2 \pi}{\lambda\left|g^{\prime \prime}\left(z_0\right)\right|}} e^{\lambda g\left(z_0\right)}[1+\mathcal{O}(1 / \lambda)]
 $$
 
-其中，$z_0$是函数的鞍点
+其中，$z_0$ 是函数的鞍点
 ```
 
 式 {eq}`sg20` 的积分中，最后一项指数上与 $N$ 成正比，在大 $N$极限下，积分结果由指数上的宗量的最大值决定。即
@@ -252,7 +252,7 @@ $$ (sg26)
 
 ## 2 复本对称解
 
-要进一步求解这个问题，就需要考虑参数 $q_{\alpha\beta}$、$m_\alpha$对$\alpha$、$\beta$的依赖关系。一个朴素的假设是，各个复本都是等价的，$q_{\alpha\beta}$、$m_\alpha$与$\alpha$、$\beta$无关，即 $\forall \alpha, \beta: q_{\alpha \beta}=q, m_\alpha=m$，这就是所谓的复本对称假设。
+要进一步求解这个问题，就需要考虑参数 $q_{\alpha\beta}$、$m_\alpha$ 对 $\alpha$、$\beta$ 的依赖关系。一个朴素的假设是，各个复本都是等价的，$q_{\alpha\beta}$、$m_\alpha$ 与 $\alpha$、$\beta$ 无关，即 $\forall \alpha, \beta: q_{\alpha \beta}=q, m_\alpha=m$，这就是所谓的复本对称假设。
 
 根据这个假设，式 {eq}`sg26` 可以写为
 
@@ -281,7 +281,7 @@ $$
 \end{aligned}
 $$ (sg29)
 
-对于$\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]$，再次使用Hubbard-Stratonovich变换对其线性化：令$x:=\hat{z}\beta J\sqrt{q}$，$y:=\beta J\sqrt{q}\sum_\alpha S^\alpha$，有
+对于 $\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]$，再次使用Hubbard-Stratonovich变换对其线性化：令 $x:=\hat{z}\beta J\sqrt{q}$，$y:=\beta J\sqrt{q}\sum_\alpha S^\alpha$，有
 
  $$
     \exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]=\int_C \mathrm{d}\hat{z}\sqrt{\frac{\beta^2 J^2 q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2 q\right)\exp\left(\beta^2 J^2 q\hat{z}\sum_{\alpha} S^\alpha\right)
@@ -324,8 +324,7 @@ $$ (sg29)
 \end{aligned}
  $$ (sg34)
 
-其中，$\hat{H}(z):=J\sqrt{q}z+\left(J_0 m+h\right)$。\\
-注意到上式最后一步连乘中的每一项都是同样对 $\{ S^\alpha =\pm 1 \}$ 求和，因此连乘可以转为指数
+其中，$\hat{H}(z):=J\sqrt{q}z+\left(J_0 m+h\right)$。注意到上式最后一步连乘中的每一项都是同样对 $\{ S^\alpha =\pm 1 \}$ 求和，因此连乘可以转为指数
 
  $$
 \begin{aligned}

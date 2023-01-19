@@ -472,19 +472,19 @@ title="Print to PDF"
 <span class="eqno">(93)<a class="headerlink" href="#equation-sg2" title="Permalink to this equation">#</a></span>\[
     Z=\mathrm{Tr~}e^{-\beta H}
 \]</div>
-<p>其中<span class="math notranslate nohighlight">\(\mathrm{Tr~}:=\sum_{\{S_i=\pm 1\}}\)</span>，称为 trace operation。利用配分函数 <a class="reference internal" href="#equation-sg2">(93)</a> 可以计算自由能：</p>
+<p>其中 <span class="math notranslate nohighlight">\(\mathrm{Tr~}:=\sum_{\{S_i=\pm 1\}}\)</span>，称为 trace operation。利用配分函数 <a class="reference internal" href="#equation-sg2">(93)</a> 可以计算自由能：</p>
 <div class="math notranslate nohighlight" id="equation-sg3">
 <span class="eqno">(94)<a class="headerlink" href="#equation-sg3" title="Permalink to this equation">#</a></span>\[
     F=-T\log Z=-T\log \mathrm{Tr~}e^{-\beta H}
 \]</div>
-<p>注意到，<span class="math notranslate nohighlight">\(F\)</span>是<span class="math notranslate nohighlight">\(Z\)</span>的函数，而 <span class="math notranslate nohighlight">\(Z\)</span>是 <span class="math notranslate nohighlight">\(\boldsymbol{J}\equiv\{J_{ij}\}\)</span> 的函数。对于一个确定的系统，<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quenched）。为了获得最终的自由能，我们需要将<span class="math notranslate nohighlight">\(F\)</span>对<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>取平均，也即对 <span class="math notranslate nohighlight">\(\log Z\)</span>取平均（称为构型平均，configurational average）：</p>
+<p>注意到，<span class="math notranslate nohighlight">\(F\)</span> 是 <span class="math notranslate nohighlight">\(Z\)</span> 的函数，而 <span class="math notranslate nohighlight">\(Z\)</span> 是 <span class="math notranslate nohighlight">\(\boldsymbol{J}\equiv\{J_{ij}\}\)</span> 的函数。对于一个确定的系统，<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span> 是从高斯分布中取出来的一个固定的集合（这个过程称为“淬火”，quenched）。为了获得最终的自由能，我们需要将 <span class="math notranslate nohighlight">\(F\)</span> 对 <span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span> 取平均，也即对 <span class="math notranslate nohighlight">\(\log Z\)</span> 取平均（称为构型平均，configurational average）：</p>
 <div class="math notranslate nohighlight" id="equation-sg4">
 <span class="eqno">(95)<a class="headerlink" href="#equation-sg4" title="Permalink to this equation">#</a></span>\[
     [F]=-T[\log Z]=-T\int \prod_{(ij)}\mathrm{d}J_{ij}P(J_{ij})\log Z
 \]</div>
 <section id="replica-trick">
 <h2>1 复本技巧 Replica trick<a class="headerlink" href="#replica-trick" title="Permalink to this headline">#</a></h2>
-<p>由于 <span class="math notranslate nohighlight">\(\log Z\)</span> 对<span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span>的依赖关系是十分复杂的，我们无法直接求  <span class="math notranslate nohighlight">\(\log Z\)</span> 。复本技巧（replica trick）是一个可以将对 <span class="math notranslate nohighlight">\(\log Z\)</span> 的构型平均转移到对 <span class="math notranslate nohighlight">\(Z^n\)</span> 的构型平均的技巧。</p>
+<p>由于 <span class="math notranslate nohighlight">\(\log Z\)</span> 对 <span class="math notranslate nohighlight">\(\boldsymbol{J}\)</span> 的依赖关系是十分复杂的，我们无法直接求 <span class="math notranslate nohighlight">\(\log Z\)</span>。复本技巧（replica trick）是一个可以将对 <span class="math notranslate nohighlight">\(\log Z\)</span> 的构型平均转移到对 <span class="math notranslate nohighlight">\(Z^n\)</span> 的构型平均的技巧。</p>
 <div class="admonition-replica-trick admonition">
 <p class="admonition-title">replica trick</p>
 <div class="math notranslate nohighlight">
@@ -511,14 +511,14 @@ title="Print to PDF"
 <p>利用如下技巧</p>
 <div class="math notranslate nohighlight" id="equation-sg7-5">
 <span class="eqno">(99)<a class="headerlink" href="#equation-sg7-5" title="Permalink to this equation">#</a></span>\[
-    \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta=$ $2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\sum_\alpha\left(S_i^\alpha S_j^\alpha\right)^2=2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n
+    \sum_{\alpha, \beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta=2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+\sum_\alpha\left(S_i^\alpha S_j^\alpha\right)^2=2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n
 \]</div>
 <p>式 <a class="reference internal" href="#equation-sg7">(98)</a> 的指数部分改写为</p>
 <div class="math notranslate nohighlight" id="equation-sg8">
 <span class="eqno">(100)<a class="headerlink" href="#equation-sg8" title="Permalink to this equation">#</a></span>\[
 \exp \left\{\frac{1}{N} \sum_{i&lt;j}\left(\frac{1}{2} \beta^2 J^2\left(2 \sum_{\alpha&lt;\beta} S_i^\alpha S_j^\alpha S_i^\beta S_j^\beta+n\right)+\beta J_0 \sum_\alpha S_i^\alpha S_j^\alpha\right)+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
 \]</div>
-<p>注意到指数上第一项中的求和号中含有与<span class="math notranslate nohighlight">\(i\)</span>、<span class="math notranslate nohighlight">\(j\)</span>无关的项<span class="math notranslate nohighlight">\(\frac{1}{2} \beta^2 J^2n\)</span>，并且求和 <span class="math notranslate nohighlight">\(\sum_{i&lt;j}\)</span> 共有 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 项，因此将常数项提到前面，改写为</p>
+<p>注意到指数上第一项中的求和号中含有与 <span class="math notranslate nohighlight">\(i\)</span>、<span class="math notranslate nohighlight">\(j\)</span> 无关的项 <span class="math notranslate nohighlight">\(\frac{1}{2} \beta^2 J^2n\)</span>，并且求和 <span class="math notranslate nohighlight">\(\sum_{i&lt;j}\)</span> 共有 <span class="math notranslate nohighlight">\(N(N-1)/2\)</span> 项，因此将常数项提到前面，改写为</p>
 <div class="math notranslate nohighlight" id="equation-sg9">
 <span class="eqno">(101)<a class="headerlink" href="#equation-sg9" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
@@ -547,7 +547,7 @@ title="Print to PDF"
 &amp;=\frac{\beta J_0}{2 N} \sum_\alpha\left(\sum_i S_i^\alpha\right)^2-\frac{\beta J_0}{2 N} \sum_i \sum_\alpha 1
 \end{aligned}
 \end{split}\]</div>
-<p>忽略掉上两式中的常数项，并且根据大<span class="math notranslate nohighlight">\(N\)</span>极限下的近似<span class="math notranslate nohighlight">\(\exp \left(\frac{(N-1) \beta^2 J^2 n}{4}\right)\approx \exp \left(\frac{N \beta^2 J^2 n}{4}\right)\)</span>，式 <a class="reference internal" href="#equation-sg9">(101)</a> 改写为</p>
+<p>忽略掉上两式中的常数项，并且根据大 <span class="math notranslate nohighlight">\(N\)</span> 极限下的近似 <span class="math notranslate nohighlight">\(\exp \left(\frac{(N-1) \beta^2 J^2 n}{4}\right)\approx \exp \left(\frac{N \beta^2 J^2 n}{4}\right)\)</span>，式 <a class="reference internal" href="#equation-sg9">(101)</a> 改写为</p>
 <div class="math notranslate nohighlight" id="equation-sg13">
 <span class="eqno">(105)<a class="headerlink" href="#equation-sg13" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
@@ -555,7 +555,7 @@ title="Print to PDF"
 &amp;=\mathrm{Tr~} \exp \left\{\frac{\beta^2 J^2}{2 N} \sum_{\alpha&lt;\beta}\left(\sum_i S_i^\alpha S_i^\beta\right)^2+\frac{\beta J_0}{2 N} \sum_\alpha\left(\sum_i S_i^\alpha\right)^2+\beta h \sum_{i=1}^N \sum_{\alpha=1}^n S_i^\alpha\right\}
 \end{aligned}
 \end{split}\]</div>
-<p>再利用如下变换将<span class="math notranslate nohighlight">\(\left(\sum_i S_i^\alpha S_i^\beta\right)^2\)</span> 和 <span class="math notranslate nohighlight">\(\left(\sum_i S_i^\alpha\right)^2\)</span> 线性化。</p>
+<p>再利用如下变换将 <span class="math notranslate nohighlight">\(\left(\sum_i S_i^\alpha S_i^\beta\right)^2\)</span> 和 <span class="math notranslate nohighlight">\(\left(\sum_i S_i^\alpha\right)^2\)</span> 线性化。</p>
 <div class="admonition-hubbard-stratonovich-transform admonition">
 <p class="admonition-title">Hubbard-Stratonovich transform</p>
 <div class="math notranslate nohighlight">
@@ -621,7 +621,7 @@ title="Print to PDF"
 \[
 I(\lambda)=e^{i \theta} \sqrt{\frac{2 \pi}{\lambda\left|g^{\prime \prime}\left(z_0\right)\right|}} e^{\lambda g\left(z_0\right)}[1+\mathcal{O}(1 / \lambda)]
 \]</div>
-<p>其中，<span class="math notranslate nohighlight">\(z_0\)</span>是函数的鞍点</p>
+<p>其中，<span class="math notranslate nohighlight">\(z_0\)</span> 是函数的鞍点</p>
 </div>
 <p>式 <a class="reference internal" href="#equation-sg20">(112)</a> 的积分中，最后一项指数上与 <span class="math notranslate nohighlight">\(N\)</span> 成正比，在大 <span class="math notranslate nohighlight">\(N\)</span>极限下，积分结果由指数上的宗量的最大值决定。即</p>
 <div class="math notranslate nohighlight" id="equation-sg21">
@@ -673,7 +673,7 @@ m_\alpha^{\star}=\frac{1}{\beta J_0} \frac{\partial}{\partial m_\alpha} \log \ma
 </section>
 <section id="id1">
 <h2>2 复本对称解<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>要进一步求解这个问题，就需要考虑参数 <span class="math notranslate nohighlight">\(q_{\alpha\beta}\)</span>、<span class="math notranslate nohighlight">\(m_\alpha\)</span>对<span class="math notranslate nohighlight">\(\alpha\)</span>、<span class="math notranslate nohighlight">\(\beta\)</span>的依赖关系。一个朴素的假设是，各个复本都是等价的，<span class="math notranslate nohighlight">\(q_{\alpha\beta}\)</span>、<span class="math notranslate nohighlight">\(m_\alpha\)</span>与<span class="math notranslate nohighlight">\(\alpha\)</span>、<span class="math notranslate nohighlight">\(\beta\)</span>无关，即 <span class="math notranslate nohighlight">\(\forall \alpha, \beta: q_{\alpha \beta}=q, m_\alpha=m\)</span>，这就是所谓的复本对称假设。</p>
+<p>要进一步求解这个问题，就需要考虑参数 <span class="math notranslate nohighlight">\(q_{\alpha\beta}\)</span>、<span class="math notranslate nohighlight">\(m_\alpha\)</span> 对 <span class="math notranslate nohighlight">\(\alpha\)</span>、<span class="math notranslate nohighlight">\(\beta\)</span> 的依赖关系。一个朴素的假设是，各个复本都是等价的，<span class="math notranslate nohighlight">\(q_{\alpha\beta}\)</span>、<span class="math notranslate nohighlight">\(m_\alpha\)</span> 与 <span class="math notranslate nohighlight">\(\alpha\)</span>、<span class="math notranslate nohighlight">\(\beta\)</span> 无关，即 <span class="math notranslate nohighlight">\(\forall \alpha, \beta: q_{\alpha \beta}=q, m_\alpha=m\)</span>，这就是所谓的复本对称假设。</p>
 <p>根据这个假设，式 <a class="reference internal" href="#equation-sg26">(119)</a> 可以写为</p>
 <div class="math notranslate nohighlight" id="equation-sg27">
 <span class="eqno">(120)<a class="headerlink" href="#equation-sg27" title="Permalink to this equation">#</a></span>\[\begin{split}
@@ -698,7 +698,7 @@ m_\alpha^{\star}=\frac{1}{\beta J_0} \frac{\partial}{\partial m_\alpha} \log \ma
 \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2+\beta\left(J_0 m+h\right) \sum_\alpha S^\alpha \right] \right\}
 \end{aligned}
 \end{split}\]</div>
-<p>对于<span class="math notranslate nohighlight">\(\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]\)</span>，再次使用Hubbard-Stratonovich变换对其线性化：令<span class="math notranslate nohighlight">\(x:=\hat{z}\beta J\sqrt{q}\)</span>，<span class="math notranslate nohighlight">\(y:=\beta J\sqrt{q}\sum_\alpha S^\alpha\)</span>，有</p>
+<p>对于 <span class="math notranslate nohighlight">\(\exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]\)</span>，再次使用Hubbard-Stratonovich变换对其线性化：令 <span class="math notranslate nohighlight">\(x:=\hat{z}\beta J\sqrt{q}\)</span>，<span class="math notranslate nohighlight">\(y:=\beta J\sqrt{q}\sum_\alpha S^\alpha\)</span>，有</p>
 <div class="math notranslate nohighlight" id="equation-sg30">
 <span class="eqno">(123)<a class="headerlink" href="#equation-sg30" title="Permalink to this equation">#</a></span>\[
     \exp \left[ \frac{1}{2}\beta^2 J^2 q \left(\sum_{\alpha} S^\alpha \right)^2\right]=\int_C \mathrm{d}\hat{z}\sqrt{\frac{\beta^2 J^2 q}{2\pi}}\exp\left(-\frac{\hat{z}^2}{2}\beta^2 J^2 q\right)\exp\left(\beta^2 J^2 q\hat{z}\sum_{\alpha} S^\alpha\right)
@@ -736,8 +736,7 @@ m_\alpha^{\star}=\frac{1}{\beta J_0} \frac{\partial}{\partial m_\alpha} \log \ma
 &amp;=\int_C Dz \prod_{\alpha=1}^n\mathrm{Tr~}\exp\left[S^\alpha\beta\hat{H}(z)\right]
 \end{aligned}
  \end{split}\]</div>
-<p>其中，<span class="math notranslate nohighlight">\(\hat{H}(z):=J\sqrt{q}z+\left(J_0 m+h\right)\)</span>。\
-注意到上式最后一步连乘中的每一项都是同样对 <span class="math notranslate nohighlight">\(\{ S^\alpha =\pm 1 \}\)</span> 求和，因此连乘可以转为指数</p>
+<p>其中，<span class="math notranslate nohighlight">\(\hat{H}(z):=J\sqrt{q}z+\left(J_0 m+h\right)\)</span>。注意到上式最后一步连乘中的每一项都是同样对 <span class="math notranslate nohighlight">\(\{ S^\alpha =\pm 1 \}\)</span> 求和，因此连乘可以转为指数</p>
 <div class="math notranslate nohighlight" id="equation-sg35">
 <span class="eqno">(128)<a class="headerlink" href="#equation-sg35" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
